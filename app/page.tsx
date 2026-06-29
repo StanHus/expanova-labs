@@ -1,64 +1,69 @@
-import Image from "next/image";
+import Link from "next/link";
+import Reveal from "@/components/Reveal";
 
 export default function Home() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
+    <div className="theme-dark" style={{ minHeight: "100dvh", display: "flex", flexDirection: "column" }}>
+      <div style={{ padding: "1.5rem 1.75rem" }}>
+        <span className="ill-label" aria-hidden>EST. 2026</span>
+      </div>
+
+      <main
+        style={{
+          flex: 1,
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          justifyContent: "center",
+          textAlign: "center",
+          padding: "2rem 1.5rem 4rem",
+        }}
+      >
+        <Reveal fade>
+          <svg width="56" height="50" viewBox="0 0 56 50" aria-hidden style={{ marginBottom: "1.75rem" }}>
+            <path d="M28 4 L52 46 L4 46 Z" fill="none" stroke="var(--accent)" strokeWidth="2.5" strokeLinejoin="round" />
+          </svg>
+
+          <h1 className="logotype" style={{ fontSize: "clamp(2.1rem, 1.3rem + 4.4vw, 4.25rem)" }}>
+            Expanova
+            <br />
+            Labs
           </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
+
+          <p
+            style={{
+              fontFamily: "var(--font-mono)",
+              fontSize: "0.9375rem",
+              lineHeight: 1.7,
+              color: "var(--muted)",
+              maxWidth: "40ch",
+              margin: "1.9rem auto 0",
+            }}
+          >
+            Verification-first AI. We build systems that prove their work — checked by an objective
+            oracle, not claimed by a model.
           </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+
+          <nav
+            style={{
+              marginTop: "2.4rem",
+              display: "flex",
+              gap: "1.1rem",
+              alignItems: "center",
+              justifyContent: "center",
+              fontFamily: "var(--font-mono)",
+              fontSize: "0.9375rem",
+            }}
           >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
+            <Link href="/pnrd-1" style={{ color: "var(--accent-text)", textDecorationColor: "var(--accent-border)" }}>PNRD#1</Link>
+            <span aria-hidden style={{ color: "var(--faint)" }}>·</span>
+            <Link href="/approach" style={{ color: "var(--accent-text)", textDecorationColor: "var(--accent-border)" }}>Approach</Link>
+          </nav>
+
+          <p className="ill-label" style={{ marginTop: "2.6rem", color: "var(--faint)" }}>
+            ✓ blocked beats faked
+          </p>
+        </Reveal>
       </main>
     </div>
   );

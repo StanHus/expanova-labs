@@ -1,0 +1,1977 @@
+{
+  "benchmark": "miniF2F-test",
+  "n": 244,
+  "BON": 16,
+  "HBON": 0,
+  "REPAIR": 1,
+  "models": {
+    "general": "accounts/fireworks/models/gpt-oss-120b",
+    "prover": "accounts/fireworks/models/gpt-oss-120b"
+  },
+  "rates": {
+    "arm_a": 0.246,
+    "arm_b": 0.471,
+    "hybrid": 0.0
+  },
+  "hybrid_only": 0,
+  "b_only": 115,
+  "gate": {
+    "abs_ge_80": false,
+    "novel_hybrid_only_ge_1": false,
+    "verdict": "KILL"
+  },
+  "rows": {
+    "mathd_algebra_478": {
+      "arm_a": true,
+      "arm_b": true,
+      "hybrid": false,
+      "compiles": 2,
+      "b_at": 1,
+      "h_at": 0
+    },
+    "numbertheory_4x3m7y3neq2003": {
+      "arm_a": false,
+      "arm_b": false,
+      "hybrid": false,
+      "compiles": 27,
+      "b_at": 16,
+      "h_at": 0
+    },
+    "aime_1983_p1": {
+      "arm_a": false,
+      "arm_b": false,
+      "hybrid": false,
+      "compiles": 25,
+      "b_at": 16,
+      "h_at": 0
+    },
+    "amc12_2001_p5": {
+      "arm_a": false,
+      "arm_b": false,
+      "hybrid": false,
+      "compiles": 28,
+      "b_at": 16,
+      "h_at": 0
+    },
+    "mathd_algebra_141": {
+      "arm_a": true,
+      "arm_b": true,
+      "hybrid": false,
+      "compiles": 2,
+      "b_at": 1,
+      "h_at": 0
+    },
+    "mathd_numbertheory_3": {
+      "arm_a": false,
+      "arm_b": false,
+      "hybrid": false,
+      "compiles": 22,
+      "b_at": 16,
+      "h_at": 0
+    },
+    "imo_1969_p2": {
+      "arm_a": false,
+      "arm_b": false,
+      "hybrid": false,
+      "compiles": 29,
+      "b_at": 16,
+      "h_at": 0
+    },
+    "mathd_algebra_209": {
+      "arm_a": true,
+      "arm_b": true,
+      "hybrid": false,
+      "compiles": 2,
+      "b_at": 1,
+      "h_at": 0
+    },
+    "mathd_numbertheory_1124": {
+      "arm_a": false,
+      "arm_b": true,
+      "hybrid": false,
+      "compiles": 12,
+      "b_at": 8,
+      "h_at": 0
+    },
+    "imo_1983_p6": {
+      "arm_a": false,
+      "arm_b": false,
+      "hybrid": false,
+      "compiles": 21,
+      "b_at": 16,
+      "h_at": 0
+    },
+    "mathd_numbertheory_237": {
+      "arm_a": false,
+      "arm_b": true,
+      "hybrid": false,
+      "compiles": 3,
+      "b_at": 1,
+      "h_at": 0
+    },
+    "mathd_algebra_33": {
+      "arm_a": false,
+      "arm_b": true,
+      "hybrid": false,
+      "compiles": 2,
+      "b_at": 1,
+      "h_at": 0
+    },
+    "amc12b_2021_p3": {
+      "arm_a": false,
+      "arm_b": false,
+      "hybrid": false,
+      "compiles": 27,
+      "b_at": 16,
+      "h_at": 0
+    },
+    "mathd_numbertheory_299": {
+      "arm_a": true,
+      "arm_b": true,
+      "hybrid": false,
+      "compiles": 2,
+      "b_at": 1,
+      "h_at": 0
+    },
+    "amc12b_2020_p2": {
+      "arm_a": false,
+      "arm_b": true,
+      "hybrid": false,
+      "compiles": 2,
+      "b_at": 1,
+      "h_at": 0
+    },
+    "algebra_sqineq_unitcircatbpabsamblt1": {
+      "arm_a": false,
+      "arm_b": true,
+      "hybrid": false,
+      "compiles": 7,
+      "b_at": 5,
+      "h_at": 0
+    },
+    "imo_1977_p6": {
+      "arm_a": false,
+      "arm_b": false,
+      "hybrid": false,
+      "compiles": 25,
+      "b_at": 16,
+      "h_at": 0
+    },
+    "mathd_algebra_419": {
+      "arm_a": true,
+      "arm_b": true,
+      "hybrid": false,
+      "compiles": 2,
+      "b_at": 1,
+      "h_at": 0
+    },
+    "amc12a_2020_p10": {
+      "arm_a": false,
+      "arm_b": false,
+      "hybrid": false,
+      "compiles": 21,
+      "b_at": 16,
+      "h_at": 0
+    },
+    "imo_1960_p2": {
+      "arm_a": false,
+      "arm_b": false,
+      "hybrid": false,
+      "compiles": 21,
+      "b_at": 16,
+      "h_at": 0
+    },
+    "mathd_numbertheory_427": {
+      "arm_a": false,
+      "arm_b": false,
+      "hybrid": false,
+      "compiles": 27,
+      "b_at": 16,
+      "h_at": 0
+    },
+    "numbertheory_x5neqy2p4": {
+      "arm_a": false,
+      "arm_b": true,
+      "hybrid": false,
+      "compiles": 4,
+      "b_at": 2,
+      "h_at": 0
+    },
+    "imosl_2007_algebra_p6": {
+      "arm_a": false,
+      "arm_b": false,
+      "hybrid": false,
+      "compiles": 18,
+      "b_at": 16,
+      "h_at": 0
+    },
+    "mathd_algebra_398": {
+      "arm_a": true,
+      "arm_b": true,
+      "hybrid": false,
+      "compiles": 2,
+      "b_at": 1,
+      "h_at": 0
+    },
+    "imo_1963_p5": {
+      "arm_a": false,
+      "arm_b": false,
+      "hybrid": false,
+      "compiles": 26,
+      "b_at": 16,
+      "h_at": 0
+    },
+    "mathd_numbertheory_430": {
+      "arm_a": false,
+      "arm_b": true,
+      "hybrid": false,
+      "compiles": 5,
+      "b_at": 3,
+      "h_at": 0
+    },
+    "mathd_algebra_459": {
+      "arm_a": false,
+      "arm_b": true,
+      "hybrid": false,
+      "compiles": 2,
+      "b_at": 1,
+      "h_at": 0
+    },
+    "induction_12dvd4expnp1p20": {
+      "arm_a": false,
+      "arm_b": true,
+      "hybrid": false,
+      "compiles": 6,
+      "b_at": 3,
+      "h_at": 0
+    },
+    "mathd_algebra_320": {
+      "arm_a": false,
+      "arm_b": false,
+      "hybrid": false,
+      "compiles": 22,
+      "b_at": 16,
+      "h_at": 0
+    },
+    "mathd_algebra_137": {
+      "arm_a": true,
+      "arm_b": true,
+      "hybrid": false,
+      "compiles": 5,
+      "b_at": 3,
+      "h_at": 0
+    },
+    "imo_1997_p5": {
+      "arm_a": false,
+      "arm_b": false,
+      "hybrid": false,
+      "compiles": 22,
+      "b_at": 16,
+      "h_at": 0
+    },
+    "mathd_numbertheory_277": {
+      "arm_a": false,
+      "arm_b": false,
+      "hybrid": false,
+      "compiles": 32,
+      "b_at": 16,
+      "h_at": 0
+    },
+    "mathd_numbertheory_559": {
+      "arm_a": false,
+      "arm_b": false,
+      "hybrid": false,
+      "compiles": 9,
+      "b_at": 16,
+      "h_at": 0
+    },
+    "mathd_algebra_160": {
+      "arm_a": true,
+      "arm_b": true,
+      "hybrid": false,
+      "compiles": 2,
+      "b_at": 1,
+      "h_at": 0
+    },
+    "mathd_algebra_24": {
+      "arm_a": false,
+      "arm_b": true,
+      "hybrid": false,
+      "compiles": 2,
+      "b_at": 1,
+      "h_at": 0
+    },
+    "mathd_algebra_176": {
+      "arm_a": true,
+      "arm_b": true,
+      "hybrid": false,
+      "compiles": 2,
+      "b_at": 1,
+      "h_at": 0
+    },
+    "induction_nfactltnexpnm1ngt3": {
+      "arm_a": false,
+      "arm_b": false,
+      "hybrid": false,
+      "compiles": 22,
+      "b_at": 16,
+      "h_at": 0
+    },
+    "mathd_algebra_208": {
+      "arm_a": true,
+      "arm_b": true,
+      "hybrid": false,
+      "compiles": 2,
+      "b_at": 1,
+      "h_at": 0
+    },
+    "mathd_numbertheory_353": {
+      "arm_a": false,
+      "arm_b": false,
+      "hybrid": false,
+      "compiles": 21,
+      "b_at": 16,
+      "h_at": 0
+    },
+    "numbertheory_notequiv2i2jasqbsqdiv8": {
+      "arm_a": true,
+      "arm_b": true,
+      "hybrid": false,
+      "compiles": 3,
+      "b_at": 1,
+      "h_at": 0
+    },
+    "mathd_algebra_156": {
+      "arm_a": true,
+      "arm_b": true,
+      "hybrid": false,
+      "compiles": 8,
+      "b_at": 7,
+      "h_at": 0
+    },
+    "mathd_numbertheory_12": {
+      "arm_a": true,
+      "arm_b": true,
+      "hybrid": false,
+      "compiles": 2,
+      "b_at": 1,
+      "h_at": 0
+    },
+    "mathd_numbertheory_345": {
+      "arm_a": true,
+      "arm_b": true,
+      "hybrid": false,
+      "compiles": 2,
+      "b_at": 1,
+      "h_at": 0
+    },
+    "mathd_numbertheory_447": {
+      "arm_a": false,
+      "arm_b": false,
+      "hybrid": false,
+      "compiles": 29,
+      "b_at": 16,
+      "h_at": 0
+    },
+    "mathd_numbertheory_328": {
+      "arm_a": false,
+      "arm_b": true,
+      "hybrid": false,
+      "compiles": 4,
+      "b_at": 4,
+      "h_at": 0
+    },
+    "mathd_numbertheory_451": {
+      "arm_a": false,
+      "arm_b": false,
+      "hybrid": false,
+      "compiles": 15,
+      "b_at": 16,
+      "h_at": 0
+    },
+    "aime_1997_p9": {
+      "arm_a": false,
+      "arm_b": false,
+      "hybrid": false,
+      "compiles": 15,
+      "b_at": 16,
+      "h_at": 0
+    },
+    "algebra_sqineq_at2malt1": {
+      "arm_a": true,
+      "arm_b": true,
+      "hybrid": false,
+      "compiles": 2,
+      "b_at": 1,
+      "h_at": 0
+    },
+    "algebra_apbmpcneq0_aeq0anbeq0anceq0": {
+      "arm_a": false,
+      "arm_b": false,
+      "hybrid": false,
+      "compiles": 16,
+      "b_at": 16,
+      "h_at": 0
+    },
+    "mathd_algebra_171": {
+      "arm_a": true,
+      "arm_b": true,
+      "hybrid": false,
+      "compiles": 4,
+      "b_at": 2,
+      "h_at": 0
+    },
+    "mathd_numbertheory_227": {
+      "arm_a": false,
+      "arm_b": false,
+      "hybrid": false,
+      "compiles": 18,
+      "b_at": 16,
+      "h_at": 0
+    },
+    "mathd_algebra_188": {
+      "arm_a": true,
+      "arm_b": true,
+      "hybrid": false,
+      "compiles": 2,
+      "b_at": 1,
+      "h_at": 0
+    },
+    "mathd_numbertheory_765": {
+      "arm_a": false,
+      "arm_b": false,
+      "hybrid": false,
+      "compiles": 25,
+      "b_at": 16,
+      "h_at": 0
+    },
+    "imo_1959_p1": {
+      "arm_a": false,
+      "arm_b": false,
+      "hybrid": false,
+      "compiles": 25,
+      "b_at": 16,
+      "h_at": 0
+    },
+    "mathd_numbertheory_175": {
+      "arm_a": false,
+      "arm_b": false,
+      "hybrid": false,
+      "compiles": 24,
+      "b_at": 16,
+      "h_at": 0
+    },
+    "induction_sumkexp3eqsumksq": {
+      "arm_a": false,
+      "arm_b": false,
+      "hybrid": false,
+      "compiles": 28,
+      "b_at": 16,
+      "h_at": 0
+    },
+    "numbertheory_fxeq4powxp6powxp9powx_f2powmdvdf2pown": {
+      "arm_a": false,
+      "arm_b": false,
+      "hybrid": false,
+      "compiles": 29,
+      "b_at": 16,
+      "h_at": 0
+    },
+    "imo_1992_p1": {
+      "arm_a": false,
+      "arm_b": false,
+      "hybrid": false,
+      "compiles": 16,
+      "b_at": 16,
+      "h_at": 0
+    },
+    "imo_1982_p1": {
+      "arm_a": false,
+      "arm_b": false,
+      "hybrid": false,
+      "compiles": 24,
+      "b_at": 16,
+      "h_at": 0
+    },
+    "aime_1987_p5": {
+      "arm_a": false,
+      "arm_b": false,
+      "hybrid": false,
+      "compiles": 21,
+      "b_at": 16,
+      "h_at": 0
+    },
+    "mathd_algebra_346": {
+      "arm_a": true,
+      "arm_b": true,
+      "hybrid": false,
+      "compiles": 2,
+      "b_at": 1,
+      "h_at": 0
+    },
+    "mathd_algebra_487": {
+      "arm_a": false,
+      "arm_b": true,
+      "hybrid": false,
+      "compiles": 15,
+      "b_at": 12,
+      "h_at": 0
+    },
+    "mathd_numbertheory_728": {
+      "arm_a": true,
+      "arm_b": true,
+      "hybrid": false,
+      "compiles": 2,
+      "b_at": 1,
+      "h_at": 0
+    },
+    "mathd_algebra_184": {
+      "arm_a": false,
+      "arm_b": false,
+      "hybrid": false,
+      "compiles": 26,
+      "b_at": 16,
+      "h_at": 0
+    },
+    "mathd_numbertheory_552": {
+      "arm_a": false,
+      "arm_b": false,
+      "hybrid": false,
+      "compiles": 19,
+      "b_at": 16,
+      "h_at": 0
+    },
+    "amc12b_2021_p9": {
+      "arm_a": false,
+      "arm_b": false,
+      "hybrid": false,
+      "compiles": 27,
+      "b_at": 16,
+      "h_at": 0
+    },
+    "aime_1994_p3": {
+      "arm_a": false,
+      "arm_b": false,
+      "hybrid": false,
+      "compiles": 26,
+      "b_at": 16,
+      "h_at": 0
+    },
+    "mathd_algebra_44": {
+      "arm_a": false,
+      "arm_b": true,
+      "hybrid": false,
+      "compiles": 4,
+      "b_at": 8,
+      "h_at": 0
+    },
+    "mathd_algebra_215": {
+      "arm_a": false,
+      "arm_b": false,
+      "hybrid": false,
+      "compiles": 28,
+      "b_at": 16,
+      "h_at": 0
+    },
+    "mathd_numbertheory_293": {
+      "arm_a": false,
+      "arm_b": false,
+      "hybrid": false,
+      "compiles": 23,
+      "b_at": 16,
+      "h_at": 0
+    },
+    "mathd_numbertheory_769": {
+      "arm_a": true,
+      "arm_b": true,
+      "hybrid": false,
+      "compiles": 2,
+      "b_at": 1,
+      "h_at": 0
+    },
+    "mathd_algebra_452": {
+      "arm_a": false,
+      "arm_b": true,
+      "hybrid": false,
+      "compiles": 8,
+      "b_at": 5,
+      "h_at": 0
+    },
+    "mathd_numbertheory_5": {
+      "arm_a": false,
+      "arm_b": false,
+      "hybrid": false,
+      "compiles": 27,
+      "b_at": 16,
+      "h_at": 0
+    },
+    "mathd_numbertheory_207": {
+      "arm_a": true,
+      "arm_b": true,
+      "hybrid": false,
+      "compiles": 2,
+      "b_at": 1,
+      "h_at": 0
+    },
+    "mathd_numbertheory_342": {
+      "arm_a": true,
+      "arm_b": true,
+      "hybrid": false,
+      "compiles": 2,
+      "b_at": 1,
+      "h_at": 0
+    },
+    "mathd_numbertheory_483": {
+      "arm_a": false,
+      "arm_b": false,
+      "hybrid": false,
+      "compiles": 26,
+      "b_at": 16,
+      "h_at": 0
+    },
+    "amc12b_2020_p21": {
+      "arm_a": false,
+      "arm_b": false,
+      "hybrid": false,
+      "compiles": 24,
+      "b_at": 16,
+      "h_at": 0
+    },
+    "amc12a_2003_p5": {
+      "arm_a": false,
+      "arm_b": false,
+      "hybrid": false,
+      "compiles": 17,
+      "b_at": 16,
+      "h_at": 0
+    },
+    "mathd_numbertheory_495": {
+      "arm_a": false,
+      "arm_b": false,
+      "hybrid": false,
+      "compiles": 24,
+      "b_at": 16,
+      "h_at": 0
+    },
+    "mathd_algebra_296": {
+      "arm_a": false,
+      "arm_b": true,
+      "hybrid": false,
+      "compiles": 1,
+      "b_at": 4,
+      "h_at": 0
+    },
+    "algebra_abpbcpcageq3_sumaonsqrtapbgeq3onsqrt2": {
+      "arm_a": false,
+      "arm_b": false,
+      "hybrid": false,
+      "compiles": 22,
+      "b_at": 16,
+      "h_at": 0
+    },
+    "algebra_2varlineareq_fp3zeq11_3tfm1m5zeqn68_feqn10_zeq7": {
+      "arm_a": false,
+      "arm_b": false,
+      "hybrid": false,
+      "compiles": 29,
+      "b_at": 16,
+      "h_at": 0
+    },
+    "mathd_numbertheory_247": {
+      "arm_a": false,
+      "arm_b": true,
+      "hybrid": false,
+      "compiles": 6,
+      "b_at": 3,
+      "h_at": 0
+    },
+    "induction_pord1p1on2powklt5on2": {
+      "arm_a": false,
+      "arm_b": false,
+      "hybrid": false,
+      "compiles": 23,
+      "b_at": 16,
+      "h_at": 0
+    },
+    "mathd_algebra_107": {
+      "arm_a": true,
+      "arm_b": true,
+      "hybrid": false,
+      "compiles": 2,
+      "b_at": 2,
+      "h_at": 0
+    },
+    "numbertheory_2pownm1prime_nprime": {
+      "arm_a": false,
+      "arm_b": false,
+      "hybrid": false,
+      "compiles": 31,
+      "b_at": 16,
+      "h_at": 0
+    },
+    "mathd_algebra_412": {
+      "arm_a": true,
+      "arm_b": true,
+      "hybrid": false,
+      "compiles": 2,
+      "b_at": 1,
+      "h_at": 0
+    },
+    "amc12a_2013_p4": {
+      "arm_a": false,
+      "arm_b": true,
+      "hybrid": false,
+      "compiles": 4,
+      "b_at": 2,
+      "h_at": 0
+    },
+    "mathd_algebra_392": {
+      "arm_a": true,
+      "arm_b": true,
+      "hybrid": false,
+      "compiles": 12,
+      "b_at": 6,
+      "h_at": 0
+    },
+    "mathd_numbertheory_314": {
+      "arm_a": false,
+      "arm_b": false,
+      "hybrid": false,
+      "compiles": 29,
+      "b_at": 16,
+      "h_at": 0
+    },
+    "induction_prod1p1onk3le3m1onn": {
+      "arm_a": false,
+      "arm_b": false,
+      "hybrid": false,
+      "compiles": 17,
+      "b_at": 16,
+      "h_at": 0
+    },
+    "mathd_numbertheory_343": {
+      "arm_a": false,
+      "arm_b": true,
+      "hybrid": false,
+      "compiles": 11,
+      "b_at": 5,
+      "h_at": 0
+    },
+    "mathd_algebra_756": {
+      "arm_a": false,
+      "arm_b": false,
+      "hybrid": false,
+      "compiles": 32,
+      "b_at": 16,
+      "h_at": 0
+    },
+    "amc12b_2002_p7": {
+      "arm_a": false,
+      "arm_b": true,
+      "hybrid": false,
+      "compiles": 6,
+      "b_at": 6,
+      "h_at": 0
+    },
+    "mathd_algebra_80": {
+      "arm_a": false,
+      "arm_b": true,
+      "hybrid": false,
+      "compiles": 8,
+      "b_at": 4,
+      "h_at": 0
+    },
+    "mathd_numbertheory_457": {
+      "arm_a": true,
+      "arm_b": true,
+      "hybrid": false,
+      "compiles": 4,
+      "b_at": 2,
+      "h_at": 0
+    },
+    "amc12_2000_p12": {
+      "arm_a": false,
+      "arm_b": false,
+      "hybrid": false,
+      "compiles": 29,
+      "b_at": 16,
+      "h_at": 0
+    },
+    "mathd_numbertheory_135": {
+      "arm_a": false,
+      "arm_b": true,
+      "hybrid": false,
+      "compiles": 20,
+      "b_at": 12,
+      "h_at": 0
+    },
+    "mathd_algebra_275": {
+      "arm_a": false,
+      "arm_b": false,
+      "hybrid": false,
+      "compiles": 25,
+      "b_at": 16,
+      "h_at": 0
+    },
+    "mathd_algebra_388": {
+      "arm_a": true,
+      "arm_b": true,
+      "hybrid": false,
+      "compiles": 2,
+      "b_at": 1,
+      "h_at": 0
+    },
+    "amc12a_2020_p7": {
+      "arm_a": false,
+      "arm_b": true,
+      "hybrid": false,
+      "compiles": 22,
+      "b_at": 13,
+      "h_at": 0
+    },
+    "imo_1981_p6": {
+      "arm_a": false,
+      "arm_b": false,
+      "hybrid": false,
+      "compiles": 22,
+      "b_at": 16,
+      "h_at": 0
+    },
+    "mathd_algebra_263": {
+      "arm_a": false,
+      "arm_b": true,
+      "hybrid": false,
+      "compiles": 1,
+      "b_at": 1,
+      "h_at": 0
+    },
+    "mathd_numbertheory_34": {
+      "arm_a": false,
+      "arm_b": false,
+      "hybrid": false,
+      "compiles": 19,
+      "b_at": 16,
+      "h_at": 0
+    },
+    "mathd_numbertheory_764": {
+      "arm_a": false,
+      "arm_b": false,
+      "hybrid": false,
+      "compiles": 21,
+      "b_at": 16,
+      "h_at": 0
+    },
+    "amc12b_2021_p4": {
+      "arm_a": false,
+      "arm_b": true,
+      "hybrid": false,
+      "compiles": 3,
+      "b_at": 1,
+      "h_at": 0
+    },
+    "imo_1962_p2": {
+      "arm_a": false,
+      "arm_b": true,
+      "hybrid": false,
+      "compiles": 12,
+      "b_at": 6,
+      "h_at": 0
+    },
+    "mathd_algebra_170": {
+      "arm_a": false,
+      "arm_b": true,
+      "hybrid": false,
+      "compiles": 9,
+      "b_at": 7,
+      "h_at": 0
+    },
+    "mathd_algebra_432": {
+      "arm_a": true,
+      "arm_b": true,
+      "hybrid": false,
+      "compiles": 2,
+      "b_at": 1,
+      "h_at": 0
+    },
+    "mathd_algebra_598": {
+      "arm_a": false,
+      "arm_b": false,
+      "hybrid": false,
+      "compiles": 26,
+      "b_at": 16,
+      "h_at": 0
+    },
+    "algebra_bleqa_apbon2msqrtableqambsqon8b": {
+      "arm_a": false,
+      "arm_b": false,
+      "hybrid": false,
+      "compiles": 24,
+      "b_at": 16,
+      "h_at": 0
+    },
+    "mathd_algebra_276": {
+      "arm_a": false,
+      "arm_b": false,
+      "hybrid": false,
+      "compiles": 17,
+      "b_at": 16,
+      "h_at": 0
+    },
+    "amc12a_2021_p14": {
+      "arm_a": false,
+      "arm_b": false,
+      "hybrid": false,
+      "compiles": 27,
+      "b_at": 16,
+      "h_at": 0
+    },
+    "algebra_sum1onsqrt2to1onsqrt10000lt198": {
+      "arm_a": false,
+      "arm_b": false,
+      "hybrid": false,
+      "compiles": 28,
+      "b_at": 16,
+      "h_at": 0
+    },
+    "mathd_numbertheory_618": {
+      "arm_a": false,
+      "arm_b": false,
+      "hybrid": false,
+      "compiles": 18,
+      "b_at": 16,
+      "h_at": 0
+    },
+    "amc12a_2020_p4": {
+      "arm_a": false,
+      "arm_b": false,
+      "hybrid": false,
+      "compiles": 28,
+      "b_at": 16,
+      "h_at": 0
+    },
+    "amc12b_2020_p6": {
+      "arm_a": false,
+      "arm_b": false,
+      "hybrid": false,
+      "compiles": 25,
+      "b_at": 16,
+      "h_at": 0
+    },
+    "mathd_numbertheory_435": {
+      "arm_a": false,
+      "arm_b": false,
+      "hybrid": false,
+      "compiles": 21,
+      "b_at": 16,
+      "h_at": 0
+    },
+    "algebra_others_exirrpowirrrat": {
+      "arm_a": false,
+      "arm_b": false,
+      "hybrid": false,
+      "compiles": 22,
+      "b_at": 16,
+      "h_at": 0
+    },
+    "mathd_algebra_427": {
+      "arm_a": true,
+      "arm_b": true,
+      "hybrid": false,
+      "compiles": 2,
+      "b_at": 1,
+      "h_at": 0
+    },
+    "mathd_algebra_76": {
+      "arm_a": true,
+      "arm_b": true,
+      "hybrid": false,
+      "compiles": 2,
+      "b_at": 1,
+      "h_at": 0
+    },
+    "mathd_numbertheory_99": {
+      "arm_a": false,
+      "arm_b": true,
+      "hybrid": false,
+      "compiles": 2,
+      "b_at": 1,
+      "h_at": 0
+    },
+    "algebra_9onxpypzleqsum2onxpy": {
+      "arm_a": false,
+      "arm_b": false,
+      "hybrid": false,
+      "compiles": 25,
+      "b_at": 16,
+      "h_at": 0
+    },
+    "mathd_numbertheory_233": {
+      "arm_a": false,
+      "arm_b": false,
+      "hybrid": false,
+      "compiles": 23,
+      "b_at": 16,
+      "h_at": 0
+    },
+    "algebra_absapbon1pabsapbleqsumabsaon1pabsa": {
+      "arm_a": false,
+      "arm_b": false,
+      "hybrid": false,
+      "compiles": 27,
+      "b_at": 16,
+      "h_at": 0
+    },
+    "imo_1984_p6": {
+      "arm_a": false,
+      "arm_b": false,
+      "hybrid": false,
+      "compiles": 29,
+      "b_at": 16,
+      "h_at": 0
+    },
+    "imo_2001_p6": {
+      "arm_a": false,
+      "arm_b": false,
+      "hybrid": false,
+      "compiles": 28,
+      "b_at": 16,
+      "h_at": 0
+    },
+    "mathd_numbertheory_321": {
+      "arm_a": false,
+      "arm_b": false,
+      "hybrid": false,
+      "compiles": 24,
+      "b_at": 16,
+      "h_at": 0
+    },
+    "mathd_algebra_17": {
+      "arm_a": false,
+      "arm_b": false,
+      "hybrid": false,
+      "compiles": 26,
+      "b_at": 16,
+      "h_at": 0
+    },
+    "mathd_algebra_153": {
+      "arm_a": true,
+      "arm_b": true,
+      "hybrid": false,
+      "compiles": 3,
+      "b_at": 3,
+      "h_at": 0
+    },
+    "algebra_sqineq_unitcircatbpamblt1": {
+      "arm_a": false,
+      "arm_b": true,
+      "hybrid": false,
+      "compiles": 4,
+      "b_at": 2,
+      "h_at": 0
+    },
+    "amc12a_2021_p18": {
+      "arm_a": false,
+      "arm_b": false,
+      "hybrid": false,
+      "compiles": 32,
+      "b_at": 16,
+      "h_at": 0
+    },
+    "mathd_algebra_329": {
+      "arm_a": false,
+      "arm_b": true,
+      "hybrid": false,
+      "compiles": 1,
+      "b_at": 2,
+      "h_at": 0
+    },
+    "induction_pprime_pdvdapowpma": {
+      "arm_a": false,
+      "arm_b": false,
+      "hybrid": false,
+      "compiles": 21,
+      "b_at": 16,
+      "h_at": 0
+    },
+    "amc12a_2021_p9": {
+      "arm_a": false,
+      "arm_b": false,
+      "hybrid": false,
+      "compiles": 23,
+      "b_at": 16,
+      "h_at": 0
+    },
+    "aime_1984_p1": {
+      "arm_a": false,
+      "arm_b": false,
+      "hybrid": false,
+      "compiles": 21,
+      "b_at": 16,
+      "h_at": 0
+    },
+    "amc12a_2021_p22": {
+      "arm_a": false,
+      "arm_b": false,
+      "hybrid": false,
+      "compiles": 23,
+      "b_at": 16,
+      "h_at": 0
+    },
+    "mathd_numbertheory_229": {
+      "arm_a": true,
+      "arm_b": true,
+      "hybrid": false,
+      "compiles": 2,
+      "b_at": 1,
+      "h_at": 0
+    },
+    "mathd_numbertheory_100": {
+      "arm_a": false,
+      "arm_b": true,
+      "hybrid": false,
+      "compiles": 3,
+      "b_at": 1,
+      "h_at": 0
+    },
+    "mathd_algebra_313": {
+      "arm_a": false,
+      "arm_b": false,
+      "hybrid": false,
+      "compiles": 27,
+      "b_at": 16,
+      "h_at": 0
+    },
+    "amc12b_2002_p4": {
+      "arm_a": false,
+      "arm_b": false,
+      "hybrid": false,
+      "compiles": 29,
+      "b_at": 16,
+      "h_at": 0
+    },
+    "amc12a_2002_p6": {
+      "arm_a": true,
+      "arm_b": true,
+      "hybrid": false,
+      "compiles": 2,
+      "b_at": 1,
+      "h_at": 0
+    },
+    "amc12a_2003_p23": {
+      "arm_a": false,
+      "arm_b": false,
+      "hybrid": false,
+      "compiles": 28,
+      "b_at": 16,
+      "h_at": 0
+    },
+    "mathd_algebra_129": {
+      "arm_a": true,
+      "arm_b": true,
+      "hybrid": false,
+      "compiles": 4,
+      "b_at": 7,
+      "h_at": 0
+    },
+    "amc12b_2021_p18": {
+      "arm_a": false,
+      "arm_b": false,
+      "hybrid": false,
+      "compiles": 26,
+      "b_at": 16,
+      "h_at": 0
+    },
+    "mathd_algebra_484": {
+      "arm_a": false,
+      "arm_b": true,
+      "hybrid": false,
+      "compiles": 10,
+      "b_at": 5,
+      "h_at": 0
+    },
+    "mathd_numbertheory_551": {
+      "arm_a": true,
+      "arm_b": true,
+      "hybrid": false,
+      "compiles": 2,
+      "b_at": 1,
+      "h_at": 0
+    },
+    "mathd_algebra_304": {
+      "arm_a": false,
+      "arm_b": true,
+      "hybrid": false,
+      "compiles": 1,
+      "b_at": 1,
+      "h_at": 0
+    },
+    "amc12a_2021_p8": {
+      "arm_a": false,
+      "arm_b": false,
+      "hybrid": false,
+      "compiles": 27,
+      "b_at": 16,
+      "h_at": 0
+    },
+    "algebra_ineq_nto1onlt2m1on": {
+      "arm_a": false,
+      "arm_b": false,
+      "hybrid": false,
+      "compiles": 28,
+      "b_at": 16,
+      "h_at": 0
+    },
+    "amc12b_2002_p19": {
+      "arm_a": false,
+      "arm_b": true,
+      "hybrid": false,
+      "compiles": 4,
+      "b_at": 2,
+      "h_at": 0
+    },
+    "mathd_numbertheory_341": {
+      "arm_a": true,
+      "arm_b": true,
+      "hybrid": false,
+      "compiles": 10,
+      "b_at": 5,
+      "h_at": 0
+    },
+    "mathd_numbertheory_711": {
+      "arm_a": false,
+      "arm_b": false,
+      "hybrid": false,
+      "compiles": 25,
+      "b_at": 16,
+      "h_at": 0
+    },
+    "amc12b_2020_p22": {
+      "arm_a": false,
+      "arm_b": false,
+      "hybrid": false,
+      "compiles": 27,
+      "b_at": 16,
+      "h_at": 0
+    },
+    "mathd_algebra_113": {
+      "arm_a": true,
+      "arm_b": true,
+      "hybrid": false,
+      "compiles": 2,
+      "b_at": 1,
+      "h_at": 0
+    },
+    "amc12a_2020_p9": {
+      "arm_a": false,
+      "arm_b": true,
+      "hybrid": false,
+      "compiles": 13,
+      "b_at": 6,
+      "h_at": 0
+    },
+    "amc12_2000_p1": {
+      "arm_a": false,
+      "arm_b": false,
+      "hybrid": false,
+      "compiles": 29,
+      "b_at": 16,
+      "h_at": 0
+    },
+    "amc12a_2021_p19": {
+      "arm_a": false,
+      "arm_b": false,
+      "hybrid": false,
+      "compiles": 25,
+      "b_at": 16,
+      "h_at": 0
+    },
+    "algebra_amgm_sumasqdivbgeqsuma": {
+      "arm_a": false,
+      "arm_b": true,
+      "hybrid": false,
+      "compiles": 3,
+      "b_at": 1,
+      "h_at": 0
+    },
+    "mathd_numbertheory_212": {
+      "arm_a": true,
+      "arm_b": true,
+      "hybrid": false,
+      "compiles": 2,
+      "b_at": 1,
+      "h_at": 0
+    },
+    "mathd_numbertheory_320": {
+      "arm_a": false,
+      "arm_b": false,
+      "hybrid": false,
+      "compiles": 28,
+      "b_at": 16,
+      "h_at": 0
+    },
+    "mathd_algebra_125": {
+      "arm_a": false,
+      "arm_b": true,
+      "hybrid": false,
+      "compiles": 2,
+      "b_at": 1,
+      "h_at": 0
+    },
+    "induction_1pxpownlt1pnx": {
+      "arm_a": false,
+      "arm_b": true,
+      "hybrid": false,
+      "compiles": 3,
+      "b_at": 1,
+      "h_at": 0
+    },
+    "mathd_algebra_148": {
+      "arm_a": false,
+      "arm_b": true,
+      "hybrid": false,
+      "compiles": 6,
+      "b_at": 3,
+      "h_at": 0
+    },
+    "amc12a_2019_p12": {
+      "arm_a": false,
+      "arm_b": false,
+      "hybrid": false,
+      "compiles": 33,
+      "b_at": 16,
+      "h_at": 0
+    },
+    "induction_11div10tonmn1ton": {
+      "arm_a": false,
+      "arm_b": true,
+      "hybrid": false,
+      "compiles": 4,
+      "b_at": 2,
+      "h_at": 0
+    },
+    "algebra_amgm_sum1toneqn_prod1tonleq1": {
+      "arm_a": false,
+      "arm_b": false,
+      "hybrid": false,
+      "compiles": 30,
+      "b_at": 16,
+      "h_at": 0
+    },
+    "imo_1985_p6": {
+      "arm_a": false,
+      "arm_b": true,
+      "hybrid": false,
+      "compiles": 4,
+      "b_at": 2,
+      "h_at": 0
+    },
+    "amc12a_2020_p15": {
+      "arm_a": false,
+      "arm_b": false,
+      "hybrid": false,
+      "compiles": 21,
+      "b_at": 16,
+      "h_at": 0
+    },
+    "mathd_algebra_332": {
+      "arm_a": false,
+      "arm_b": true,
+      "hybrid": false,
+      "compiles": 13,
+      "b_at": 9,
+      "h_at": 0
+    },
+    "algebra_cubrtrp1oncubrtreq3_rcubp1onrcubeq5778": {
+      "arm_a": false,
+      "arm_b": false,
+      "hybrid": false,
+      "compiles": 28,
+      "b_at": 16,
+      "h_at": 0
+    },
+    "mathd_algebra_293": {
+      "arm_a": false,
+      "arm_b": false,
+      "hybrid": false,
+      "compiles": 28,
+      "b_at": 16,
+      "h_at": 0
+    },
+    "mathd_algebra_440": {
+      "arm_a": true,
+      "arm_b": true,
+      "hybrid": false,
+      "compiles": 2,
+      "b_at": 1,
+      "h_at": 0
+    },
+    "mathd_numbertheory_254": {
+      "arm_a": true,
+      "arm_b": true,
+      "hybrid": false,
+      "compiles": 2,
+      "b_at": 1,
+      "h_at": 0
+    },
+    "amc12_2000_p6": {
+      "arm_a": false,
+      "arm_b": false,
+      "hybrid": false,
+      "compiles": 31,
+      "b_at": 16,
+      "h_at": 0
+    },
+    "aime_1988_p8": {
+      "arm_a": false,
+      "arm_b": false,
+      "hybrid": false,
+      "compiles": 23,
+      "b_at": 16,
+      "h_at": 0
+    },
+    "mathd_algebra_114": {
+      "arm_a": true,
+      "arm_b": true,
+      "hybrid": false,
+      "compiles": 2,
+      "b_at": 1,
+      "h_at": 0
+    },
+    "imo_2019_p1": {
+      "arm_a": false,
+      "arm_b": false,
+      "hybrid": false,
+      "compiles": 19,
+      "b_at": 16,
+      "h_at": 0
+    },
+    "mathd_algebra_513": {
+      "arm_a": true,
+      "arm_b": true,
+      "hybrid": false,
+      "compiles": 2,
+      "b_at": 1,
+      "h_at": 0
+    },
+    "mathd_algebra_143": {
+      "arm_a": true,
+      "arm_b": true,
+      "hybrid": false,
+      "compiles": 2,
+      "b_at": 1,
+      "h_at": 0
+    },
+    "mathd_algebra_354": {
+      "arm_a": true,
+      "arm_b": true,
+      "hybrid": false,
+      "compiles": 2,
+      "b_at": 1,
+      "h_at": 0
+    },
+    "aime_1984_p7": {
+      "arm_a": false,
+      "arm_b": false,
+      "hybrid": false,
+      "compiles": 32,
+      "b_at": 16,
+      "h_at": 0
+    },
+    "mathd_algebra_246": {
+      "arm_a": false,
+      "arm_b": true,
+      "hybrid": false,
+      "compiles": 3,
+      "b_at": 1,
+      "h_at": 0
+    },
+    "aime_1983_p3": {
+      "arm_a": false,
+      "arm_b": true,
+      "hybrid": false,
+      "compiles": 21,
+      "b_at": 10,
+      "h_at": 0
+    },
+    "numbertheory_3pow2pownm1mod2pownp3eq2pownp2": {
+      "arm_a": false,
+      "arm_b": false,
+      "hybrid": false,
+      "compiles": 25,
+      "b_at": 16,
+      "h_at": 0
+    },
+    "mathd_numbertheory_85": {
+      "arm_a": true,
+      "arm_b": true,
+      "hybrid": false,
+      "compiles": 2,
+      "b_at": 1,
+      "h_at": 0
+    },
+    "amc12_2001_p21": {
+      "arm_a": false,
+      "arm_b": false,
+      "hybrid": false,
+      "compiles": 29,
+      "b_at": 16,
+      "h_at": 0
+    },
+    "mathd_numbertheory_239": {
+      "arm_a": false,
+      "arm_b": false,
+      "hybrid": false,
+      "compiles": 28,
+      "b_at": 16,
+      "h_at": 0
+    },
+    "amc12b_2002_p2": {
+      "arm_a": true,
+      "arm_b": true,
+      "hybrid": false,
+      "compiles": 2,
+      "b_at": 2,
+      "h_at": 0
+    },
+    "mathd_algebra_196": {
+      "arm_a": false,
+      "arm_b": false,
+      "hybrid": false,
+      "compiles": 24,
+      "b_at": 16,
+      "h_at": 0
+    },
+    "mathd_algebra_342": {
+      "arm_a": false,
+      "arm_b": false,
+      "hybrid": false,
+      "compiles": 32,
+      "b_at": 16,
+      "h_at": 0
+    },
+    "mathd_numbertheory_517": {
+      "arm_a": true,
+      "arm_b": true,
+      "hybrid": false,
+      "compiles": 2,
+      "b_at": 1,
+      "h_at": 0
+    },
+    "amc12a_2009_p7": {
+      "arm_a": false,
+      "arm_b": false,
+      "hybrid": false,
+      "compiles": 26,
+      "b_at": 16,
+      "h_at": 0
+    },
+    "mathd_algebra_270": {
+      "arm_a": false,
+      "arm_b": true,
+      "hybrid": false,
+      "compiles": 15,
+      "b_at": 7,
+      "h_at": 0
+    },
+    "amc12a_2021_p12": {
+      "arm_a": false,
+      "arm_b": true,
+      "hybrid": false,
+      "compiles": 23,
+      "b_at": 12,
+      "h_at": 0
+    },
+    "mathd_algebra_362": {
+      "arm_a": false,
+      "arm_b": false,
+      "hybrid": false,
+      "compiles": 33,
+      "b_at": 16,
+      "h_at": 0
+    },
+    "mathd_numbertheory_521": {
+      "arm_a": false,
+      "arm_b": true,
+      "hybrid": false,
+      "compiles": 7,
+      "b_at": 3,
+      "h_at": 0
+    },
+    "amc12a_2002_p13": {
+      "arm_a": false,
+      "arm_b": false,
+      "hybrid": false,
+      "compiles": 28,
+      "b_at": 16,
+      "h_at": 0
+    },
+    "imo_1964_p2": {
+      "arm_a": false,
+      "arm_b": true,
+      "hybrid": false,
+      "compiles": 9,
+      "b_at": 4,
+      "h_at": 0
+    },
+    "mathd_algebra_289": {
+      "arm_a": false,
+      "arm_b": false,
+      "hybrid": false,
+      "compiles": 24,
+      "b_at": 16,
+      "h_at": 0
+    },
+    "amc12a_2021_p3": {
+      "arm_a": false,
+      "arm_b": true,
+      "hybrid": false,
+      "compiles": 5,
+      "b_at": 2,
+      "h_at": 0
+    },
+    "amc12a_2008_p25": {
+      "arm_a": false,
+      "arm_b": false,
+      "hybrid": false,
+      "compiles": 31,
+      "b_at": 16,
+      "h_at": 0
+    },
+    "algebra_apbpceq2_abpbcpcaeq1_aleq1on3anbleq1ancleq4on3": {
+      "arm_a": true,
+      "arm_b": true,
+      "hybrid": false,
+      "compiles": 3,
+      "b_at": 1,
+      "h_at": 0
+    },
+    "mathd_numbertheory_66": {
+      "arm_a": true,
+      "arm_b": true,
+      "hybrid": false,
+      "compiles": 2,
+      "b_at": 1,
+      "h_at": 0
+    },
+    "amc12b_2021_p1": {
+      "arm_a": false,
+      "arm_b": false,
+      "hybrid": false,
+      "compiles": 29,
+      "b_at": 16,
+      "h_at": 0
+    },
+    "algebra_apbon2pownleqapownpbpowon2": {
+      "arm_a": false,
+      "arm_b": false,
+      "hybrid": false,
+      "compiles": 27,
+      "b_at": 16,
+      "h_at": 0
+    },
+    "imo_1968_p5_1": {
+      "arm_a": false,
+      "arm_b": false,
+      "hybrid": false,
+      "compiles": 32,
+      "b_at": 16,
+      "h_at": 0
+    },
+    "aime_1990_p15": {
+      "arm_a": true,
+      "arm_b": true,
+      "hybrid": false,
+      "compiles": 2,
+      "b_at": 1,
+      "h_at": 0
+    },
+    "mathd_numbertheory_235": {
+      "arm_a": true,
+      "arm_b": true,
+      "hybrid": false,
+      "compiles": 2,
+      "b_at": 1,
+      "h_at": 0
+    },
+    "amc12b_2020_p13": {
+      "arm_a": false,
+      "arm_b": false,
+      "hybrid": false,
+      "compiles": 31,
+      "b_at": 16,
+      "h_at": 0
+    },
+    "amc12b_2021_p13": {
+      "arm_a": false,
+      "arm_b": true,
+      "hybrid": false,
+      "compiles": 4,
+      "b_at": 3,
+      "h_at": 0
+    },
+    "mathd_numbertheory_234": {
+      "arm_a": false,
+      "arm_b": true,
+      "hybrid": false,
+      "compiles": 9,
+      "b_at": 4,
+      "h_at": 0
+    },
+    "numbertheory_aoddbdiv4asqpbsqmod8eq1": {
+      "arm_a": false,
+      "arm_b": false,
+      "hybrid": false,
+      "compiles": 31,
+      "b_at": 16,
+      "h_at": 0
+    },
+    "mathd_numbertheory_222": {
+      "arm_a": false,
+      "arm_b": true,
+      "hybrid": false,
+      "compiles": 3,
+      "b_at": 1,
+      "h_at": 0
+    },
+    "aime_1999_p11": {
+      "arm_a": false,
+      "arm_b": false,
+      "hybrid": false,
+      "compiles": 30,
+      "b_at": 16,
+      "h_at": 0
+    },
+    "mathd_algebra_359": {
+      "arm_a": true,
+      "arm_b": true,
+      "hybrid": false,
+      "compiles": 2,
+      "b_at": 1,
+      "h_at": 0
+    },
+    "imo_1965_p2": {
+      "arm_a": false,
+      "arm_b": false,
+      "hybrid": false,
+      "compiles": 29,
+      "b_at": 16,
+      "h_at": 0
+    },
+    "mathd_algebra_288": {
+      "arm_a": false,
+      "arm_b": false,
+      "hybrid": false,
+      "compiles": 33,
+      "b_at": 16,
+      "h_at": 0
+    },
+    "mathd_numbertheory_127": {
+      "arm_a": false,
+      "arm_b": false,
+      "hybrid": false,
+      "compiles": 25,
+      "b_at": 16,
+      "h_at": 0
+    },
+    "imo_1974_p3": {
+      "arm_a": false,
+      "arm_b": false,
+      "hybrid": false,
+      "compiles": 25,
+      "b_at": 16,
+      "h_at": 0
+    },
+    "aime_1991_p9": {
+      "arm_a": false,
+      "arm_b": false,
+      "hybrid": false,
+      "compiles": 33,
+      "b_at": 16,
+      "h_at": 0
+    },
+    "amc12a_2009_p6": {
+      "arm_a": false,
+      "arm_b": false,
+      "hybrid": false,
+      "compiles": 27,
+      "b_at": 16,
+      "h_at": 0
+    },
+    "mathd_algebra_158": {
+      "arm_a": false,
+      "arm_b": false,
+      "hybrid": false,
+      "compiles": 27,
+      "b_at": 16,
+      "h_at": 0
+    },
+    "algebra_absxm1pabsxpabsxp1eqxp2_0leqxleq1": {
+      "arm_a": false,
+      "arm_b": false,
+      "hybrid": false,
+      "compiles": 31,
+      "b_at": 16,
+      "h_at": 0
+    },
+    "aime_1990_p4": {
+      "arm_a": false,
+      "arm_b": false,
+      "hybrid": false,
+      "compiles": 27,
+      "b_at": 16,
+      "h_at": 0
+    },
+    "mathd_numbertheory_541": {
+      "arm_a": false,
+      "arm_b": false,
+      "hybrid": false,
+      "compiles": 24,
+      "b_at": 16,
+      "h_at": 0
+    },
+    "mathd_algebra_314": {
+      "arm_a": true,
+      "arm_b": true,
+      "hybrid": false,
+      "compiles": 2,
+      "b_at": 1,
+      "h_at": 0
+    },
+    "amc12_2000_p20": {
+      "arm_a": false,
+      "arm_b": false,
+      "hybrid": false,
+      "compiles": 31,
+      "b_at": 16,
+      "h_at": 0
+    },
+    "mathd_algebra_302": {
+      "arm_a": false,
+      "arm_b": false,
+      "hybrid": false,
+      "compiles": 18,
+      "b_at": 16,
+      "h_at": 0
+    },
+    "aime_1983_p2": {
+      "arm_a": true,
+      "arm_b": true,
+      "hybrid": false,
+      "compiles": 4,
+      "b_at": 2,
+      "h_at": 0
+    },
+    "mathd_algebra_139": {
+      "arm_a": false,
+      "arm_b": true,
+      "hybrid": false,
+      "compiles": 8,
+      "b_at": 5,
+      "h_at": 0
+    },
+    "amc12a_2021_p25": {
+      "arm_a": false,
+      "arm_b": true,
+      "hybrid": false,
+      "compiles": 3,
+      "b_at": 1,
+      "h_at": 0
+    },
+    "amc12a_2020_p25": {
+      "arm_a": false,
+      "arm_b": false,
+      "hybrid": false,
+      "compiles": 32,
+      "b_at": 16,
+      "h_at": 0
+    },
+    "mathd_numbertheory_150": {
+      "arm_a": false,
+      "arm_b": true,
+      "hybrid": false,
+      "compiles": 13,
+      "b_at": 6,
+      "h_at": 0
+    },
+    "aime_1989_p8": {
+      "arm_a": true,
+      "arm_b": true,
+      "hybrid": false,
+      "compiles": 2,
+      "b_at": 1,
+      "h_at": 0
+    },
+    "mathd_numbertheory_296": {
+      "arm_a": false,
+      "arm_b": false,
+      "hybrid": false,
+      "compiles": 33,
+      "b_at": 16,
+      "h_at": 0
+    },
+    "mathd_algebra_142": {
+      "arm_a": true,
+      "arm_b": true,
+      "hybrid": false,
+      "compiles": 2,
+      "b_at": 1,
+      "h_at": 0
+    },
+    "numbertheory_exk2powkeqapb2mulbpa2_aeq1": {
+      "arm_a": false,
+      "arm_b": false,
+      "hybrid": false,
+      "compiles": 33,
+      "b_at": 16,
+      "h_at": 0
+    },
+    "mathd_algebra_400": {
+      "arm_a": true,
+      "arm_b": true,
+      "hybrid": false,
+      "compiles": 3,
+      "b_at": 4,
+      "h_at": 0
+    },
+    "aime_1995_p7": {
+      "arm_a": false,
+      "arm_b": false,
+      "hybrid": false,
+      "compiles": 33,
+      "b_at": 16,
+      "h_at": 0
+    },
+    "mathd_numbertheory_185": {
+      "arm_a": true,
+      "arm_b": true,
+      "hybrid": false,
+      "compiles": 2,
+      "b_at": 1,
+      "h_at": 0
+    },
+    "mathd_algebra_441": {
+      "arm_a": true,
+      "arm_b": true,
+      "hybrid": false,
+      "compiles": 2,
+      "b_at": 1,
+      "h_at": 0
+    },
+    "mathd_numbertheory_582": {
+      "arm_a": false,
+      "arm_b": true,
+      "hybrid": false,
+      "compiles": 2,
+      "b_at": 1,
+      "h_at": 0
+    },
+    "mathd_algebra_338": {
+      "arm_a": true,
+      "arm_b": true,
+      "hybrid": false,
+      "compiles": 3,
+      "b_at": 1,
+      "h_at": 0
+    }
+  }
+}
