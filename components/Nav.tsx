@@ -3,6 +3,7 @@ import Wordmark from "./Wordmark";
 
 const LINKS = [
   { label: "PNRD#1", href: "/pnrd-1" },
+  { label: "PNRD#2", href: "/pnrd-2" },
   { label: "Approach", href: "/approach" },
 ];
 

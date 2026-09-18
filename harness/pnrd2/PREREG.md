@@ -57,3 +57,17 @@ oracle that is available at selection time: the **Dafny verifier**.
 Not that Dafny annotation is hard for frontier models (it isn't; DafnyBench's own protocol already
 includes error feedback). The claim under test is narrower: the *same harness shape* produces a
 *verified* lift on a *second* sound oracle, with the cost of that lift accounted for per verifier check.
+
+---
+
+## Addendum 1 — 2026-09-18 12:20 CEST (after pre-registration, before any result)
+
+- A 3-program smoke test of the harness ran on `gemini-2.5-flash` to prove the pipeline end to end
+  (verifier, guards, re-verification, cost accounting). It is not a result and is not published.
+- The pilot arm could not run: the only personal Gemini key on the lab machine is free tier with a
+  quota of **20 requests per day** for `gemini-2.5-flash` (`GenerateRequestsPerDayPerProjectPerModel-FreeTier`),
+  exhausted before the first program completed. Other Gemini tiers are unavailable to the key.
+- Arm 0 completed: **166 of 782** stripped programs (21.2%) verify with zero hints under the 20 s limit.
+- The harness gained a global requests-per-minute limiter (`--rpm`) and now retries rows that failed on
+  infrastructure instead of counting them. Neither changes the design or the gate.
+- Nothing above the addendum line was edited.

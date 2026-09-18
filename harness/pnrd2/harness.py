@@ -119,21 +119,43 @@ def verify(program: str, limit: int) -> tuple[bool, str, float]:
     return ok, out[-1500:], round(time.time() - t0, 2)
 
 # ----------------------------------------------------------------------------- model
-MODEL_SEM = threading.Semaphore(int(os.environ.get("PNRD2_MODEL_WORKERS", "8")))
+MODEL_SEM = threading.Semaphore(int(os.environ.get("PNRD2_MODEL_WORKERS", "3")))
+
+class RateLimiter:
+    """Global requests-per-minute pacing so a free-tier key is never burst-exhausted."""
+    def __init__(self, rpm: float):
+        self.min_gap = 60.0 / rpm if rpm > 0 else 0.0
+        self.lock, self.next_ok = threading.Lock(), 0.0
+    def wait(self):
+        if not self.min_gap: return
+        with self.lock:
+            now = time.time(); t = max(now, self.next_ok); self.next_ok = t + self.min_gap
+        if t > now: time.sleep(t - now)
 
 class Model:
-    def __init__(self, provider: str, model: str, base_url: str | None, api_key: str, max_tokens: int):
+    def __init__(self, provider: str, model: str, base_url: str | None, api_key: str, max_tokens: int, rpm: float = 0):
         self.provider, self.model, self.base_url, self.key, self.max_tokens = provider, model, base_url, api_key, max_tokens
+        self.limiter = RateLimiter(rpm)
     def chat(self, messages: list[dict], temperature: float) -> tuple[str, int, int]:
-        for attempt in range(5):
+        last = None
+        for attempt in range(8):
             try:
                 with MODEL_SEM:
+                    self.limiter.wait()
                     return self._chat(messages, temperature)
-            except (urllib.error.URLError, urllib.error.HTTPError, TimeoutError, json.JSONDecodeError) as e:
-                code = getattr(e, "code", None)
-                if code and code < 500 and code != 429: raise
-                time.sleep(2 * (attempt + 1))
-        raise RuntimeError("model call failed after retries")
+            except urllib.error.HTTPError as e:
+                body = ""
+                try: body = e.read().decode()[:300]
+                except Exception: pass
+                last = f"HTTP {e.code} {body}"
+                if e.code < 500 and e.code not in (408, 429): raise RuntimeError(last)
+                ra = e.headers.get("Retry-After") if e.headers else None
+                wait = float(ra) if ra and ra.replace(".", "", 1).isdigit() else min(90, 5 * 2 ** attempt)
+                time.sleep(wait + random.random() * 2)
+            except (urllib.error.URLError, TimeoutError, json.JSONDecodeError, ConnectionError) as e:
+                last = f"{type(e).__name__}: {e}"[:200]
+                time.sleep(min(60, 5 * 2 ** attempt))
+        raise RuntimeError(f"model call failed after retries: {last}")
     def _chat(self, messages, temperature):
         if self.provider == "gemini":
             return self._gemini(messages, temperature)
@@ -235,6 +257,7 @@ def main():
     ap.add_argument("--workers", type=int, default=6, help="problems in flight")
     ap.add_argument("--fewshot", default="Clover_abs.dfy", help="ground-truth file used as the one few-shot example (excluded from eval)")
     ap.add_argument("--no-fewshot", action="store_true")
+    ap.add_argument("--rpm", type=float, default=0, help="global model requests per minute (0 = unpaced)")
     ap.add_argument("--price-in", type=float); ap.add_argument("--price-out", type=float)
     ap.add_argument("--out", required=True)
     args = ap.parse_args()
@@ -243,7 +266,7 @@ def main():
     key = os.environ.get(key_env)
     if not key: sys.exit(f"missing {key_env}")
     args.outdir = pathlib.Path(args.out).with_suffix(""); args.outdir.mkdir(parents=True, exist_ok=True)
-    model = Model(args.provider, args.model, args.base_url, key, args.max_tokens)
+    model = Model(args.provider, args.model, args.base_url, key, args.max_tokens, args.rpm)
 
     fewshot = []
     if not args.no_fewshot:
@@ -261,7 +284,10 @@ def main():
     if jsonl.exists():
         for line in jsonl.read_text().splitlines():
             if line.strip():
-                r = json.loads(line); done[r["id"]] = r
+                r = json.loads(line)
+                # rows that died on infrastructure (rate limits, network) are retried; verdict rows are kept
+                if r.get("error") and r["error"] != "reverify_failed": continue
+                done[r["id"]] = r
     todo = [n for n in names if n not in done]
     print(f"model={args.model} n={len(names)} todo={len(todo)} N={args.n} repair={args.repair} limit={args.limit}s", flush=True)
 

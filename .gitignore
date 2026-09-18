@@ -44,3 +44,4 @@ next-env.d.ts
 harness/pnrd2/DafnyBench/
 harness/pnrd2/results/*.jsonl
 harness/pnrd2/*.log
+harness/pnrd2/results/smoke*

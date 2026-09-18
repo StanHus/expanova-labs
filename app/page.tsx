@@ -57,6 +57,8 @@ export default function Home() {
           >
             <Link href="/pnrd-1" style={{ color: "var(--accent-text)", textDecorationColor: "var(--accent-border)" }}>PNRD#1</Link>
             <span aria-hidden style={{ color: "var(--faint)" }}>·</span>
+            <Link href="/pnrd-2" style={{ color: "var(--accent-text)", textDecorationColor: "var(--accent-border)" }}>PNRD#2</Link>
+            <span aria-hidden style={{ color: "var(--faint)" }}>·</span>
             <Link href="/approach" style={{ color: "var(--accent-text)", textDecorationColor: "var(--accent-border)" }}>Approach</Link>
           </nav>
 
