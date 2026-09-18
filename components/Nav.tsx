@@ -3,7 +3,7 @@ import Wordmark from "./Wordmark";
 
 const LINKS = [
   { label: "PNRD#1", href: "/pnrd-1" },
-  { label: "PNRD#2", href: "/pnrd-2" },
+  { label: "PNRD#2", href: "/pnrd-2", dim: true },
   { label: "Approach", href: "/approach" },
 ];
 
@@ -27,6 +27,7 @@ export default function Nav() {
                   fontSize: "0.9rem",
                   fontWeight: 500,
                   textDecoration: "none",
+                  opacity: (l as { dim?: boolean }).dim ? 0.45 : 1,
                 }}
               >
                 {l.label}

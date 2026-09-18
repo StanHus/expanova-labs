@@ -10,7 +10,7 @@ import { OracleLift, PassAtK, BudgetSplit, type OracleRow } from "@/components/C
 export const metadata: Metadata = {
   title: "PNRD#2",
   description:
-    "PNRD#2 is in the works: the same sample-check-repair harness, the same open model, a second sound oracle. The gate is sealed in a commit; the expectations are stated in outline; the numbers arrive when the run does.",
+    "Same harness. Second judge. The gate was sealed before anything ran. Unsealed with the result.",
 };
 
 /* ----------------------------- data, read at build ----------------------------- */
@@ -57,6 +57,64 @@ const Box = ({ children, maxWidth }: { children: React.ReactNode; maxWidth?: num
 );
 const pct = (a: number, n: number) => ((100 * a) / n).toFixed(1) + "%";
 
+/* ------------------------------ pre-reveal state ------------------------------ */
+function Sealed() {
+  const tiles = [
+    { label: "verified solve rate", value: "4▮.▮%" },
+    { label: "lift over one-shot", value: "+▮▮.▮ pts" },
+    { label: "answers the judge would have let through", value: "▮" },
+  ];
+  return (
+    <div className="theme-dark" style={{ minHeight: "100dvh", display: "flex", flexDirection: "column" }}>
+      <style>{`
+        @keyframes sealPulse { 0%,100% { opacity: .35; transform: scale(1);} 50% { opacity: 1; transform: scale(1.35);} }
+        @keyframes sealDrift { from { transform: translateX(-2%);} to { transform: translateX(2%);} }
+        .seal-dot { animation: sealPulse 2.6s ease-in-out infinite; transform-origin: center; }
+        .seal-curve { animation: sealDrift 14s ease-in-out infinite alternate; }
+        @media (prefers-reduced-motion: reduce) { .seal-dot, .seal-curve { animation: none; } }
+      `}</style>
+      <Nav />
+      <main className="flex-1" style={{ display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", textAlign: "center", padding: "clamp(64px, 10vw, 140px) 1.5rem 5rem", position: "relative", overflow: "hidden" }}>
+        {/* silhouette of a result — decorative, not data */}
+        <svg className="seal-curve" aria-hidden viewBox="0 0 900 260" style={{ position: "absolute", inset: "auto 0 12% 0", width: "min(100%, 1100px)", margin: "0 auto", opacity: 0.28, filter: "blur(10px)", pointerEvents: "none" }}>
+          <path d="M20 230 C 180 226, 260 210, 340 176 S 520 92, 640 70 S 820 52, 880 50" fill="none" stroke="var(--accent)" strokeWidth="6" strokeLinecap="round" />
+          <path d="M20 232 L 880 232" stroke="var(--border-strong)" strokeWidth="2" />
+        </svg>
+
+        <Reveal fade>
+          <p className="eyebrow" style={{ letterSpacing: "0.22em" }}>PNRD#2</p>
+          <h1 className="logotype" style={{ fontSize: "clamp(2.4rem, 1.4rem + 5vw, 5rem)", marginTop: "1.1rem", maxWidth: "16ch", marginInline: "auto", lineHeight: 1.02, letterSpacing: "-0.03em" }}>
+            Same harness.<br />Second judge.
+          </h1>
+          <p style={{ fontFamily: "var(--font-mono)", fontSize: "0.95rem", lineHeight: 1.75, color: "var(--muted)", maxWidth: "44ch", margin: "1.9rem auto 0" }}>
+            One open model. One more oracle that cannot be talked into a yes.
+            The gate was written, then sealed, before anything ran.
+          </p>
+
+          <div style={{ marginTop: "3rem", display: "grid", gap: "1px", gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))", maxWidth: 720, marginInline: "auto", background: "var(--border)", border: "1px solid var(--border)", borderRadius: "var(--radius)", overflow: "hidden" }}>
+            {tiles.map((t) => (
+              <div key={t.label} style={{ background: "var(--surface)", padding: "1.4rem 1.2rem 1.2rem" }}>
+                <div aria-hidden className="bignum" style={{ fontSize: "clamp(1.8rem, 1.2rem + 2vw, 2.6rem)", color: "var(--accent-text)", filter: "blur(7px)", userSelect: "none", opacity: 0.85 }}>{t.value}</div>
+                <div className="ill-label" style={{ marginTop: "0.8rem", color: "var(--faint)" }}>{t.label}</div>
+              </div>
+            ))}
+          </div>
+
+          <div style={{ marginTop: "2.2rem", display: "inline-flex", alignItems: "center", gap: "0.7rem", fontFamily: "var(--font-mono)", fontSize: "0.8rem", color: "var(--muted)" }}>
+            <svg width="10" height="10" viewBox="0 0 10 10" aria-hidden><circle className="seal-dot" cx="5" cy="5" r="3.2" fill="var(--accent)" /></svg>
+            <span>sealed · {PREREG_COMMIT} · 2026-09-18</span>
+            <span aria-hidden style={{ color: "var(--faint)" }}>·</span>
+            <span>unsealed with the result</span>
+          </div>
+
+          <p className="ill-label" style={{ marginTop: "3.2rem", color: "var(--faint)" }}>✓ blocked beats faked</p>
+        </Reveal>
+      </main>
+      <Footer />
+    </div>
+  );
+}
+
 export default function PNRD2() {
   const p1 = readJson<Pnrd1>("public/data/pnrd1-minif2f-results.json");
   const arm0 = readJson<Arm0>("public/data/pnrd2/arm0-trivial.json");
@@ -92,6 +150,8 @@ export default function PNRD2() {
     const waste = (100 * run.checks_on_unsolved) / Math.max(1, run.kernel_checks);
     return { run, nontriv: nontriv.length, a, b, lift, sat, waste, guard: run.guard_fails };
   });
+
+  if (!ran) return <Sealed />;
 
   return (
     <>
