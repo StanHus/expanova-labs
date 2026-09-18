@@ -39,3 +39,8 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# PNRD#2 harness — dataset clone and scratch (not committed)
+harness/pnrd2/DafnyBench/
+harness/pnrd2/results/*.jsonl
+harness/pnrd2/*.log
