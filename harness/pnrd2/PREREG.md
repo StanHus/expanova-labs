@@ -85,3 +85,20 @@ includes error feedback). The claim under test is narrower: the *same harness sh
 - A second, independent implementation of the guard (written from this document, not from the
   harness code) will re-check every winner; disagreements are published.
 - Nothing above Addendum 1 was edited.
+
+## Addendum 3 — 2026-09-18 13:45 CEST (after 57 programs of run 1; run 1 discarded, run 2 started from scratch)
+
+- Run 1 showed 39 guard trips in 57 programs. Inspection of the reasons: 21 were the code-line check
+  tripping on **formatting** (`{` moved to its own line after a signature; an inline `// comment`
+  dropped from a spec line), not on changed code. 3 were genuine `assume` cheats. Some `spec_dropped`
+  trips were the model rewriting a spec's *text* (e.g. dropping a `: int` binder) — still counted as
+  trips: the rule is verbatim modulo formatting, and it stays that way.
+- Fix: normalization now ignores whitespace, parentheses, semicolons, **braces**, and **trailing
+  `//` comments**. Identifiers, operators, types and literals must still match exactly. This makes the
+  guard looser only on formatting; it does not change what counts as a spec or code change.
+- Run 1's partial rows (57) are kept in `results/aborted/run1-strictguard.jsonl` for the record and
+  excluded from all reported numbers. Run 2 restarts from zero with the fixed guard and higher
+  concurrency (12 programs in flight, 16 model calls, 6 verifier processes).
+- Every verified-but-blocked candidate is now saved under `results/<run>/guard_trips/` so the guard
+  itself can be audited after the fact; a sample of verifier failures is saved under `failed/`.
+- Predictions and gate unchanged. Nothing above Addendum 1 was edited.

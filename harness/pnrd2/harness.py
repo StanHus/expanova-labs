@@ -77,9 +77,15 @@ def _req_lines(src: str) -> list[str]:
         if st.endswith("*/"): in_block = False
     return sorted(out)
 
+def _strip_comment(line: str) -> str:
+    # drop a trailing `// ...` comment (not inside a string literal — Dafny specs rarely carry strings)
+    return re.sub(r"//.*$", "", line)
+
 def _squash(s: str) -> str:
-    # whitespace-, parenthesis- and semicolon-insensitive: `while (i < n);` == `while i < n`
-    return re.sub(r"[\s();]+", "", s)
+    # formatting-insensitive: whitespace, parentheses, semicolons and braces are ignored, so
+    # `method M() {` == `method M()` + `{` on the next line, and `while (i < n);` == `while i < n`.
+    # Everything else (identifiers, operators, types, literals) must match exactly.
+    return re.sub(r"[\s();{}]+", "", _strip_comment(s))
 
 def _spec_lines(src: str) -> list[str]:
     out, in_block = [], False
@@ -100,7 +106,8 @@ def _code_lines(src: str) -> list[str]:
             if st.endswith("*/"): in_block = False
             continue
         if not st or st.startswith(ANNOT_PREFIX): continue
-        out.append(_squash(st))
+        sq = _squash(st)
+        if sq: out.append(sq)          # a line that was only a brace or a comment carries no code
     return out
 
 def guards(original: str, candidate: str) -> tuple[bool, str]:
@@ -238,9 +245,16 @@ def run_problem(name: str, model: Model, args, fewshot: list[dict]) -> dict:
         reply, tin, tout = model.chat(messages, temperature)
         prog = extract_code(reply)
         ok, out, secs = verify(prog, args.limit)
+        if not ok:
+            fd = args.outdir / "failed"; fd.mkdir(parents=True, exist_ok=True)   # sample of failures for audit
+            if row["compiles"] < 3: (fd / f"{name}.{tag}.dfy").write_text(f"// verifier: {out[-400:]}\n" + prog)
         row["compiles"] += 1; row["tokens_in"] += tin; row["tokens_out"] += tout; row["verify_secs"] += secs
         g_ok, g_why = guards(original, prog) if ok else (True, "")
-        if ok and not g_ok: row["guard_fail"] += 1
+        if ok and not g_ok:
+            row["guard_fail"] += 1
+            # keep every verified-but-blocked candidate so the guard itself can be audited later
+            gd = args.outdir / "guard_trips"; gd.mkdir(parents=True, exist_ok=True)
+            (gd / f"{name}.{tag}.dfy").write_text(f"// guard: {g_why}\n" + prog)
         row["attempts"].append({"tag": tag, "verified": ok, "guard": g_ok if ok else None, "why": g_why or None,
                                 "secs": secs, "tin": tin, "tout": tout})
         return (ok and g_ok), prog, out
