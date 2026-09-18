@@ -45,3 +45,6 @@ harness/pnrd2/DafnyBench/
 harness/pnrd2/results/*.jsonl
 harness/pnrd2/*.log
 harness/pnrd2/results/smoke*
+
+# Research lives in ~/Documents/personal/parks_and_rec_department/pnrd2 — not in the site repo
+harness/
