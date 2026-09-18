@@ -10,7 +10,7 @@ import { OracleLift, PassAtK, BudgetSplit, type OracleRow } from "@/components/C
 export const metadata: Metadata = {
   title: "PNRD#2",
   description:
-    "PNRD#2 tests the law a second time: the same sample-check-repair harness, the same open model, a second sound oracle — the Dafny verifier on DafnyBench. Pre-registered gate, published harness, every number read from the result file.",
+    "PNRD#2 is in the works: the same sample-check-repair harness, the same open model, a second sound oracle. The gate is sealed in a commit; the expectations are stated in outline; the numbers arrive when the run does.",
 };
 
 /* ----------------------------- data, read at build ----------------------------- */
@@ -114,8 +114,8 @@ export default function PNRD2() {
             <div style={{ marginTop: "1.5rem", display: "flex", gap: "0.75rem", alignItems: "center", flexWrap: "wrap" }}>
               <span className="byline">By Expanova Labs</span>
               {ran ? <span className="verdict verdict--pass">✓ Verifier-checked</span>
-                   : <span className="verdict verdict--kill">registered · not yet run</span>}
-              <span className="byline">gate fixed in commit {PREREG_COMMIT} · {PREREG_TIME}</span>
+                   : <span className="verdict" style={{ color: "var(--accent-text)", background: "var(--verified-bg)", border: "1px solid var(--accent-border)" }}>in the works</span>}
+              <span className="byline">gate sealed in commit {PREREG_COMMIT} · {PREREG_TIME}</span>
             </div>
           </Reveal>
 
@@ -140,14 +140,21 @@ export default function PNRD2() {
               )) : (
                 <div>
                   <p style={{ margin: 0, fontFamily: "var(--font-display)", fontSize: "1.5rem", lineHeight: 1.3, letterSpacing: "-0.01em" }}>
-                    The gate is fixed. The harness is published. The run has not happened.
+                    In the works. The gate is sealed. The numbers arrive with the run.
                   </p>
                   <p className="byline" style={{ marginTop: "0.9rem", lineHeight: 1.7, maxWidth: "62ch" }}>
-                    Blocked beats faked, so this page ships in its registered state. The primary arm needs the same open model
-                    as PNRD#1 (gpt-oss-120b) on a personal key; none on the lab machine reaches it. The pilot arm (a cheap closed
-                    model) hit a free-tier quota of 20 requests per day before completing a single program. When a run lands,
-                    only the data file changes; every number on this page is read from it.
+                    We wrote down what we expect before running anything, and committed it. In outline: the lift should
+                    reproduce on the second oracle by a clear double-digit margin; most of it should land early, before
+                    the tenth attempt; the bulk of the verifier&rsquo;s time should still go to programs that never solve;
+                    and the cheat guard should catch at least one verified answer that quietly weakened its spec.
+                    The exact thresholds stay sealed until the result file is published beside them. Anything you read
+                    here as a number is measured; anything stated as an expectation is not.
                   </p>
+                  <div aria-hidden style={{ marginTop: "1.1rem", display: "flex", gap: "0.6rem", flexWrap: "wrap", alignItems: "center" }}>
+                    <span className="receipt" style={{ filter: "blur(5px)", userSelect: "none" }}>verifier-checked · 4▮▮ / 78▮</span>
+                    <span className="byline" style={{ filter: "blur(4px)", userSelect: "none" }}>+▮▮.▮ pts · best-of-16 + repair · ▮ guard trips</span>
+                    <span className="byline">← sealed</span>
+                  </div>
                 </div>
               )}
               {arm0 && (
@@ -245,13 +252,15 @@ export default function PNRD2() {
                         <tr key={row.k}>
                           <td aria-hidden style={{ color: ran ? (scored.every(row.ok) ? "var(--verified)" : "var(--kill)") : "var(--faint)" }}>{ran ? (scored.every(row.ok) ? "✓" : "✗") : "·"}</td>
                           <th scope="row" style={{ fontWeight: 400 }}>{row.k}</th>
-                          <td className="num">{row.th}</td>
-                          <td className="num">{ran ? scored.map((s) => row.val(s)).join(" · ") : "not run"}</td>
+                          <td className="num">{ran ? row.th : <span style={{ filter: "blur(4px)", userSelect: "none" }} aria-label="sealed">{row.th}</span>}</td>
+                          <td className="num">{ran ? scored.map((s) => row.val(s)).join(" · ") : "in the works"}</td>
                         </tr>
                       ))}
                     </tbody>
                     <caption>
-                      Gate: SHIP if lift ≥ +10 with guard trips reported and zero unguarded false positives · PARTIAL at +5 to +10 · KILL below +5, or any winner failing re-verification, or a bypassable guard. Full text: <code>harness/pnrd2/PREREG.md</code>.
+                      {ran
+                        ? <>Gate: SHIP if lift ≥ +10 with guard trips reported and zero unguarded false positives · PARTIAL at +5 to +10 · KILL below +5, or any winner failing re-verification, or a bypassable guard. Full text: <code>harness/pnrd2/PREREG.md</code>.</>
+                        : <>Three-way gate (ship · partial · kill) committed with the predictions. Thresholds are sealed in commit {PREREG_COMMIT} and unblur when the result file is published. A kill gets the same prominence a ship would.</>}
                     </caption>
                   </table>
                 </div>
@@ -272,7 +281,9 @@ export default function PNRD2() {
 
             <Reveal fade>
               <p className="byline" style={{ lineHeight: 1.7 }}>
-                Reproducible: <a href="https://github.com/StanHus/expanova-labs/tree/pnrd-2/harness/pnrd2">harness, guards and pre-registration on GitHub</a> ·
+                {ran
+                  ? <>Reproducible: harness, guards and pre-registration ship with the result · </>
+                  : <>Harness, guards and pre-registration are written and will ship with the result · </>}
                 DafnyBench <code>hints_removed</code> · Dafny 4.11.0 ·{" "}
                 <a href="/data/pnrd2/arm0-trivial.json">arm 0 data →</a>
                 {runs.map(({ file }) => <span key={file}> · <a href={`/data/pnrd2/${file}`}>{file} →</a></span>)}
