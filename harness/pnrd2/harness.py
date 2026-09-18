@@ -54,13 +54,28 @@ PRICES = {
     "gemini-2.5-flash": (0.30, 2.50),
     "gemini-2.5-pro": (1.25, 10.00),
     "accounts/fireworks/models/gpt-oss-120b": (0.15, 0.60),
+    "openai.gpt-oss-120b-1:0": (0.15, 0.60),   # Amazon Bedrock list price, us-west-2
 }
 
 # ----------------------------------------------------------------------------- guards
 ANNOT_PREFIX = ("invariant", "assert", "decreases", "modifies", "reads", "ensures", "requires",
                 "calc", "ghost", "lemma", "assume", "by", "//", "/*", "*", "*/", "{", "}", "reveal")
 FORBIDDEN = (re.compile(r"\bassume\b"), re.compile(r"\{:verify\s+false\}"), re.compile(r"\{:axiom\}"),
-             re.compile(r"\bexpect\b"))
+             re.compile(r"\bexpect\b"), re.compile(r"@Axiom\b"), re.compile(r"@Verify\s*\(\s*false"),
+             re.compile(r"\{:termination\s+false\}"), re.compile(r"\{:extern\b"), re.compile(r"^\s*include\s", re.M),
+             re.compile(r"\bdecreases\s+\*"))
+
+def _req_lines(src: str) -> list[str]:
+    """All `requires` clauses (normalized). Adding one weakens the contract — `requires false`
+    verifies anything — so the multiset must match the original exactly."""
+    out, in_block = [], False
+    for line in src.split("\n"):
+        st = line.strip()
+        if st.startswith("/*"): in_block = True
+        if not in_block and not st.startswith("//") and re.match(r"^requires\b", st):
+            out.append(_squash(st))
+        if st.endswith("*/"): in_block = False
+    return sorted(out)
 
 def _squash(s: str) -> str:
     # whitespace-, parenthesis- and semicolon-insensitive: `while (i < n);` == `while i < n`
@@ -94,6 +109,8 @@ def guards(original: str, candidate: str) -> tuple[bool, str]:
     cand_sq = _squash(candidate)
     for spec in _spec_lines(original):
         if spec not in cand_sq: return False, f"spec_dropped:{spec[:60]}"
+    if _req_lines(candidate) != _req_lines(original):
+        return False, "requires_changed"   # added or altered precondition = weakened contract
     missing = [c for c in _code_lines(original) if c not in cand_sq]
     if missing: return False, f"code_changed:{missing[0][:60]}"
     return True, ""
@@ -159,6 +176,8 @@ class Model:
     def _chat(self, messages, temperature):
         if self.provider == "gemini":
             return self._gemini(messages, temperature)
+        if self.provider == "bedrock":
+            return self._bedrock(messages, temperature)
         url = (self.base_url or "https://api.openai.com/v1").rstrip("/") + "/chat/completions"
         body = {"model": self.model, "messages": messages, "temperature": temperature, "max_tokens": self.max_tokens}
         req = urllib.request.Request(url, data=json.dumps(body).encode(), headers={
@@ -167,6 +186,27 @@ class Model:
             d = json.load(r)
         u = d.get("usage") or {}
         return d["choices"][0]["message"]["content"] or "", int(u.get("prompt_tokens", 0)), int(u.get("completion_tokens", 0))
+    _bedrock_client = None
+    def _bedrock(self, messages, temperature):
+        import boto3  # only needed for this provider
+        if Model._bedrock_client is None:
+            session = boto3.Session(profile_name=os.environ.get("AWS_PROFILE"), region_name=os.environ.get("AWS_REGION", "us-west-2"))
+            Model._bedrock_client = session.client("bedrock-runtime")
+        sys_txt = [{"text": m["content"]} for m in messages if m["role"] == "system"]
+        msgs = [{"role": m["role"], "content": [{"text": m["content"]}]} for m in messages if m["role"] != "system"]
+        kw = {"modelId": self.model, "messages": msgs, "inferenceConfig": {"maxTokens": self.max_tokens, "temperature": temperature}}
+        if sys_txt: kw["system"] = sys_txt
+        try:
+            d = Model._bedrock_client.converse(**kw)
+        except Exception as e:  # botocore throttling -> retryable
+            name = type(e).__name__
+            if "Throttling" in name or "TooManyRequests" in str(e) or "ServiceUnavailable" in name:
+                raise urllib.error.HTTPError("bedrock", 429, str(e)[:200], {}, None)
+            raise
+        text = "".join(c.get("text", "") for c in d["output"]["message"]["content"] if "text" in c)
+        u = d.get("usage") or {}
+        return text, int(u.get("inputTokens", 0)), int(u.get("outputTokens", 0))
+
     def _gemini(self, messages, temperature):
         sys_txt = "\n".join(m["content"] for m in messages if m["role"] == "system")
         contents = [{"role": "user" if m["role"] == "user" else "model", "parts": [{"text": m["content"]}]}
@@ -242,7 +282,7 @@ def stratified(names: list[str], k: int, seed: int) -> list[str]:
 
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("--provider", choices=["openai", "gemini"], required=True)
+    ap.add_argument("--provider", choices=["openai", "gemini", "bedrock"], required=True)
     ap.add_argument("--model", required=True)
     ap.add_argument("--base-url")
     ap.add_argument("--api-key-env", default=None, help="env var holding the key (default per provider)")
@@ -262,7 +302,7 @@ def main():
     ap.add_argument("--out", required=True)
     args = ap.parse_args()
 
-    key_env = args.api_key_env or {"gemini": "GEMINI_API_KEY", "openai": "OPENAI_API_KEY"}[args.provider]
+    key_env = args.api_key_env or {"gemini": "GEMINI_API_KEY", "openai": "OPENAI_API_KEY", "bedrock": "AWS_PROFILE"}[args.provider]
     key = os.environ.get(key_env)
     if not key: sys.exit(f"missing {key_env}")
     args.outdir = pathlib.Path(args.out).with_suffix(""); args.outdir.mkdir(parents=True, exist_ok=True)

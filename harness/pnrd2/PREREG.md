@@ -71,3 +71,17 @@ includes error feedback). The claim under test is narrower: the *same harness sh
 - The harness gained a global requests-per-minute limiter (`--rpm`) and now retries rows that failed on
   infrastructure instead of counting them. Neither changes the design or the gate.
 - Nothing above the addendum line was edited.
+
+## Addendum 2 — 2026-09-18 12:40 CEST (before the primary run)
+
+- **Route found for the primary arm:** `gpt-oss-120b` via Amazon Bedrock (`openai.gpt-oss-120b-1:0`,
+  us-west-2) on a personal AWS account. Same open weights as PNRD#1; provider differs (Bedrock vs
+  Fireworks). Bedrock list price used for cost accounting.
+- **Guard tightened before running:** the registered guard required original `requires`/`ensures`
+  lines to survive but did not forbid *adding* a `requires` clause — `requires false` would verify
+  anything. The multiset of `requires` clauses must now equal the original's exactly. Also banned:
+  `@Axiom`, `@Verify(false)`, `{:termination false}`, `{:extern}`, `include`, `decreases *`.
+  This makes the guard stricter, never looser; predictions and gate unchanged.
+- A second, independent implementation of the guard (written from this document, not from the
+  harness code) will re-check every winner; disagreements are published.
+- Nothing above Addendum 1 was edited.
