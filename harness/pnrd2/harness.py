@@ -45,6 +45,9 @@ TASK = ("Given a Dafny program with function signature, preconditions, postcondi
         "Do not explain. Use exactly the same function signatures, preconditions, postconditions and "
         "code — never modify the given lines, only add annotations. Never use `assume`, "
         "`{:verify false}`, `{:axiom}` or `expect`. Reply with one ```dafny code block.\n\n")
+GUARD_MSG = ("That program verified, but it broke the rules: {why}. You changed a given line or added something that is "
+             "not an annotation. Restore every original line exactly; only add loop invariants, asserts, decreases "
+             "clauses or helper lemmas. Reply with one ```dafny code block.")
 REPAIR_MSG = ("That program did not verify. Dafny reported:\n\n{err}\n\n"
               "Fix the annotations so the program verifies. Keep every original line unchanged; "
               "only add or change annotations. Reply with one ```dafny code block.")
@@ -58,68 +61,117 @@ PRICES = {
 }
 
 # ----------------------------------------------------------------------------- guards
-ANNOT_PREFIX = ("invariant", "assert", "decreases", "modifies", "reads", "ensures", "requires",
-                "calc", "ghost", "lemma", "assume", "by", "//", "/*", "*", "*/", "{", "}", "reveal")
-FORBIDDEN = (re.compile(r"\bassume\b"), re.compile(r"\{:verify\s+false\}"), re.compile(r"\{:axiom\}"),
-             re.compile(r"\bexpect\b"), re.compile(r"@Axiom\b"), re.compile(r"@Verify\s*\(\s*false"),
-             re.compile(r"\{:termination\s+false\}"), re.compile(r"\{:extern\b"), re.compile(r"^\s*include\s", re.M),
-             re.compile(r"\bdecreases\s+\*"))
+# Rules (PREREG + addenda): annotations may be ADDED; specs and code may not change; no NEW unsound
+# markers. Implementation notes after the independent re-implementation and compliance review:
+#  * all checks run on comment-stripped, string-masked text (code hidden in a comment does not count)
+#  * requires/ensures are compared as CLAUSES (not lines), so `requires false` on a signature line or
+#    an `|| true` continuation line is caught
+#  * original code lines must appear IN ORDER (ordered multiset), formatting-insensitive
+#  * a forbidden marker counts only if the candidate has MORE of it than the original
+FORBIDDEN = tuple(re.compile(p) for p in (
+    r"\bassume\b", r"\{:\s*verify\s+false\s*\}", r"\{:\s*axiom\s*\}", r"\bexpect\b", r"@Axiom\b",
+    r"@Verify\s*\(\s*false", r"\{:\s*termination\s+false\s*\}", r"\{:\s*extern\b", r"^\s*include\b",
+    r"\bdecreases\s+\*"))
+CLAUSE_KW = ("requires", "ensures", "modifies", "reads", "decreases", "invariant")
+ANNOT_PREFIX = ("invariant", "assert", "decreases", "modifies", "reads", "ensures", "requires", "{", "}")
+_CLAUSE_END = re.compile(r"\n\s*(?:requires|ensures|modifies|reads|decreases|invariant|method|function|lemma|predicate|"
+                         r"class|datatype|module|const|var|while|for|if|match|assert|calc|ghost|returns)\b|\{\s*\n|\n\s*\{|;")
 
-def _req_lines(src: str) -> list[str]:
-    """All `requires` clauses (normalized). Adding one weakens the contract — `requires false`
-    verifies anything — so the multiset must match the original exactly."""
-    out, in_block = [], False
-    for line in src.split("\n"):
-        st = line.strip()
-        if st.startswith("/*"): in_block = True
-        if not in_block and not st.startswith("//") and re.match(r"^requires\b", st):
-            out.append(_squash(st))
-        if st.endswith("*/"): in_block = False
-    return sorted(out)
-
-def _strip_comment(line: str) -> str:
-    # drop a trailing `// ...` comment (not inside a string literal — Dafny specs rarely carry strings)
-    return re.sub(r"//.*$", "", line)
+def _clean(src: str) -> str:
+    """Drop block and line comments, mask string/char literals (line structure preserved)."""
+    s = re.sub(r"/\*.*?\*/", lambda m: "\n" * m.group(0).count("\n"), src, flags=re.S)
+    s = re.sub(r"//[^\n]*", "", s)
+    s = re.sub(r'"(?:\\.|[^"\\\n])*"', '""', s)
+    s = re.sub(r"'(?:\\.|[^'\\\n])'", "''", s)
+    return s
 
 def _squash(s: str) -> str:
-    # formatting-insensitive: whitespace, parentheses, semicolons and braces are ignored, so
-    # `method M() {` == `method M()` + `{` on the next line, and `while (i < n);` == `while i < n`.
-    # Everything else (identifiers, operators, types, literals) must match exactly.
-    return re.sub(r"[\s();{}]+", "", _strip_comment(s))
+    # formatting-insensitive: whitespace, parentheses, semicolons and braces are ignored
+    return re.sub(r"[\s();{}]+", "", s)
 
-def _spec_lines(src: str) -> list[str]:
-    out, in_block = [], False
-    for line in src.split("\n"):
-        st = line.strip()
-        if st.startswith("/*"): in_block = True
-        if not in_block and not st.startswith("//") and re.match(r"^(requires|ensures)\b", st):
-            out.append(_squash(st.rstrip(";")))
-        if st.endswith("*/"): in_block = False
+def _clauses(src: str, kw: str) -> list[str]:
+    s = _clean(src); out = []
+    for m in re.finditer(rf"\b{kw}\b", s):
+        rest = s[m.end():]
+        e = _CLAUSE_END.search(rest)
+        out.append(_squash(rest[:e.start()] if e else rest))
     return out
 
 def _code_lines(src: str) -> list[str]:
-    out, in_block = [], False
-    for line in src.split("\n"):
+    out = []
+    for line in _clean(src).split("\n"):
         st = line.strip()
-        if st.startswith("/*"): in_block = True
-        if in_block:
-            if st.endswith("*/"): in_block = False
-            continue
-        if not st or st.startswith(ANNOT_PREFIX): continue
+        if not st or re.match(r"^(?:%s)\b" % "|".join(k for k in ANNOT_PREFIX if k.isalpha()), st) or st[0] in "{}": continue
         sq = _squash(st)
-        if sq: out.append(sq)          # a line that was only a brace or a comment carries no code
+        if sq: out.append(sq)
     return out
 
+def _strip_annotations(src: str) -> str:
+    """Remove annotation constructs a model is allowed to ADD (used only as a second chance when an
+    original code line was split by an inserted annotation, e.g. an assert inside a one-line block)."""
+    s = re.sub(r"\bassert\b[^;{}]*?\bby\s*\{[^{}]*\}", "", src)
+    s = re.sub(r"\bassert\b[^;{}]*;", "", s)
+    s = re.sub(r"\b(invariant|decreases|modifies|reads)\b[^\n{]*", "", s)
+    s = re.sub(r"\breveal\b[^;]*;", "", s)
+    s = re.sub(r"\bghost\s+var\b[^;]*;", "", s)
+    s = re.sub(r"\bcalc\s*\{[^{}]*\}", "", s)
+    return s
+
+def _ordered_contains(hay: str, needles: list[str]) -> str | None:
+    pos = 0
+    for n in needles:
+        i = hay.find(n, pos)
+        if i < 0: return n
+        pos = i + len(n)
+    return None
+
+PROOF_LINE = re.compile(r"^(?:assert|assume|invariant|decreases|modifies|reads|requires|ensures|calc|forall|reveal|label|ghost|lemma|"
+                        r"function|predicate|twostate|by|case|else|\{|\}|\|\||&&|==>|<==>|\+|-|\*|/|%|\.\.|:\||::|,|\)|\()")
+EXEC_LINE = re.compile(r":=|\breturn\b|\bbreak\b|\byield\b|^(?:while|for|if|match|print)\b|\bnew\b")
+
+def _added_code(original: str, candidate: str) -> str | None:
+    """Return the first ADDED line that looks executable and is not a proof construct. Added lemmas,
+    functions and ghost declarations (with their bodies) are allowed; so are calls to lemmas."""
+    orig_lines = set(_code_lines(original))
+    lemmas = set(re.findall(r"\b(?:lemma|ghost\s+method|ghost\s+function|function|predicate)\b(?:\s*\{[^}]*\})?\s+([A-Za-z_][A-Za-z_0-9']*)", _clean(candidate) + " " + _clean(original)))
+    depth_skip = 0   # >0 while inside an added lemma/function/ghost block
+    for line in _clean(candidate).split("\n"):
+        st = line.strip()
+        if not st: continue
+        if depth_skip > 0:
+            depth_skip += st.count("{") - st.count("}")
+            if depth_skip < 0: depth_skip = 0
+            continue
+        if re.match(r"^(?:lemma|ghost\s+method|ghost\s+function|function|predicate|twostate)\b", st) and _squash(st) not in orig_lines:
+            depth_skip = max(1, st.count("{") - st.count("}")) if "{" in st else 1
+            if "{" not in st and st.endswith(("{", "{}")): pass
+            continue
+        sq = _squash(st)
+        if not sq or sq in orig_lines: continue
+        if PROOF_LINE.match(st): continue
+        m = re.match(r"^([A-Za-z_][A-Za-z_0-9']*)\s*\(", st)
+        if m and m.group(1) in lemmas and ":=" not in st: continue      # lemma call as a proof hint
+        if re.match(r"^[A-Za-z_][A-Za-z_0-9'.]*\s*\(.*\)\s*;?$", st): return st[:70]   # call to a non-lemma
+        if EXEC_LINE.search(st): return st[:70]
+    return None
+
 def guards(original: str, candidate: str) -> tuple[bool, str]:
+    co, cc = _clean(original), _clean(candidate)
     for rx in FORBIDDEN:
-        if rx.search(candidate): return False, f"forbidden:{rx.pattern}"
-    cand_sq = _squash(candidate)
-    for spec in _spec_lines(original):
-        if spec not in cand_sq: return False, f"spec_dropped:{spec[:60]}"
-    if _req_lines(candidate) != _req_lines(original):
-        return False, "requires_changed"   # added or altered precondition = weakened contract
-    missing = [c for c in _code_lines(original) if c not in cand_sq]
-    if missing: return False, f"code_changed:{missing[0][:60]}"
+        if len(rx.findall(cc, re.M)) > len(rx.findall(co, re.M)): return False, f"forbidden:{rx.pattern}"
+    if sorted(_clauses(original, "requires")) != sorted(_clauses(candidate, "requires")):
+        return False, "requires_changed"           # added, dropped or altered precondition
+    cand_ens = _clauses(candidate, "ensures")
+    for cl in _clauses(original, "ensures"):
+        if cl in cand_ens: cand_ens.remove(cl)
+        else: return False, f"spec_dropped:ensures{cl[:50]}"
+    code = _code_lines(original)
+    miss = _ordered_contains(_squash(cc), code)
+    if miss is not None:
+        miss = _ordered_contains(_squash(_strip_annotations(cc)), code)
+    if miss is not None: return False, f"code_changed:{miss[:60]}"
+    added = _added_code(original, candidate)
+    if added is not None: return False, f"code_added:{added}"
     return True, ""
 
 # ----------------------------------------------------------------------------- verifier
@@ -134,7 +186,8 @@ def verify(program: str, limit: int) -> tuple[bool, str, float]:
             r = subprocess.run(["dafny", "verify", "--verification-time-limit", str(limit), "--cores", "1", path],
                                capture_output=True, text=True, timeout=limit * 4 + 30)
         out = (r.stdout + r.stderr).replace(path, "prog.dfy")
-        ok = r.returncode == 0 and "0 errors" in out and "File contains no code" not in out
+        m = re.search(r"(\d+) verified, 0 errors", out)
+        ok = r.returncode == 0 and bool(m) and int(m.group(1)) > 0   # an empty program is not a proof
     except subprocess.TimeoutExpired:
         out, ok = "verifier timeout", False
     finally:
@@ -255,6 +308,7 @@ def run_problem(name: str, model: Model, args, fewshot: list[dict]) -> dict:
             # keep every verified-but-blocked candidate so the guard itself can be audited later
             gd = args.outdir / "guard_trips"; gd.mkdir(parents=True, exist_ok=True)
             (gd / f"{name}.{tag}.dfy").write_text(f"// guard: {g_why}\n" + prog)
+            out = "GUARD:" + g_why          # the repair turn must be told the real reason, not "did not verify"
         row["attempts"].append({"tag": tag, "verified": ok, "guard": g_ok if ok else None, "why": g_why or None,
                                 "secs": secs, "tin": tin, "tout": tout})
         return (ok and g_ok), prog, out
@@ -263,14 +317,21 @@ def run_problem(name: str, model: Model, args, fewshot: list[dict]) -> dict:
         # Arm A — one shot, independent of arm B (no sample is shared between arms)
         ok, prog, out = attempt(base, args.temp_oneshot, "A1")
         row["arm_a"] = ok
+        if ok:
+            (args.outdir / "winners_a").mkdir(parents=True, exist_ok=True)
+            (args.outdir / "winners_a" / name).write_text(prog)
+            ok_a2, _, _ = verify(prog, args.limit)
+            row["reverify_a_ok"] = ok_a2
+            if not ok_a2: row["arm_a"] = False; row["error"] = (row["error"] or "") + "reverify_a_failed;"
         # Arm B — fresh samples; each failure gets `repair` turns fed the verifier error
         win = None
         for k in range(1, args.n + 1):
             ok_s, prog_s, out_s = attempt(base, args.temp, f"B{k}")
             if ok_s: win, row["b_at"] = prog_s, k; break
             for _ in range(args.repair):
+                fb = GUARD_MSG.format(why=out_s[6:]) if out_s.startswith("GUARD:") else REPAIR_MSG.format(err=out_s)
                 conv = base + [{"role": "assistant", "content": f"```dafny\n{prog_s}```"},
-                               {"role": "user", "content": REPAIR_MSG.format(err=out_s)}]
+                               {"role": "user", "content": fb}]
                 ok_s, prog_s, out_s = attempt(conv, args.temp, f"B{k}r")
                 if ok_s: break
             if ok_s: win, row["b_at"] = prog_s, k; break

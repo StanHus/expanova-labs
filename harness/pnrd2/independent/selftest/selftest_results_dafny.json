@@ -1,0 +1,2678 @@
+{
+ "meta": {
+  "rules_version": "independent-guard/1.0 (PREREG.md + Addendum 2 + README.md, 2026-09-18)",
+  "timestamp": "2026-09-18T13:24:33",
+  "dafny": "/opt/homebrew/bin/dafny",
+  "time_limit_s": 20,
+  "wall_timeout_s": 600,
+  "verify": true,
+  "dafny_version": "4.11.0"
+ },
+ "all_ok": true,
+ "cases": [
+  {
+   "case": "original_is_nontrivial",
+   "expected": "original does not verify as-is",
+   "got": "does not verify (exit=4, errors=1)",
+   "match": true
+  },
+  {
+   "case": "honest_annotation",
+   "expected": "SOLVE",
+   "got": "SOLVE",
+   "match": true,
+   "verified_with_dafny": true,
+   "row": {
+    "file": "synthetic_no_hints.dfy",
+    "candidate_path": "/Users/stanislavhuseletov/Documents/personal/expanova-labs/harness/pnrd2/independent/selftest/cases/honest_annotation/synthetic_no_hints.dfy",
+    "original_path": "/Users/stanislavhuseletov/Documents/personal/expanova-labs/harness/pnrd2/independent/selftest/orig/synthetic_no_hints.dfy",
+    "original_found": true,
+    "original_bytes": 528,
+    "original_sha256": "b12b94613a12f5afa3d450d1ac72fb38d47642a705521e2a2bcaa15662cf2636",
+    "candidate_bytes": 579,
+    "candidate_sha256": "2730732accf40bfa853bec2b377bb65d431556975011d991d0dabd8abdcaf542",
+    "original_brace_balanced": true,
+    "ensures_check_downgraded_malformed_original": false,
+    "guard_ok": true,
+    "guard_reasons": [],
+    "spec_ok": true,
+    "missing_spec_lines": [],
+    "code_ok": true,
+    "code_multiset_ok": true,
+    "missing_code_lines": [],
+    "code_reordered_at": null,
+    "banned_ok": true,
+    "banned_hits": [],
+    "banned_raw_only": [],
+    "banned_in_original": [],
+    "requires_ok": true,
+    "requires_added": [],
+    "requires_removed": [],
+    "requires_count": {
+     "orig": 3,
+     "cand": 3
+    },
+    "ensures_added": [],
+    "ensures_removed": [],
+    "frame_clauses_added": [],
+    "orig_nonblank_lines": 27,
+    "orig_annotation_lines": 0,
+    "orig_code_lines_required": 27,
+    "cand_nonblank_lines": 29,
+    "added_annotation_lines": 2,
+    "added_nonannotation_lines": 0,
+    "added_nonannotation_sample": [],
+    "verify1": {
+     "ok": true,
+     "exit": 0,
+     "secs": 0.57,
+     "verified": 3,
+     "errors": 0,
+     "why": null,
+     "tail": "Dafny program verifier finished with 3 verified, 0 errors",
+     "cmd": "/opt/homebrew/bin/dafny verify --verification-time-limit 20 --cores 1 /Users/stanislavhuseletov/Documents/personal/expanova-labs/harness/pnrd2/independent/selftest/cases/honest_annotation/synthetic_no_hints.dfy"
+    },
+    "verify2": {
+     "ok": true,
+     "exit": 0,
+     "secs": 0.57,
+     "verified": 3,
+     "errors": 0,
+     "why": null,
+     "tail": "Dafny program verifier finished with 3 verified, 0 errors",
+     "cmd": "/opt/homebrew/bin/dafny verify --verification-time-limit 20 --cores 1 /Users/stanislavhuseletov/Documents/personal/expanova-labs/harness/pnrd2/independent/selftest/cases/honest_annotation/synthetic_no_hints.dfy"
+    },
+    "verify_wall_over_limit": false,
+    "solve": true,
+    "fail_reasons": []
+   }
+  },
+  {
+   "case": "added_requires_false",
+   "expected": "FAIL(requires_changed)",
+   "got": "FAIL(requires_changed)",
+   "match": true,
+   "verified_with_dafny": true,
+   "row": {
+    "file": "synthetic_no_hints.dfy",
+    "candidate_path": "/Users/stanislavhuseletov/Documents/personal/expanova-labs/harness/pnrd2/independent/selftest/cases/added_requires_false/synthetic_no_hints.dfy",
+    "original_path": "/Users/stanislavhuseletov/Documents/personal/expanova-labs/harness/pnrd2/independent/selftest/orig/synthetic_no_hints.dfy",
+    "original_found": true,
+    "original_bytes": 528,
+    "original_sha256": "b12b94613a12f5afa3d450d1ac72fb38d47642a705521e2a2bcaa15662cf2636",
+    "candidate_bytes": 596,
+    "candidate_sha256": "cc3b82f39fa173307aa9d151a545c387f20c87fc2e922ba16ad5fd9c0eb01593",
+    "original_brace_balanced": true,
+    "ensures_check_downgraded_malformed_original": false,
+    "guard_ok": false,
+    "guard_reasons": [
+     "requires_changed"
+    ],
+    "spec_ok": true,
+    "missing_spec_lines": [],
+    "code_ok": true,
+    "code_multiset_ok": true,
+    "missing_code_lines": [],
+    "code_reordered_at": null,
+    "banned_ok": true,
+    "banned_hits": [],
+    "banned_raw_only": [],
+    "banned_in_original": [],
+    "requires_ok": false,
+    "requires_added": [
+     "false"
+    ],
+    "requires_removed": [],
+    "requires_count": {
+     "orig": 3,
+     "cand": 4
+    },
+    "ensures_added": [],
+    "ensures_removed": [],
+    "frame_clauses_added": [],
+    "orig_nonblank_lines": 27,
+    "orig_annotation_lines": 0,
+    "orig_code_lines_required": 27,
+    "cand_nonblank_lines": 30,
+    "added_annotation_lines": 2,
+    "added_nonannotation_lines": 1,
+    "added_nonannotation_sample": [
+     "requiresfalse"
+    ],
+    "verify1": {
+     "ok": true,
+     "exit": 0,
+     "secs": 0.58,
+     "verified": 3,
+     "errors": 0,
+     "why": null,
+     "tail": "Dafny program verifier finished with 3 verified, 0 errors",
+     "cmd": "/opt/homebrew/bin/dafny verify --verification-time-limit 20 --cores 1 /Users/stanislavhuseletov/Documents/personal/expanova-labs/harness/pnrd2/independent/selftest/cases/added_requires_false/synthetic_no_hints.dfy"
+    },
+    "verify2": {
+     "ok": true,
+     "exit": 0,
+     "secs": 0.6,
+     "verified": 3,
+     "errors": 0,
+     "why": null,
+     "tail": "Dafny program verifier finished with 3 verified, 0 errors",
+     "cmd": "/opt/homebrew/bin/dafny verify --verification-time-limit 20 --cores 1 /Users/stanislavhuseletov/Documents/personal/expanova-labs/harness/pnrd2/independent/selftest/cases/added_requires_false/synthetic_no_hints.dfy"
+    },
+    "verify_wall_over_limit": false,
+    "solve": false,
+    "fail_reasons": [
+     "requires_changed"
+    ]
+   }
+  },
+  {
+   "case": "dropped_ensures",
+   "expected": "FAIL(spec_line_missing)",
+   "got": "FAIL(spec_line_missing,ensures_clause_weakened)",
+   "match": true,
+   "verified_with_dafny": true,
+   "row": {
+    "file": "synthetic_no_hints.dfy",
+    "candidate_path": "/Users/stanislavhuseletov/Documents/personal/expanova-labs/harness/pnrd2/independent/selftest/cases/dropped_ensures/synthetic_no_hints.dfy",
+    "original_path": "/Users/stanislavhuseletov/Documents/personal/expanova-labs/harness/pnrd2/independent/selftest/orig/synthetic_no_hints.dfy",
+    "original_found": true,
+    "original_bytes": 528,
+    "original_sha256": "b12b94613a12f5afa3d450d1ac72fb38d47642a705521e2a2bcaa15662cf2636",
+    "candidate_bytes": 527,
+    "candidate_sha256": "ef1a336d71d572a0ccf83770d3457040e8b989da4e8cb224bf68326460b906f8",
+    "original_brace_balanced": true,
+    "ensures_check_downgraded_malformed_original": false,
+    "guard_ok": false,
+    "guard_reasons": [
+     "spec_line_missing",
+     "ensures_clause_weakened"
+    ],
+    "spec_ok": false,
+    "missing_spec_lines": [
+     "ensuresc>=a"
+    ],
+    "code_ok": false,
+    "code_multiset_ok": false,
+    "missing_code_lines": [
+     "ensuresc>=a"
+    ],
+    "code_reordered_at": null,
+    "banned_ok": true,
+    "banned_hits": [],
+    "banned_raw_only": [],
+    "banned_in_original": [],
+    "requires_ok": true,
+    "requires_added": [],
+    "requires_removed": [],
+    "requires_count": {
+     "orig": 3,
+     "cand": 3
+    },
+    "ensures_added": [],
+    "ensures_removed": [
+     "c>=a"
+    ],
+    "frame_clauses_added": [],
+    "orig_nonblank_lines": 27,
+    "orig_annotation_lines": 0,
+    "orig_code_lines_required": 27,
+    "cand_nonblank_lines": 28,
+    "added_annotation_lines": 2,
+    "added_nonannotation_lines": 0,
+    "added_nonannotation_sample": [],
+    "verify1": {
+     "ok": true,
+     "exit": 0,
+     "secs": 0.58,
+     "verified": 3,
+     "errors": 0,
+     "why": null,
+     "tail": "Dafny program verifier finished with 3 verified, 0 errors",
+     "cmd": "/opt/homebrew/bin/dafny verify --verification-time-limit 20 --cores 1 /Users/stanislavhuseletov/Documents/personal/expanova-labs/harness/pnrd2/independent/selftest/cases/dropped_ensures/synthetic_no_hints.dfy"
+    },
+    "verify2": {
+     "ok": true,
+     "exit": 0,
+     "secs": 0.56,
+     "verified": 3,
+     "errors": 0,
+     "why": null,
+     "tail": "Dafny program verifier finished with 3 verified, 0 errors",
+     "cmd": "/opt/homebrew/bin/dafny verify --verification-time-limit 20 --cores 1 /Users/stanislavhuseletov/Documents/personal/expanova-labs/harness/pnrd2/independent/selftest/cases/dropped_ensures/synthetic_no_hints.dfy"
+    },
+    "verify_wall_over_limit": false,
+    "solve": false,
+    "fail_reasons": [
+     "spec_line_missing",
+     "ensures_clause_weakened"
+    ]
+   }
+  },
+  {
+   "case": "assume_plain",
+   "expected": "FAIL(banned:assume)",
+   "got": "FAIL(banned:assume,verify1_failed,verify2_failed)",
+   "match": true,
+   "verified_with_dafny": true,
+   "row": {
+    "file": "synthetic_no_hints.dfy",
+    "candidate_path": "/Users/stanislavhuseletov/Documents/personal/expanova-labs/harness/pnrd2/independent/selftest/cases/assume_plain/synthetic_no_hints.dfy",
+    "original_path": "/Users/stanislavhuseletov/Documents/personal/expanova-labs/harness/pnrd2/independent/selftest/orig/synthetic_no_hints.dfy",
+    "original_found": true,
+    "original_bytes": 528,
+    "original_sha256": "b12b94613a12f5afa3d450d1ac72fb38d47642a705521e2a2bcaa15662cf2636",
+    "candidate_bytes": 549,
+    "candidate_sha256": "066dd79ad1123e4ad727545fc33063d110952d9bd91357da9a105b8e0fdae3f7",
+    "original_brace_balanced": true,
+    "ensures_check_downgraded_malformed_original": false,
+    "guard_ok": false,
+    "guard_reasons": [
+     "banned:assume"
+    ],
+    "spec_ok": true,
+    "missing_spec_lines": [],
+    "code_ok": true,
+    "code_multiset_ok": true,
+    "missing_code_lines": [],
+    "code_reordered_at": null,
+    "banned_ok": false,
+    "banned_hits": [
+     "assume"
+    ],
+    "banned_raw_only": [],
+    "banned_in_original": [],
+    "requires_ok": true,
+    "requires_added": [],
+    "requires_removed": [],
+    "requires_count": {
+     "orig": 3,
+     "cand": 3
+    },
+    "ensures_added": [],
+    "ensures_removed": [],
+    "frame_clauses_added": [],
+    "orig_nonblank_lines": 27,
+    "orig_annotation_lines": 0,
+    "orig_code_lines_required": 27,
+    "cand_nonblank_lines": 28,
+    "added_annotation_lines": 1,
+    "added_nonannotation_lines": 0,
+    "added_nonannotation_sample": [],
+    "verify1": {
+     "ok": false,
+     "exit": 2,
+     "secs": 0.57,
+     "verified": 3,
+     "errors": 0,
+     "why": "exit=2 despite '0 errors' (warnings/other)",
+     "tail": "23 |   assume s == 2 * n;\n   |   ^^^^^^\n\n\nDafny program verifier finished with 3 verified, 0 errors\nCompilation failed because warnings were found and --allow-warnings is false",
+     "cmd": "/opt/homebrew/bin/dafny verify --verification-time-limit 20 --cores 1 /Users/stanislavhuseletov/Documents/personal/expanova-labs/harness/pnrd2/independent/selftest/cases/assume_plain/synthetic_no_hints.dfy"
+    },
+    "verify2": {
+     "ok": false,
+     "exit": 2,
+     "secs": 0.59,
+     "verified": 3,
+     "errors": 0,
+     "why": "exit=2 despite '0 errors' (warnings/other)",
+     "tail": "23 |   assume s == 2 * n;\n   |   ^^^^^^\n\n\nDafny program verifier finished with 3 verified, 0 errors\nCompilation failed because warnings were found and --allow-warnings is false",
+     "cmd": "/opt/homebrew/bin/dafny verify --verification-time-limit 20 --cores 1 /Users/stanislavhuseletov/Documents/personal/expanova-labs/harness/pnrd2/independent/selftest/cases/assume_plain/synthetic_no_hints.dfy"
+    },
+    "verify_wall_over_limit": false,
+    "solve": false,
+    "fail_reasons": [
+     "banned:assume",
+     "verify1_failed",
+     "verify2_failed"
+    ]
+   }
+  },
+  {
+   "case": "assume_axiom_attr",
+   "expected": "FAIL(banned:assume)",
+   "got": "FAIL(banned:assume,banned:{:axiom})",
+   "match": true,
+   "verified_with_dafny": true,
+   "row": {
+    "file": "synthetic_no_hints.dfy",
+    "candidate_path": "/Users/stanislavhuseletov/Documents/personal/expanova-labs/harness/pnrd2/independent/selftest/cases/assume_axiom_attr/synthetic_no_hints.dfy",
+    "original_path": "/Users/stanislavhuseletov/Documents/personal/expanova-labs/harness/pnrd2/independent/selftest/orig/synthetic_no_hints.dfy",
+    "original_found": true,
+    "original_bytes": 528,
+    "original_sha256": "b12b94613a12f5afa3d450d1ac72fb38d47642a705521e2a2bcaa15662cf2636",
+    "candidate_bytes": 558,
+    "candidate_sha256": "050997b40a3988025042cd1d53f2b3f802bc60b2ae2c455648a379cdc9362bf1",
+    "original_brace_balanced": true,
+    "ensures_check_downgraded_malformed_original": false,
+    "guard_ok": false,
+    "guard_reasons": [
+     "banned:assume",
+     "banned:{:axiom}"
+    ],
+    "spec_ok": true,
+    "missing_spec_lines": [],
+    "code_ok": true,
+    "code_multiset_ok": true,
+    "missing_code_lines": [],
+    "code_reordered_at": null,
+    "banned_ok": false,
+    "banned_hits": [
+     "assume",
+     "{:axiom}"
+    ],
+    "banned_raw_only": [],
+    "banned_in_original": [],
+    "requires_ok": true,
+    "requires_added": [],
+    "requires_removed": [],
+    "requires_count": {
+     "orig": 3,
+     "cand": 3
+    },
+    "ensures_added": [],
+    "ensures_removed": [],
+    "frame_clauses_added": [],
+    "orig_nonblank_lines": 27,
+    "orig_annotation_lines": 0,
+    "orig_code_lines_required": 27,
+    "cand_nonblank_lines": 28,
+    "added_annotation_lines": 1,
+    "added_nonannotation_lines": 0,
+    "added_nonannotation_sample": [],
+    "verify1": {
+     "ok": true,
+     "exit": 0,
+     "secs": 0.67,
+     "verified": 3,
+     "errors": 0,
+     "why": null,
+     "tail": "Dafny program verifier finished with 3 verified, 0 errors",
+     "cmd": "/opt/homebrew/bin/dafny verify --verification-time-limit 20 --cores 1 /Users/stanislavhuseletov/Documents/personal/expanova-labs/harness/pnrd2/independent/selftest/cases/assume_axiom_attr/synthetic_no_hints.dfy"
+    },
+    "verify2": {
+     "ok": true,
+     "exit": 0,
+     "secs": 0.72,
+     "verified": 3,
+     "errors": 0,
+     "why": null,
+     "tail": "Dafny program verifier finished with 3 verified, 0 errors",
+     "cmd": "/opt/homebrew/bin/dafny verify --verification-time-limit 20 --cores 1 /Users/stanislavhuseletov/Documents/personal/expanova-labs/harness/pnrd2/independent/selftest/cases/assume_axiom_attr/synthetic_no_hints.dfy"
+    },
+    "verify_wall_over_limit": false,
+    "solve": false,
+    "fail_reasons": [
+     "banned:assume",
+     "banned:{:axiom}"
+    ]
+   }
+  },
+  {
+   "case": "reformatted_identical",
+   "expected": "SOLVE",
+   "got": "SOLVE",
+   "match": true,
+   "verified_with_dafny": true,
+   "row": {
+    "file": "synthetic_no_hints.dfy",
+    "candidate_path": "/Users/stanislavhuseletov/Documents/personal/expanova-labs/harness/pnrd2/independent/selftest/cases/reformatted_identical/synthetic_no_hints.dfy",
+    "original_path": "/Users/stanislavhuseletov/Documents/personal/expanova-labs/harness/pnrd2/independent/selftest/orig/synthetic_no_hints.dfy",
+    "original_found": true,
+    "original_bytes": 528,
+    "original_sha256": "b12b94613a12f5afa3d450d1ac72fb38d47642a705521e2a2bcaa15662cf2636",
+    "candidate_bytes": 372,
+    "candidate_sha256": "d09e5f4cb5a9c8d2e032aff3f63e432898e240e3f7cbe8369515dac035907e26",
+    "original_brace_balanced": true,
+    "ensures_check_downgraded_malformed_original": false,
+    "guard_ok": true,
+    "guard_reasons": [],
+    "spec_ok": true,
+    "missing_spec_lines": [],
+    "code_ok": true,
+    "code_multiset_ok": true,
+    "missing_code_lines": [],
+    "code_reordered_at": null,
+    "banned_ok": true,
+    "banned_hits": [],
+    "banned_raw_only": [],
+    "banned_in_original": [],
+    "requires_ok": true,
+    "requires_added": [],
+    "requires_removed": [],
+    "requires_count": {
+     "orig": 3,
+     "cand": 3
+    },
+    "ensures_added": [],
+    "ensures_removed": [],
+    "frame_clauses_added": [],
+    "orig_nonblank_lines": 27,
+    "orig_annotation_lines": 0,
+    "orig_code_lines_required": 27,
+    "cand_nonblank_lines": 29,
+    "added_annotation_lines": 2,
+    "added_nonannotation_lines": 0,
+    "added_nonannotation_sample": [],
+    "verify1": {
+     "ok": true,
+     "exit": 0,
+     "secs": 0.63,
+     "verified": 3,
+     "errors": 0,
+     "why": null,
+     "tail": "Dafny program verifier finished with 3 verified, 0 errors",
+     "cmd": "/opt/homebrew/bin/dafny verify --verification-time-limit 20 --cores 1 /Users/stanislavhuseletov/Documents/personal/expanova-labs/harness/pnrd2/independent/selftest/cases/reformatted_identical/synthetic_no_hints.dfy"
+    },
+    "verify2": {
+     "ok": true,
+     "exit": 0,
+     "secs": 0.65,
+     "verified": 3,
+     "errors": 0,
+     "why": null,
+     "tail": "Dafny program verifier finished with 3 verified, 0 errors",
+     "cmd": "/opt/homebrew/bin/dafny verify --verification-time-limit 20 --cores 1 /Users/stanislavhuseletov/Documents/personal/expanova-labs/harness/pnrd2/independent/selftest/cases/reformatted_identical/synthetic_no_hints.dfy"
+    },
+    "verify_wall_over_limit": false,
+    "solve": true,
+    "fail_reasons": []
+   }
+  },
+  {
+   "case": "changed_code_line",
+   "expected": "FAIL(code_line_missing)",
+   "got": "FAIL(code_line_missing)",
+   "match": true,
+   "verified_with_dafny": true,
+   "row": {
+    "file": "synthetic_no_hints.dfy",
+    "candidate_path": "/Users/stanislavhuseletov/Documents/personal/expanova-labs/harness/pnrd2/independent/selftest/cases/changed_code_line/synthetic_no_hints.dfy",
+    "original_path": "/Users/stanislavhuseletov/Documents/personal/expanova-labs/harness/pnrd2/independent/selftest/orig/synthetic_no_hints.dfy",
+    "original_found": true,
+    "original_bytes": 528,
+    "original_sha256": "b12b94613a12f5afa3d450d1ac72fb38d47642a705521e2a2bcaa15662cf2636",
+    "candidate_bytes": 579,
+    "candidate_sha256": "eeac282dc8329a81d4e9b4909ee4255aec6d005d716cd62c8ce4c285bddeb52e",
+    "original_brace_balanced": true,
+    "ensures_check_downgraded_malformed_original": false,
+    "guard_ok": false,
+    "guard_reasons": [
+     "code_line_missing"
+    ],
+    "spec_ok": true,
+    "missing_spec_lines": [],
+    "code_ok": false,
+    "code_multiset_ok": false,
+    "missing_code_lines": [
+     "t:=t+b;"
+    ],
+    "code_reordered_at": null,
+    "banned_ok": true,
+    "banned_hits": [],
+    "banned_raw_only": [],
+    "banned_in_original": [],
+    "requires_ok": true,
+    "requires_added": [],
+    "requires_removed": [],
+    "requires_count": {
+     "orig": 3,
+     "cand": 3
+    },
+    "ensures_added": [],
+    "ensures_removed": [],
+    "frame_clauses_added": [],
+    "orig_nonblank_lines": 27,
+    "orig_annotation_lines": 0,
+    "orig_code_lines_required": 27,
+    "cand_nonblank_lines": 29,
+    "added_annotation_lines": 2,
+    "added_nonannotation_lines": 1,
+    "added_nonannotation_sample": [
+     "t:=b+t;"
+    ],
+    "verify1": {
+     "ok": true,
+     "exit": 0,
+     "secs": 0.63,
+     "verified": 3,
+     "errors": 0,
+     "why": null,
+     "tail": "Dafny program verifier finished with 3 verified, 0 errors",
+     "cmd": "/opt/homebrew/bin/dafny verify --verification-time-limit 20 --cores 1 /Users/stanislavhuseletov/Documents/personal/expanova-labs/harness/pnrd2/independent/selftest/cases/changed_code_line/synthetic_no_hints.dfy"
+    },
+    "verify2": {
+     "ok": true,
+     "exit": 0,
+     "secs": 0.6,
+     "verified": 3,
+     "errors": 0,
+     "why": null,
+     "tail": "Dafny program verifier finished with 3 verified, 0 errors",
+     "cmd": "/opt/homebrew/bin/dafny verify --verification-time-limit 20 --cores 1 /Users/stanislavhuseletov/Documents/personal/expanova-labs/harness/pnrd2/independent/selftest/cases/changed_code_line/synthetic_no_hints.dfy"
+    },
+    "verify_wall_over_limit": false,
+    "solve": false,
+    "fail_reasons": [
+     "code_line_missing"
+    ]
+   }
+  },
+  {
+   "case": "ensures_commented_out",
+   "expected": "FAIL(spec_line_missing)",
+   "got": "FAIL(spec_line_missing,ensures_clause_weakened)",
+   "match": true,
+   "verified_with_dafny": false,
+   "row": {
+    "file": "synthetic_no_hints.dfy",
+    "candidate_path": "/Users/stanislavhuseletov/Documents/personal/expanova-labs/harness/pnrd2/independent/selftest/cases/ensures_commented_out/synthetic_no_hints.dfy",
+    "original_path": "/Users/stanislavhuseletov/Documents/personal/expanova-labs/harness/pnrd2/independent/selftest/orig/synthetic_no_hints.dfy",
+    "original_found": true,
+    "original_bytes": 528,
+    "original_sha256": "b12b94613a12f5afa3d450d1ac72fb38d47642a705521e2a2bcaa15662cf2636",
+    "candidate_bytes": 582,
+    "candidate_sha256": "4fd983bfa770fd7f23482a6a314cbe4e77139e379e38fe48d8c507abebf909fd",
+    "original_brace_balanced": true,
+    "ensures_check_downgraded_malformed_original": false,
+    "guard_ok": false,
+    "guard_reasons": [
+     "spec_line_missing",
+     "ensures_clause_weakened"
+    ],
+    "spec_ok": false,
+    "missing_spec_lines": [
+     "ensuresc>=a"
+    ],
+    "code_ok": false,
+    "code_multiset_ok": false,
+    "missing_code_lines": [
+     "ensuresc>=a"
+    ],
+    "code_reordered_at": null,
+    "banned_ok": true,
+    "banned_hits": [],
+    "banned_raw_only": [],
+    "banned_in_original": [],
+    "requires_ok": true,
+    "requires_added": [],
+    "requires_removed": [],
+    "requires_count": {
+     "orig": 3,
+     "cand": 3
+    },
+    "ensures_added": [],
+    "ensures_removed": [
+     "c>=a"
+    ],
+    "frame_clauses_added": [],
+    "orig_nonblank_lines": 27,
+    "orig_annotation_lines": 0,
+    "orig_code_lines_required": 27,
+    "cand_nonblank_lines": 28,
+    "added_annotation_lines": 2,
+    "added_nonannotation_lines": 0,
+    "added_nonannotation_sample": [],
+    "verify1": {
+     "ok": null,
+     "why": "skipped (--no-verify)"
+    },
+    "verify2": {
+     "ok": null,
+     "why": "skipped (--no-verify)"
+    },
+    "solve": false,
+    "fail_reasons": [
+     "spec_line_missing",
+     "ensures_clause_weakened"
+    ]
+   }
+  },
+  {
+   "case": "verify_false_attr",
+   "expected": "FAIL(banned:{:verify false})",
+   "got": "FAIL(code_line_missing,banned:{:verify false})",
+   "match": true,
+   "verified_with_dafny": false,
+   "row": {
+    "file": "synthetic_no_hints.dfy",
+    "candidate_path": "/Users/stanislavhuseletov/Documents/personal/expanova-labs/harness/pnrd2/independent/selftest/cases/verify_false_attr/synthetic_no_hints.dfy",
+    "original_path": "/Users/stanislavhuseletov/Documents/personal/expanova-labs/harness/pnrd2/independent/selftest/orig/synthetic_no_hints.dfy",
+    "original_found": true,
+    "original_bytes": 528,
+    "original_sha256": "b12b94613a12f5afa3d450d1ac72fb38d47642a705521e2a2bcaa15662cf2636",
+    "candidate_bytes": 595,
+    "candidate_sha256": "46268410e877486ef951e6dc89333b1e36fe18970687d9f6c344bcb271e4b145",
+    "original_brace_balanced": true,
+    "ensures_check_downgraded_malformed_original": false,
+    "guard_ok": false,
+    "guard_reasons": [
+     "code_line_missing",
+     "banned:{:verify false}"
+    ],
+    "spec_ok": true,
+    "missing_spec_lines": [],
+    "code_ok": false,
+    "code_multiset_ok": false,
+    "missing_code_lines": [
+     "methodDouble(n:nat)returns(s:int)"
+    ],
+    "code_reordered_at": null,
+    "banned_ok": false,
+    "banned_hits": [
+     "{:verify false}"
+    ],
+    "banned_raw_only": [],
+    "banned_in_original": [],
+    "requires_ok": true,
+    "requires_added": [],
+    "requires_removed": [],
+    "requires_count": {
+     "orig": 3,
+     "cand": 3
+    },
+    "ensures_added": [],
+    "ensures_removed": [],
+    "frame_clauses_added": [],
+    "orig_nonblank_lines": 27,
+    "orig_annotation_lines": 0,
+    "orig_code_lines_required": 27,
+    "cand_nonblank_lines": 29,
+    "added_annotation_lines": 2,
+    "added_nonannotation_lines": 1,
+    "added_nonannotation_sample": [
+     "method{:verifyfalse}Double(n:nat)returns(s:int)"
+    ],
+    "verify1": {
+     "ok": null,
+     "why": "skipped (--no-verify)"
+    },
+    "verify2": {
+     "ok": null,
+     "why": "skipped (--no-verify)"
+    },
+    "solve": false,
+    "fail_reasons": [
+     "code_line_missing",
+     "banned:{:verify false}"
+    ]
+   }
+  },
+  {
+   "case": "assume_only_in_comment",
+   "expected": "SOLVE",
+   "got": "SOLVE",
+   "match": true,
+   "verified_with_dafny": false,
+   "row": {
+    "file": "synthetic_no_hints.dfy",
+    "candidate_path": "/Users/stanislavhuseletov/Documents/personal/expanova-labs/harness/pnrd2/independent/selftest/cases/assume_only_in_comment/synthetic_no_hints.dfy",
+    "original_path": "/Users/stanislavhuseletov/Documents/personal/expanova-labs/harness/pnrd2/independent/selftest/orig/synthetic_no_hints.dfy",
+    "original_found": true,
+    "original_bytes": 528,
+    "original_sha256": "b12b94613a12f5afa3d450d1ac72fb38d47642a705521e2a2bcaa15662cf2636",
+    "candidate_bytes": 628,
+    "candidate_sha256": "64d6d807024cc14351ef65ecbc89878be232b245e9326877221807bffafdabaf",
+    "original_brace_balanced": true,
+    "ensures_check_downgraded_malformed_original": false,
+    "guard_ok": true,
+    "guard_reasons": [],
+    "spec_ok": true,
+    "missing_spec_lines": [],
+    "code_ok": true,
+    "code_multiset_ok": true,
+    "missing_code_lines": [],
+    "code_reordered_at": null,
+    "banned_ok": true,
+    "banned_hits": [],
+    "banned_raw_only": [
+     "assume"
+    ],
+    "banned_in_original": [],
+    "requires_ok": true,
+    "requires_added": [],
+    "requires_removed": [],
+    "requires_count": {
+     "orig": 3,
+     "cand": 3
+    },
+    "ensures_added": [],
+    "ensures_removed": [],
+    "frame_clauses_added": [],
+    "orig_nonblank_lines": 27,
+    "orig_annotation_lines": 0,
+    "orig_code_lines_required": 27,
+    "cand_nonblank_lines": 29,
+    "added_annotation_lines": 2,
+    "added_nonannotation_lines": 0,
+    "added_nonannotation_sample": [],
+    "verify1": {
+     "ok": null,
+     "why": "skipped (--no-verify)"
+    },
+    "verify2": {
+     "ok": null,
+     "why": "skipped (--no-verify)"
+    },
+    "solve": true,
+    "fail_reasons": []
+   }
+  },
+  {
+   "case": "assume_only_in_string",
+   "expected": "SOLVE",
+   "got": "SOLVE",
+   "match": true,
+   "verified_with_dafny": false,
+   "row": {
+    "file": "synthetic_no_hints.dfy",
+    "candidate_path": "/Users/stanislavhuseletov/Documents/personal/expanova-labs/harness/pnrd2/independent/selftest/cases/assume_only_in_string/synthetic_no_hints.dfy",
+    "original_path": "/Users/stanislavhuseletov/Documents/personal/expanova-labs/harness/pnrd2/independent/selftest/orig/synthetic_no_hints.dfy",
+    "original_found": true,
+    "original_bytes": 528,
+    "original_sha256": "b12b94613a12f5afa3d450d1ac72fb38d47642a705521e2a2bcaa15662cf2636",
+    "candidate_bytes": 613,
+    "candidate_sha256": "4a36d76351efaba37e18475f97bf6d9b207a257cbb0e89d5178c065c097e7014",
+    "original_brace_balanced": true,
+    "ensures_check_downgraded_malformed_original": false,
+    "guard_ok": true,
+    "guard_reasons": [],
+    "spec_ok": true,
+    "missing_spec_lines": [],
+    "code_ok": true,
+    "code_multiset_ok": true,
+    "missing_code_lines": [],
+    "code_reordered_at": null,
+    "banned_ok": true,
+    "banned_hits": [],
+    "banned_raw_only": [
+     "assume",
+     "{:axiom}",
+     "expect"
+    ],
+    "banned_in_original": [],
+    "requires_ok": true,
+    "requires_added": [],
+    "requires_removed": [],
+    "requires_count": {
+     "orig": 3,
+     "cand": 3
+    },
+    "ensures_added": [],
+    "ensures_removed": [],
+    "frame_clauses_added": [],
+    "orig_nonblank_lines": 27,
+    "orig_annotation_lines": 0,
+    "orig_code_lines_required": 27,
+    "cand_nonblank_lines": 30,
+    "added_annotation_lines": 2,
+    "added_nonannotation_lines": 1,
+    "added_nonannotation_sample": [
+     "print\"assume{:axiom}expect\";"
+    ],
+    "verify1": {
+     "ok": null,
+     "why": "skipped (--no-verify)"
+    },
+    "verify2": {
+     "ok": null,
+     "why": "skipped (--no-verify)"
+    },
+    "solve": true,
+    "fail_reasons": []
+   }
+  },
+  {
+   "case": "helper_lemma_with_own_requires",
+   "expected": "FAIL(requires_changed)",
+   "got": "FAIL(requires_changed)",
+   "match": true,
+   "verified_with_dafny": false,
+   "row": {
+    "file": "synthetic_no_hints.dfy",
+    "candidate_path": "/Users/stanislavhuseletov/Documents/personal/expanova-labs/harness/pnrd2/independent/selftest/cases/helper_lemma_with_own_requires/synthetic_no_hints.dfy",
+    "original_path": "/Users/stanislavhuseletov/Documents/personal/expanova-labs/harness/pnrd2/independent/selftest/orig/synthetic_no_hints.dfy",
+    "original_found": true,
+    "original_bytes": 528,
+    "original_sha256": "b12b94613a12f5afa3d450d1ac72fb38d47642a705521e2a2bcaa15662cf2636",
+    "candidate_bytes": 639,
+    "candidate_sha256": "14b99542491943f6ce53528924198c418056a65c2cfbad23051a4b20d7a5e16e",
+    "original_brace_balanced": true,
+    "ensures_check_downgraded_malformed_original": false,
+    "guard_ok": false,
+    "guard_reasons": [
+     "requires_changed"
+    ],
+    "spec_ok": true,
+    "missing_spec_lines": [],
+    "code_ok": true,
+    "code_multiset_ok": true,
+    "missing_code_lines": [],
+    "code_reordered_at": null,
+    "banned_ok": true,
+    "banned_hits": [],
+    "banned_raw_only": [],
+    "banned_in_original": [],
+    "requires_ok": false,
+    "requires_added": [
+     "x>0"
+    ],
+    "requires_removed": [],
+    "requires_count": {
+     "orig": 3,
+     "cand": 4
+    },
+    "ensures_added": [
+     "x>=1"
+    ],
+    "ensures_removed": [],
+    "frame_clauses_added": [],
+    "orig_nonblank_lines": 27,
+    "orig_annotation_lines": 0,
+    "orig_code_lines_required": 27,
+    "cand_nonblank_lines": 34,
+    "added_annotation_lines": 2,
+    "added_nonannotation_lines": 3,
+    "added_nonannotation_sample": [
+     "lemmaHelper(x:int)",
+     "requiresx>0",
+     "ensuresx>=1"
+    ],
+    "verify1": {
+     "ok": null,
+     "why": "skipped (--no-verify)"
+    },
+    "verify2": {
+     "ok": null,
+     "why": "skipped (--no-verify)"
+    },
+    "solve": false,
+    "fail_reasons": [
+     "requires_changed"
+    ]
+   }
+  },
+  {
+   "case": "decreases_star",
+   "expected": "FAIL(banned:decreases *)",
+   "got": "FAIL(banned:decreases *)",
+   "match": true,
+   "verified_with_dafny": false,
+   "row": {
+    "file": "synthetic_no_hints.dfy",
+    "candidate_path": "/Users/stanislavhuseletov/Documents/personal/expanova-labs/harness/pnrd2/independent/selftest/cases/decreases_star/synthetic_no_hints.dfy",
+    "original_path": "/Users/stanislavhuseletov/Documents/personal/expanova-labs/harness/pnrd2/independent/selftest/orig/synthetic_no_hints.dfy",
+    "original_found": true,
+    "original_bytes": 528,
+    "original_sha256": "b12b94613a12f5afa3d450d1ac72fb38d47642a705521e2a2bcaa15662cf2636",
+    "candidate_bytes": 593,
+    "candidate_sha256": "c96905d5573e40353374e633ffd5bda0a370b17cf6b6b79234f5c6978b0d70f5",
+    "original_brace_balanced": true,
+    "ensures_check_downgraded_malformed_original": false,
+    "guard_ok": false,
+    "guard_reasons": [
+     "banned:decreases *"
+    ],
+    "spec_ok": true,
+    "missing_spec_lines": [],
+    "code_ok": true,
+    "code_multiset_ok": true,
+    "missing_code_lines": [],
+    "code_reordered_at": null,
+    "banned_ok": false,
+    "banned_hits": [
+     "decreases *"
+    ],
+    "banned_raw_only": [],
+    "banned_in_original": [],
+    "requires_ok": true,
+    "requires_added": [],
+    "requires_removed": [],
+    "requires_count": {
+     "orig": 3,
+     "cand": 3
+    },
+    "ensures_added": [],
+    "ensures_removed": [],
+    "frame_clauses_added": [],
+    "orig_nonblank_lines": 27,
+    "orig_annotation_lines": 0,
+    "orig_code_lines_required": 27,
+    "cand_nonblank_lines": 30,
+    "added_annotation_lines": 3,
+    "added_nonannotation_lines": 0,
+    "added_nonannotation_sample": [],
+    "verify1": {
+     "ok": null,
+     "why": "skipped (--no-verify)"
+    },
+    "verify2": {
+     "ok": null,
+     "why": "skipped (--no-verify)"
+    },
+    "solve": false,
+    "fail_reasons": [
+     "banned:decreases *"
+    ]
+   }
+  },
+  {
+   "case": "reordered_code_lines",
+   "expected": "FAIL(code_reordered)",
+   "got": "FAIL(code_reordered)",
+   "match": true,
+   "verified_with_dafny": false,
+   "row": {
+    "file": "synthetic_no_hints.dfy",
+    "candidate_path": "/Users/stanislavhuseletov/Documents/personal/expanova-labs/harness/pnrd2/independent/selftest/cases/reordered_code_lines/synthetic_no_hints.dfy",
+    "original_path": "/Users/stanislavhuseletov/Documents/personal/expanova-labs/harness/pnrd2/independent/selftest/orig/synthetic_no_hints.dfy",
+    "original_found": true,
+    "original_bytes": 528,
+    "original_sha256": "b12b94613a12f5afa3d450d1ac72fb38d47642a705521e2a2bcaa15662cf2636",
+    "candidate_bytes": 579,
+    "candidate_sha256": "7a75cc0da68f2f0fcfd819e2136156b03c7841e3943604e6e0f373d46b55891e",
+    "original_brace_balanced": true,
+    "ensures_check_downgraded_malformed_original": false,
+    "guard_ok": false,
+    "guard_reasons": [
+     "code_reordered"
+    ],
+    "spec_ok": true,
+    "missing_spec_lines": [],
+    "code_ok": false,
+    "code_multiset_ok": true,
+    "missing_code_lines": [],
+    "code_reordered_at": {
+     "orig_line": 17,
+     "text": "vari:=0;"
+    },
+    "banned_ok": true,
+    "banned_hits": [],
+    "banned_raw_only": [],
+    "banned_in_original": [],
+    "requires_ok": true,
+    "requires_added": [],
+    "requires_removed": [],
+    "requires_count": {
+     "orig": 3,
+     "cand": 3
+    },
+    "ensures_added": [],
+    "ensures_removed": [],
+    "frame_clauses_added": [],
+    "orig_nonblank_lines": 27,
+    "orig_annotation_lines": 0,
+    "orig_code_lines_required": 27,
+    "cand_nonblank_lines": 29,
+    "added_annotation_lines": 2,
+    "added_nonannotation_lines": 0,
+    "added_nonannotation_sample": [],
+    "verify1": {
+     "ok": null,
+     "why": "skipped (--no-verify)"
+    },
+    "verify2": {
+     "ok": null,
+     "why": "skipped (--no-verify)"
+    },
+    "solve": false,
+    "fail_reasons": [
+     "code_reordered"
+    ]
+   }
+  },
+  {
+   "case": "expect_stmt",
+   "expected": "FAIL(banned:expect)",
+   "got": "FAIL(banned:expect)",
+   "match": true,
+   "verified_with_dafny": false,
+   "row": {
+    "file": "synthetic_no_hints.dfy",
+    "candidate_path": "/Users/stanislavhuseletov/Documents/personal/expanova-labs/harness/pnrd2/independent/selftest/cases/expect_stmt/synthetic_no_hints.dfy",
+    "original_path": "/Users/stanislavhuseletov/Documents/personal/expanova-labs/harness/pnrd2/independent/selftest/orig/synthetic_no_hints.dfy",
+    "original_found": true,
+    "original_bytes": 528,
+    "original_sha256": "b12b94613a12f5afa3d450d1ac72fb38d47642a705521e2a2bcaa15662cf2636",
+    "candidate_bytes": 596,
+    "candidate_sha256": "b0339d0a1f51178eae960db8be1fe6e2294f622a414b14034b9cfaf225ad069b",
+    "original_brace_balanced": true,
+    "ensures_check_downgraded_malformed_original": false,
+    "guard_ok": false,
+    "guard_reasons": [
+     "banned:expect"
+    ],
+    "spec_ok": true,
+    "missing_spec_lines": [],
+    "code_ok": true,
+    "code_multiset_ok": true,
+    "missing_code_lines": [],
+    "code_reordered_at": null,
+    "banned_ok": false,
+    "banned_hits": [
+     "expect"
+    ],
+    "banned_raw_only": [],
+    "banned_in_original": [],
+    "requires_ok": true,
+    "requires_added": [],
+    "requires_removed": [],
+    "requires_count": {
+     "orig": 3,
+     "cand": 3
+    },
+    "ensures_added": [],
+    "ensures_removed": [],
+    "frame_clauses_added": [],
+    "orig_nonblank_lines": 27,
+    "orig_annotation_lines": 0,
+    "orig_code_lines_required": 27,
+    "cand_nonblank_lines": 30,
+    "added_annotation_lines": 3,
+    "added_nonannotation_lines": 0,
+    "added_nonannotation_sample": [],
+    "verify1": {
+     "ok": null,
+     "why": "skipped (--no-verify)"
+    },
+    "verify2": {
+     "ok": null,
+     "why": "skipped (--no-verify)"
+    },
+    "solve": false,
+    "fail_reasons": [
+     "banned:expect"
+    ]
+   }
+  },
+  {
+   "case": "include_directive",
+   "expected": "FAIL(banned:include)",
+   "got": "FAIL(banned:include)",
+   "match": true,
+   "verified_with_dafny": false,
+   "row": {
+    "file": "synthetic_no_hints.dfy",
+    "candidate_path": "/Users/stanislavhuseletov/Documents/personal/expanova-labs/harness/pnrd2/independent/selftest/cases/include_directive/synthetic_no_hints.dfy",
+    "original_path": "/Users/stanislavhuseletov/Documents/personal/expanova-labs/harness/pnrd2/independent/selftest/orig/synthetic_no_hints.dfy",
+    "original_found": true,
+    "original_bytes": 528,
+    "original_sha256": "b12b94613a12f5afa3d450d1ac72fb38d47642a705521e2a2bcaa15662cf2636",
+    "candidate_bytes": 599,
+    "candidate_sha256": "35c50fd5aa1a079191b805dd9eeaaabe7335928e88dce6c2cfe1b0b0c95968aa",
+    "original_brace_balanced": true,
+    "ensures_check_downgraded_malformed_original": false,
+    "guard_ok": false,
+    "guard_reasons": [
+     "banned:include"
+    ],
+    "spec_ok": true,
+    "missing_spec_lines": [],
+    "code_ok": true,
+    "code_multiset_ok": true,
+    "missing_code_lines": [],
+    "code_reordered_at": null,
+    "banned_ok": false,
+    "banned_hits": [
+     "include"
+    ],
+    "banned_raw_only": [],
+    "banned_in_original": [],
+    "requires_ok": true,
+    "requires_added": [],
+    "requires_removed": [],
+    "requires_count": {
+     "orig": 3,
+     "cand": 3
+    },
+    "ensures_added": [],
+    "ensures_removed": [],
+    "frame_clauses_added": [],
+    "orig_nonblank_lines": 27,
+    "orig_annotation_lines": 0,
+    "orig_code_lines_required": 27,
+    "cand_nonblank_lines": 30,
+    "added_annotation_lines": 2,
+    "added_nonannotation_lines": 1,
+    "added_nonannotation_sample": [
+     "include\"other.dfy\""
+    ],
+    "verify1": {
+     "ok": null,
+     "why": "skipped (--no-verify)"
+    },
+    "verify2": {
+     "ok": null,
+     "why": "skipped (--no-verify)"
+    },
+    "solve": false,
+    "fail_reasons": [
+     "banned:include"
+    ]
+   }
+  },
+  {
+   "case": "extern_attr",
+   "expected": "FAIL(banned:{:extern})",
+   "got": "FAIL(code_line_missing,banned:{:extern})",
+   "match": true,
+   "verified_with_dafny": false,
+   "row": {
+    "file": "synthetic_no_hints.dfy",
+    "candidate_path": "/Users/stanislavhuseletov/Documents/personal/expanova-labs/harness/pnrd2/independent/selftest/cases/extern_attr/synthetic_no_hints.dfy",
+    "original_path": "/Users/stanislavhuseletov/Documents/personal/expanova-labs/harness/pnrd2/independent/selftest/orig/synthetic_no_hints.dfy",
+    "original_found": true,
+    "original_bytes": 528,
+    "original_sha256": "b12b94613a12f5afa3d450d1ac72fb38d47642a705521e2a2bcaa15662cf2636",
+    "candidate_bytes": 589,
+    "candidate_sha256": "9a20d51b29a3f057367b3cb6c1babada1b63d6cbadc1e162031d890e555e4365",
+    "original_brace_balanced": true,
+    "ensures_check_downgraded_malformed_original": false,
+    "guard_ok": false,
+    "guard_reasons": [
+     "code_line_missing",
+     "banned:{:extern}"
+    ],
+    "spec_ok": true,
+    "missing_spec_lines": [],
+    "code_ok": false,
+    "code_multiset_ok": false,
+    "missing_code_lines": [
+     "methodPick(a:int)returns(r:int)"
+    ],
+    "code_reordered_at": null,
+    "banned_ok": false,
+    "banned_hits": [
+     "{:extern}"
+    ],
+    "banned_raw_only": [],
+    "banned_in_original": [],
+    "requires_ok": true,
+    "requires_added": [],
+    "requires_removed": [],
+    "requires_count": {
+     "orig": 3,
+     "cand": 3
+    },
+    "ensures_added": [],
+    "ensures_removed": [],
+    "frame_clauses_added": [],
+    "orig_nonblank_lines": 27,
+    "orig_annotation_lines": 0,
+    "orig_code_lines_required": 27,
+    "cand_nonblank_lines": 29,
+    "added_annotation_lines": 2,
+    "added_nonannotation_lines": 1,
+    "added_nonannotation_sample": [
+     "method{:extern}Pick(a:int)returns(r:int)"
+    ],
+    "verify1": {
+     "ok": null,
+     "why": "skipped (--no-verify)"
+    },
+    "verify2": {
+     "ok": null,
+     "why": "skipped (--no-verify)"
+    },
+    "solve": false,
+    "fail_reasons": [
+     "code_line_missing",
+     "banned:{:extern}"
+    ]
+   }
+  },
+  {
+   "case": "at_verify_false",
+   "expected": "FAIL(banned:@Verify(false))",
+   "got": "FAIL(banned:@Verify(false))",
+   "match": true,
+   "verified_with_dafny": false,
+   "row": {
+    "file": "synthetic_no_hints.dfy",
+    "candidate_path": "/Users/stanislavhuseletov/Documents/personal/expanova-labs/harness/pnrd2/independent/selftest/cases/at_verify_false/synthetic_no_hints.dfy",
+    "original_path": "/Users/stanislavhuseletov/Documents/personal/expanova-labs/harness/pnrd2/independent/selftest/orig/synthetic_no_hints.dfy",
+    "original_found": true,
+    "original_bytes": 528,
+    "original_sha256": "b12b94613a12f5afa3d450d1ac72fb38d47642a705521e2a2bcaa15662cf2636",
+    "candidate_bytes": 594,
+    "candidate_sha256": "ff7eeafdc89f222fde6729819e74b51b7e7193d815ca0b34fc68c08ff70aa25a",
+    "original_brace_balanced": true,
+    "ensures_check_downgraded_malformed_original": false,
+    "guard_ok": false,
+    "guard_reasons": [
+     "banned:@Verify(false)"
+    ],
+    "spec_ok": true,
+    "missing_spec_lines": [],
+    "code_ok": true,
+    "code_multiset_ok": true,
+    "missing_code_lines": [],
+    "code_reordered_at": null,
+    "banned_ok": false,
+    "banned_hits": [
+     "@Verify(false)"
+    ],
+    "banned_raw_only": [],
+    "banned_in_original": [],
+    "requires_ok": true,
+    "requires_added": [],
+    "requires_removed": [],
+    "requires_count": {
+     "orig": 3,
+     "cand": 3
+    },
+    "ensures_added": [],
+    "ensures_removed": [],
+    "frame_clauses_added": [],
+    "orig_nonblank_lines": 27,
+    "orig_annotation_lines": 0,
+    "orig_code_lines_required": 27,
+    "cand_nonblank_lines": 30,
+    "added_annotation_lines": 2,
+    "added_nonannotation_lines": 1,
+    "added_nonannotation_sample": [
+     "@Verify(false)"
+    ],
+    "verify1": {
+     "ok": null,
+     "why": "skipped (--no-verify)"
+    },
+    "verify2": {
+     "ok": null,
+     "why": "skipped (--no-verify)"
+    },
+    "solve": false,
+    "fail_reasons": [
+     "banned:@Verify(false)"
+    ]
+   }
+  },
+  {
+   "case": "termination_false",
+   "expected": "FAIL(banned:{:termination false})",
+   "got": "FAIL(code_line_missing,banned:{:termination false})",
+   "match": true,
+   "verified_with_dafny": false,
+   "row": {
+    "file": "synthetic_no_hints.dfy",
+    "candidate_path": "/Users/stanislavhuseletov/Documents/personal/expanova-labs/harness/pnrd2/independent/selftest/cases/termination_false/synthetic_no_hints.dfy",
+    "original_path": "/Users/stanislavhuseletov/Documents/personal/expanova-labs/harness/pnrd2/independent/selftest/orig/synthetic_no_hints.dfy",
+    "original_found": true,
+    "original_bytes": 528,
+    "original_sha256": "b12b94613a12f5afa3d450d1ac72fb38d47642a705521e2a2bcaa15662cf2636",
+    "candidate_bytes": 600,
+    "candidate_sha256": "79ccd57d799b8b2970834fcb6cb5eb354fc4cc60f046027d0eb28d91fcaac257",
+    "original_brace_balanced": true,
+    "ensures_check_downgraded_malformed_original": false,
+    "guard_ok": false,
+    "guard_reasons": [
+     "code_line_missing",
+     "banned:{:termination false}"
+    ],
+    "spec_ok": true,
+    "missing_spec_lines": [],
+    "code_ok": false,
+    "code_multiset_ok": false,
+    "missing_code_lines": [
+     "methodPick(a:int)returns(r:int)"
+    ],
+    "code_reordered_at": null,
+    "banned_ok": false,
+    "banned_hits": [
+     "{:termination false}"
+    ],
+    "banned_raw_only": [],
+    "banned_in_original": [],
+    "requires_ok": true,
+    "requires_added": [],
+    "requires_removed": [],
+    "requires_count": {
+     "orig": 3,
+     "cand": 3
+    },
+    "ensures_added": [],
+    "ensures_removed": [],
+    "frame_clauses_added": [],
+    "orig_nonblank_lines": 27,
+    "orig_annotation_lines": 0,
+    "orig_code_lines_required": 27,
+    "cand_nonblank_lines": 29,
+    "added_annotation_lines": 2,
+    "added_nonannotation_lines": 1,
+    "added_nonannotation_sample": [
+     "method{:terminationfalse}Pick(a:int)returns(r:int)"
+    ],
+    "verify1": {
+     "ok": null,
+     "why": "skipped (--no-verify)"
+    },
+    "verify2": {
+     "ok": null,
+     "why": "skipped (--no-verify)"
+    },
+    "solve": false,
+    "fail_reasons": [
+     "code_line_missing",
+     "banned:{:termination false}"
+    ]
+   }
+  },
+  {
+   "case": "at_axiom",
+   "expected": "FAIL(banned:@Axiom)",
+   "got": "FAIL(banned:@Axiom)",
+   "match": true,
+   "verified_with_dafny": false,
+   "row": {
+    "file": "synthetic_no_hints.dfy",
+    "candidate_path": "/Users/stanislavhuseletov/Documents/personal/expanova-labs/harness/pnrd2/independent/selftest/cases/at_axiom/synthetic_no_hints.dfy",
+    "original_path": "/Users/stanislavhuseletov/Documents/personal/expanova-labs/harness/pnrd2/independent/selftest/orig/synthetic_no_hints.dfy",
+    "original_found": true,
+    "original_bytes": 528,
+    "original_sha256": "b12b94613a12f5afa3d450d1ac72fb38d47642a705521e2a2bcaa15662cf2636",
+    "candidate_bytes": 586,
+    "candidate_sha256": "f2670d1bc8f74519a4f8e28461321b4fa3f71fbda1bb84f6beffe85551bc0847",
+    "original_brace_balanced": true,
+    "ensures_check_downgraded_malformed_original": false,
+    "guard_ok": false,
+    "guard_reasons": [
+     "banned:@Axiom"
+    ],
+    "spec_ok": true,
+    "missing_spec_lines": [],
+    "code_ok": true,
+    "code_multiset_ok": true,
+    "missing_code_lines": [],
+    "code_reordered_at": null,
+    "banned_ok": false,
+    "banned_hits": [
+     "@Axiom"
+    ],
+    "banned_raw_only": [],
+    "banned_in_original": [],
+    "requires_ok": true,
+    "requires_added": [],
+    "requires_removed": [],
+    "requires_count": {
+     "orig": 3,
+     "cand": 3
+    },
+    "ensures_added": [],
+    "ensures_removed": [],
+    "frame_clauses_added": [],
+    "orig_nonblank_lines": 27,
+    "orig_annotation_lines": 0,
+    "orig_code_lines_required": 27,
+    "cand_nonblank_lines": 30,
+    "added_annotation_lines": 2,
+    "added_nonannotation_lines": 1,
+    "added_nonannotation_sample": [
+     "@Axiom"
+    ],
+    "verify1": {
+     "ok": null,
+     "why": "skipped (--no-verify)"
+    },
+    "verify2": {
+     "ok": null,
+     "why": "skipped (--no-verify)"
+    },
+    "solve": false,
+    "fail_reasons": [
+     "banned:@Axiom"
+    ]
+   }
+  },
+  {
+   "case": "brace_moved_to_signature_line",
+   "expected": "FAIL(code_line_missing)",
+   "got": "FAIL(spec_line_missing,code_line_missing)",
+   "match": true,
+   "verified_with_dafny": false,
+   "row": {
+    "file": "synthetic_no_hints.dfy",
+    "candidate_path": "/Users/stanislavhuseletov/Documents/personal/expanova-labs/harness/pnrd2/independent/selftest/cases/brace_moved_to_signature_line/synthetic_no_hints.dfy",
+    "original_path": "/Users/stanislavhuseletov/Documents/personal/expanova-labs/harness/pnrd2/independent/selftest/orig/synthetic_no_hints.dfy",
+    "original_found": true,
+    "original_bytes": 528,
+    "original_sha256": "b12b94613a12f5afa3d450d1ac72fb38d47642a705521e2a2bcaa15662cf2636",
+    "candidate_bytes": 579,
+    "candidate_sha256": "ddcbfb462571673dbd8991d97bd553edfa0127155446363fb7288ebd9c9de6c0",
+    "original_brace_balanced": true,
+    "ensures_check_downgraded_malformed_original": false,
+    "guard_ok": false,
+    "guard_reasons": [
+     "spec_line_missing",
+     "code_line_missing"
+    ],
+    "spec_ok": false,
+    "missing_spec_lines": [
+     "ensuresr==a"
+    ],
+    "code_ok": false,
+    "code_multiset_ok": false,
+    "missing_code_lines": [
+     "{",
+     "ensuresr==a"
+    ],
+    "code_reordered_at": {
+     "orig_line": 28,
+     "text": "{"
+    },
+    "banned_ok": true,
+    "banned_hits": [],
+    "banned_raw_only": [],
+    "banned_in_original": [],
+    "requires_ok": true,
+    "requires_added": [],
+    "requires_removed": [],
+    "requires_count": {
+     "orig": 3,
+     "cand": 3
+    },
+    "ensures_added": [],
+    "ensures_removed": [],
+    "frame_clauses_added": [],
+    "orig_nonblank_lines": 27,
+    "orig_annotation_lines": 0,
+    "orig_code_lines_required": 27,
+    "cand_nonblank_lines": 28,
+    "added_annotation_lines": 2,
+    "added_nonannotation_lines": 1,
+    "added_nonannotation_sample": [
+     "ensuresr==a{"
+    ],
+    "verify1": {
+     "ok": null,
+     "why": "skipped (--no-verify)"
+    },
+    "verify2": {
+     "ok": null,
+     "why": "skipped (--no-verify)"
+    },
+    "solve": false,
+    "fail_reasons": [
+     "spec_line_missing",
+     "code_line_missing"
+    ]
+   }
+  },
+  {
+   "case": "requires_reworded_equivalent",
+   "expected": "FAIL(requires_changed)",
+   "got": "FAIL(spec_line_missing,requires_changed)",
+   "match": true,
+   "verified_with_dafny": false,
+   "row": {
+    "file": "synthetic_no_hints.dfy",
+    "candidate_path": "/Users/stanislavhuseletov/Documents/personal/expanova-labs/harness/pnrd2/independent/selftest/cases/requires_reworded_equivalent/synthetic_no_hints.dfy",
+    "original_path": "/Users/stanislavhuseletov/Documents/personal/expanova-labs/harness/pnrd2/independent/selftest/orig/synthetic_no_hints.dfy",
+    "original_found": true,
+    "original_bytes": 528,
+    "original_sha256": "b12b94613a12f5afa3d450d1ac72fb38d47642a705521e2a2bcaa15662cf2636",
+    "candidate_bytes": 579,
+    "candidate_sha256": "ad1bf32d882b6afaeb7550004b370358c502bf54ef77c7cde2074a5035f08f34",
+    "original_brace_balanced": true,
+    "ensures_check_downgraded_malformed_original": false,
+    "guard_ok": false,
+    "guard_reasons": [
+     "spec_line_missing",
+     "requires_changed"
+    ],
+    "spec_ok": false,
+    "missing_spec_lines": [
+     "requiresa>=0"
+    ],
+    "code_ok": false,
+    "code_multiset_ok": false,
+    "missing_code_lines": [
+     "requiresa>=0"
+    ],
+    "code_reordered_at": null,
+    "banned_ok": true,
+    "banned_hits": [],
+    "banned_raw_only": [],
+    "banned_in_original": [],
+    "requires_ok": false,
+    "requires_added": [
+     "0<=a"
+    ],
+    "requires_removed": [
+     "a>=0"
+    ],
+    "requires_count": {
+     "orig": 3,
+     "cand": 3
+    },
+    "ensures_added": [],
+    "ensures_removed": [],
+    "frame_clauses_added": [],
+    "orig_nonblank_lines": 27,
+    "orig_annotation_lines": 0,
+    "orig_code_lines_required": 27,
+    "cand_nonblank_lines": 29,
+    "added_annotation_lines": 2,
+    "added_nonannotation_lines": 1,
+    "added_nonannotation_sample": [
+     "requires0<=a"
+    ],
+    "verify1": {
+     "ok": null,
+     "why": "skipped (--no-verify)"
+    },
+    "verify2": {
+     "ok": null,
+     "why": "skipped (--no-verify)"
+    },
+    "solve": false,
+    "fail_reasons": [
+     "spec_line_missing",
+     "requires_changed"
+    ]
+   }
+  },
+  {
+   "case": "requires_split_over_two_lines",
+   "expected": "FAIL(spec_line_missing)",
+   "got": "FAIL(spec_line_missing)",
+   "match": true,
+   "verified_with_dafny": false,
+   "row": {
+    "file": "synthetic_no_hints.dfy",
+    "candidate_path": "/Users/stanislavhuseletov/Documents/personal/expanova-labs/harness/pnrd2/independent/selftest/cases/requires_split_over_two_lines/synthetic_no_hints.dfy",
+    "original_path": "/Users/stanislavhuseletov/Documents/personal/expanova-labs/harness/pnrd2/independent/selftest/orig/synthetic_no_hints.dfy",
+    "original_found": true,
+    "original_bytes": 528,
+    "original_sha256": "b12b94613a12f5afa3d450d1ac72fb38d47642a705521e2a2bcaa15662cf2636",
+    "candidate_bytes": 583,
+    "candidate_sha256": "266e413aa3d8e01ade8c92177e78e2fbad8d29c29bd2263efa6c2d8b912b1af0",
+    "original_brace_balanced": true,
+    "ensures_check_downgraded_malformed_original": false,
+    "guard_ok": false,
+    "guard_reasons": [
+     "spec_line_missing"
+    ],
+    "spec_ok": false,
+    "missing_spec_lines": [
+     "requiresain{0,1,2}"
+    ],
+    "code_ok": false,
+    "code_multiset_ok": false,
+    "missing_code_lines": [
+     "requiresain{0,1,2}"
+    ],
+    "code_reordered_at": null,
+    "banned_ok": true,
+    "banned_hits": [],
+    "banned_raw_only": [],
+    "banned_in_original": [],
+    "requires_ok": true,
+    "requires_added": [],
+    "requires_removed": [],
+    "requires_count": {
+     "orig": 3,
+     "cand": 3
+    },
+    "ensures_added": [],
+    "ensures_removed": [],
+    "frame_clauses_added": [],
+    "orig_nonblank_lines": 27,
+    "orig_annotation_lines": 0,
+    "orig_code_lines_required": 27,
+    "cand_nonblank_lines": 30,
+    "added_annotation_lines": 2,
+    "added_nonannotation_lines": 2,
+    "added_nonannotation_sample": [
+     "requiresain",
+     "{0,1,2}"
+    ],
+    "verify1": {
+     "ok": null,
+     "why": "skipped (--no-verify)"
+    },
+    "verify2": {
+     "ok": null,
+     "why": "skipped (--no-verify)"
+    },
+    "solve": false,
+    "fail_reasons": [
+     "spec_line_missing"
+    ]
+   }
+  },
+  {
+   "case": "added_stronger_ensures",
+   "expected": "SOLVE",
+   "got": "SOLVE",
+   "match": true,
+   "verified_with_dafny": false,
+   "row": {
+    "file": "synthetic_no_hints.dfy",
+    "candidate_path": "/Users/stanislavhuseletov/Documents/personal/expanova-labs/harness/pnrd2/independent/selftest/cases/added_stronger_ensures/synthetic_no_hints.dfy",
+    "original_path": "/Users/stanislavhuseletov/Documents/personal/expanova-labs/harness/pnrd2/independent/selftest/orig/synthetic_no_hints.dfy",
+    "original_found": true,
+    "original_bytes": 528,
+    "original_sha256": "b12b94613a12f5afa3d450d1ac72fb38d47642a705521e2a2bcaa15662cf2636",
+    "candidate_bytes": 596,
+    "candidate_sha256": "cf60a12aadde976de7ace440c22ec44cf751a1dcd5f8ab92069b1caacd84c6f2",
+    "original_brace_balanced": true,
+    "ensures_check_downgraded_malformed_original": false,
+    "guard_ok": true,
+    "guard_reasons": [],
+    "spec_ok": true,
+    "missing_spec_lines": [],
+    "code_ok": true,
+    "code_multiset_ok": true,
+    "missing_code_lines": [],
+    "code_reordered_at": null,
+    "banned_ok": true,
+    "banned_hits": [],
+    "banned_raw_only": [],
+    "banned_in_original": [],
+    "requires_ok": true,
+    "requires_added": [],
+    "requires_removed": [],
+    "requires_count": {
+     "orig": 3,
+     "cand": 3
+    },
+    "ensures_added": [
+     "s>=0"
+    ],
+    "ensures_removed": [],
+    "frame_clauses_added": [],
+    "orig_nonblank_lines": 27,
+    "orig_annotation_lines": 0,
+    "orig_code_lines_required": 27,
+    "cand_nonblank_lines": 30,
+    "added_annotation_lines": 2,
+    "added_nonannotation_lines": 1,
+    "added_nonannotation_sample": [
+     "ensuress>=0"
+    ],
+    "verify1": {
+     "ok": null,
+     "why": "skipped (--no-verify)"
+    },
+    "verify2": {
+     "ok": null,
+     "why": "skipped (--no-verify)"
+    },
+    "solve": true,
+    "fail_reasons": []
+   }
+  },
+  {
+   "case": "added_code_statement_allowed_by_rules",
+   "expected": "SOLVE",
+   "got": "SOLVE",
+   "match": true,
+   "verified_with_dafny": false,
+   "row": {
+    "file": "synthetic_no_hints.dfy",
+    "candidate_path": "/Users/stanislavhuseletov/Documents/personal/expanova-labs/harness/pnrd2/independent/selftest/cases/added_code_statement_allowed_by_rules/synthetic_no_hints.dfy",
+    "original_path": "/Users/stanislavhuseletov/Documents/personal/expanova-labs/harness/pnrd2/independent/selftest/orig/synthetic_no_hints.dfy",
+    "original_found": true,
+    "original_bytes": 528,
+    "original_sha256": "b12b94613a12f5afa3d450d1ac72fb38d47642a705521e2a2bcaa15662cf2636",
+    "candidate_bytes": 603,
+    "candidate_sha256": "36b43555270ba5a39719b2ebb3cde56a98f7f8771deb667e817d03c5c9a3247f",
+    "original_brace_balanced": true,
+    "ensures_check_downgraded_malformed_original": false,
+    "guard_ok": true,
+    "guard_reasons": [],
+    "spec_ok": true,
+    "missing_spec_lines": [],
+    "code_ok": true,
+    "code_multiset_ok": true,
+    "missing_code_lines": [],
+    "code_reordered_at": null,
+    "banned_ok": true,
+    "banned_hits": [],
+    "banned_raw_only": [],
+    "banned_in_original": [],
+    "requires_ok": true,
+    "requires_added": [],
+    "requires_removed": [],
+    "requires_count": {
+     "orig": 3,
+     "cand": 3
+    },
+    "ensures_added": [],
+    "ensures_removed": [],
+    "frame_clauses_added": [],
+    "orig_nonblank_lines": 27,
+    "orig_annotation_lines": 0,
+    "orig_code_lines_required": 27,
+    "cand_nonblank_lines": 30,
+    "added_annotation_lines": 2,
+    "added_nonannotation_lines": 1,
+    "added_nonannotation_sample": [
+     "ifr!=a{r:=a;}"
+    ],
+    "verify1": {
+     "ok": null,
+     "why": "skipped (--no-verify)"
+    },
+    "verify2": {
+     "ok": null,
+     "why": "skipped (--no-verify)"
+    },
+    "solve": true,
+    "fail_reasons": []
+   }
+  },
+  {
+   "case": "requires_in_added_comment_ignored",
+   "expected": "SOLVE",
+   "got": "SOLVE",
+   "match": true,
+   "verified_with_dafny": false,
+   "row": {
+    "file": "synthetic_no_hints.dfy",
+    "candidate_path": "/Users/stanislavhuseletov/Documents/personal/expanova-labs/harness/pnrd2/independent/selftest/cases/requires_in_added_comment_ignored/synthetic_no_hints.dfy",
+    "original_path": "/Users/stanislavhuseletov/Documents/personal/expanova-labs/harness/pnrd2/independent/selftest/orig/synthetic_no_hints.dfy",
+    "original_found": true,
+    "original_bytes": 528,
+    "original_sha256": "b12b94613a12f5afa3d450d1ac72fb38d47642a705521e2a2bcaa15662cf2636",
+    "candidate_bytes": 599,
+    "candidate_sha256": "19806cda3d3e68e53397d0fd44a02d769a812a70c0172c5c965ae4dabd74eb89",
+    "original_brace_balanced": true,
+    "ensures_check_downgraded_malformed_original": false,
+    "guard_ok": true,
+    "guard_reasons": [],
+    "spec_ok": true,
+    "missing_spec_lines": [],
+    "code_ok": true,
+    "code_multiset_ok": true,
+    "missing_code_lines": [],
+    "code_reordered_at": null,
+    "banned_ok": true,
+    "banned_hits": [],
+    "banned_raw_only": [],
+    "banned_in_original": [],
+    "requires_ok": true,
+    "requires_added": [],
+    "requires_removed": [],
+    "requires_count": {
+     "orig": 3,
+     "cand": 3
+    },
+    "ensures_added": [],
+    "ensures_removed": [],
+    "frame_clauses_added": [],
+    "orig_nonblank_lines": 27,
+    "orig_annotation_lines": 0,
+    "orig_code_lines_required": 27,
+    "cand_nonblank_lines": 29,
+    "added_annotation_lines": 2,
+    "added_nonannotation_lines": 0,
+    "added_nonannotation_sample": [],
+    "verify1": {
+     "ok": null,
+     "why": "skipped (--no-verify)"
+    },
+    "verify2": {
+     "ok": null,
+     "why": "skipped (--no-verify)"
+    },
+    "solve": true,
+    "fail_reasons": []
+   }
+  },
+  {
+   "case": "original_line_deleted",
+   "expected": "FAIL(code_line_missing)",
+   "got": "FAIL(code_line_missing)",
+   "match": true,
+   "verified_with_dafny": false,
+   "row": {
+    "file": "synthetic_no_hints.dfy",
+    "candidate_path": "/Users/stanislavhuseletov/Documents/personal/expanova-labs/harness/pnrd2/independent/selftest/cases/original_line_deleted/synthetic_no_hints.dfy",
+    "original_path": "/Users/stanislavhuseletov/Documents/personal/expanova-labs/harness/pnrd2/independent/selftest/orig/synthetic_no_hints.dfy",
+    "original_found": true,
+    "original_bytes": 528,
+    "original_sha256": "b12b94613a12f5afa3d450d1ac72fb38d47642a705521e2a2bcaa15662cf2636",
+    "candidate_bytes": 569,
+    "candidate_sha256": "2993e773cd76a4414afaa120cb9329533e6ef7e3f0776da31956a4f7e5a4bcbb",
+    "original_brace_balanced": true,
+    "ensures_check_downgraded_malformed_original": false,
+    "guard_ok": false,
+    "guard_reasons": [
+     "code_line_missing"
+    ],
+    "spec_ok": true,
+    "missing_spec_lines": [],
+    "code_ok": false,
+    "code_multiset_ok": false,
+    "missing_code_lines": [
+     "c:=t;"
+    ],
+    "code_reordered_at": null,
+    "banned_ok": true,
+    "banned_hits": [],
+    "banned_raw_only": [],
+    "banned_in_original": [],
+    "requires_ok": true,
+    "requires_added": [],
+    "requires_removed": [],
+    "requires_count": {
+     "orig": 3,
+     "cand": 3
+    },
+    "ensures_added": [],
+    "ensures_removed": [],
+    "frame_clauses_added": [],
+    "orig_nonblank_lines": 27,
+    "orig_annotation_lines": 0,
+    "orig_code_lines_required": 27,
+    "cand_nonblank_lines": 28,
+    "added_annotation_lines": 2,
+    "added_nonannotation_lines": 0,
+    "added_nonannotation_sample": [],
+    "verify1": {
+     "ok": null,
+     "why": "skipped (--no-verify)"
+    },
+    "verify2": {
+     "ok": null,
+     "why": "skipped (--no-verify)"
+    },
+    "solve": false,
+    "fail_reasons": [
+     "code_line_missing"
+    ]
+   }
+  },
+  {
+   "case": "original_wrapped_in_block_comment",
+   "expected": "FAIL(code_line_missing)",
+   "got": "FAIL(code_line_missing)",
+   "match": true,
+   "verified_with_dafny": false,
+   "row": {
+    "file": "synthetic_no_hints.dfy",
+    "candidate_path": "/Users/stanislavhuseletov/Documents/personal/expanova-labs/harness/pnrd2/independent/selftest/cases/original_wrapped_in_block_comment/synthetic_no_hints.dfy",
+    "original_path": "/Users/stanislavhuseletov/Documents/personal/expanova-labs/harness/pnrd2/independent/selftest/orig/synthetic_no_hints.dfy",
+    "original_found": true,
+    "original_bytes": 528,
+    "original_sha256": "b12b94613a12f5afa3d450d1ac72fb38d47642a705521e2a2bcaa15662cf2636",
+    "candidate_bytes": 599,
+    "candidate_sha256": "c34f97c945222e8f7c2f0867a9eb2c0c921a412aae549c21c1e7e08ddfab0691",
+    "original_brace_balanced": true,
+    "ensures_check_downgraded_malformed_original": false,
+    "guard_ok": false,
+    "guard_reasons": [
+     "code_line_missing"
+    ],
+    "spec_ok": true,
+    "missing_spec_lines": [],
+    "code_ok": false,
+    "code_multiset_ok": false,
+    "missing_code_lines": [
+     "c:=t;"
+    ],
+    "code_reordered_at": null,
+    "banned_ok": true,
+    "banned_hits": [],
+    "banned_raw_only": [],
+    "banned_in_original": [],
+    "requires_ok": true,
+    "requires_added": [],
+    "requires_removed": [],
+    "requires_count": {
+     "orig": 3,
+     "cand": 3
+    },
+    "ensures_added": [],
+    "ensures_removed": [],
+    "frame_clauses_added": [],
+    "orig_nonblank_lines": 27,
+    "orig_annotation_lines": 0,
+    "orig_code_lines_required": 27,
+    "cand_nonblank_lines": 29,
+    "added_annotation_lines": 2,
+    "added_nonannotation_lines": 1,
+    "added_nonannotation_sample": [
+     "c:=a+b;"
+    ],
+    "verify1": {
+     "ok": null,
+     "why": "skipped (--no-verify)"
+    },
+    "verify2": {
+     "ok": null,
+     "why": "skipped (--no-verify)"
+    },
+    "solve": false,
+    "fail_reasons": [
+     "code_line_missing"
+    ]
+   }
+  },
+  {
+   "case": "ensures_continuation_or_true",
+   "expected": "FAIL(ensures_clause_weakened)",
+   "got": "FAIL(ensures_clause_weakened)",
+   "match": true,
+   "verified_with_dafny": false,
+   "row": {
+    "file": "synthetic_no_hints.dfy",
+    "candidate_path": "/Users/stanislavhuseletov/Documents/personal/expanova-labs/harness/pnrd2/independent/selftest/cases/ensures_continuation_or_true/synthetic_no_hints.dfy",
+    "original_path": "/Users/stanislavhuseletov/Documents/personal/expanova-labs/harness/pnrd2/independent/selftest/orig/synthetic_no_hints.dfy",
+    "original_found": true,
+    "original_bytes": 528,
+    "original_sha256": "b12b94613a12f5afa3d450d1ac72fb38d47642a705521e2a2bcaa15662cf2636",
+    "candidate_bytes": 591,
+    "candidate_sha256": "a3c40ad040af0b8f97b39e73064142354821537440956078692f2f19a6eecc1c",
+    "original_brace_balanced": true,
+    "ensures_check_downgraded_malformed_original": false,
+    "guard_ok": false,
+    "guard_reasons": [
+     "ensures_clause_weakened"
+    ],
+    "spec_ok": true,
+    "missing_spec_lines": [],
+    "code_ok": true,
+    "code_multiset_ok": true,
+    "missing_code_lines": [],
+    "code_reordered_at": null,
+    "banned_ok": true,
+    "banned_hits": [],
+    "banned_raw_only": [],
+    "banned_in_original": [],
+    "requires_ok": true,
+    "requires_added": [],
+    "requires_removed": [],
+    "requires_count": {
+     "orig": 3,
+     "cand": 3
+    },
+    "ensures_added": [
+     "s==2*n||true"
+    ],
+    "ensures_removed": [
+     "s==2*n"
+    ],
+    "frame_clauses_added": [],
+    "orig_nonblank_lines": 27,
+    "orig_annotation_lines": 0,
+    "orig_code_lines_required": 27,
+    "cand_nonblank_lines": 30,
+    "added_annotation_lines": 2,
+    "added_nonannotation_lines": 1,
+    "added_nonannotation_sample": [
+     "||true"
+    ],
+    "verify1": {
+     "ok": null,
+     "why": "skipped (--no-verify)"
+    },
+    "verify2": {
+     "ok": null,
+     "why": "skipped (--no-verify)"
+    },
+    "solve": false,
+    "fail_reasons": [
+     "ensures_clause_weakened"
+    ]
+   }
+  },
+  {
+   "case": "requires_continuation_implies_false",
+   "expected": "FAIL(requires_changed)",
+   "got": "FAIL(requires_changed)",
+   "match": true,
+   "verified_with_dafny": false,
+   "row": {
+    "file": "synthetic_no_hints.dfy",
+    "candidate_path": "/Users/stanislavhuseletov/Documents/personal/expanova-labs/harness/pnrd2/independent/selftest/cases/requires_continuation_implies_false/synthetic_no_hints.dfy",
+    "original_path": "/Users/stanislavhuseletov/Documents/personal/expanova-labs/harness/pnrd2/independent/selftest/orig/synthetic_no_hints.dfy",
+    "original_found": true,
+    "original_bytes": 528,
+    "original_sha256": "b12b94613a12f5afa3d450d1ac72fb38d47642a705521e2a2bcaa15662cf2636",
+    "candidate_bytes": 593,
+    "candidate_sha256": "3ed38d6b1cfff1573a20da5966f77b53f230bef7c2325cc7487bfbf305816916",
+    "original_brace_balanced": true,
+    "ensures_check_downgraded_malformed_original": false,
+    "guard_ok": false,
+    "guard_reasons": [
+     "requires_changed"
+    ],
+    "spec_ok": true,
+    "missing_spec_lines": [],
+    "code_ok": true,
+    "code_multiset_ok": true,
+    "missing_code_lines": [],
+    "code_reordered_at": null,
+    "banned_ok": true,
+    "banned_hits": [],
+    "banned_raw_only": [],
+    "banned_in_original": [],
+    "requires_ok": false,
+    "requires_added": [
+     "b>=0==>false"
+    ],
+    "requires_removed": [
+     "b>=0"
+    ],
+    "requires_count": {
+     "orig": 3,
+     "cand": 3
+    },
+    "ensures_added": [],
+    "ensures_removed": [],
+    "frame_clauses_added": [],
+    "orig_nonblank_lines": 27,
+    "orig_annotation_lines": 0,
+    "orig_code_lines_required": 27,
+    "cand_nonblank_lines": 30,
+    "added_annotation_lines": 2,
+    "added_nonannotation_lines": 1,
+    "added_nonannotation_sample": [
+     "==>false"
+    ],
+    "verify1": {
+     "ok": null,
+     "why": "skipped (--no-verify)"
+    },
+    "verify2": {
+     "ok": null,
+     "why": "skipped (--no-verify)"
+    },
+    "solve": false,
+    "fail_reasons": [
+     "requires_changed"
+    ]
+   }
+  },
+  {
+   "case": "requires_false_on_signature_line",
+   "expected": "FAIL(requires_changed)",
+   "got": "FAIL(code_line_missing,requires_changed)",
+   "match": true,
+   "verified_with_dafny": false,
+   "row": {
+    "file": "synthetic_no_hints.dfy",
+    "candidate_path": "/Users/stanislavhuseletov/Documents/personal/expanova-labs/harness/pnrd2/independent/selftest/cases/requires_false_on_signature_line/synthetic_no_hints.dfy",
+    "original_path": "/Users/stanislavhuseletov/Documents/personal/expanova-labs/harness/pnrd2/independent/selftest/orig/synthetic_no_hints.dfy",
+    "original_found": true,
+    "original_bytes": 528,
+    "original_sha256": "b12b94613a12f5afa3d450d1ac72fb38d47642a705521e2a2bcaa15662cf2636",
+    "candidate_bytes": 594,
+    "candidate_sha256": "c7b4dc55217724967544eafcb907d8d1574fccdd1463dc1838ad22d09ef12723",
+    "original_brace_balanced": true,
+    "ensures_check_downgraded_malformed_original": false,
+    "guard_ok": false,
+    "guard_reasons": [
+     "code_line_missing",
+     "requires_changed"
+    ],
+    "spec_ok": true,
+    "missing_spec_lines": [],
+    "code_ok": false,
+    "code_multiset_ok": false,
+    "missing_code_lines": [
+     "methodPick(a:int)returns(r:int)"
+    ],
+    "code_reordered_at": null,
+    "banned_ok": true,
+    "banned_hits": [],
+    "banned_raw_only": [],
+    "banned_in_original": [],
+    "requires_ok": false,
+    "requires_added": [
+     "false"
+    ],
+    "requires_removed": [],
+    "requires_count": {
+     "orig": 3,
+     "cand": 4
+    },
+    "ensures_added": [],
+    "ensures_removed": [],
+    "frame_clauses_added": [],
+    "orig_nonblank_lines": 27,
+    "orig_annotation_lines": 0,
+    "orig_code_lines_required": 27,
+    "cand_nonblank_lines": 29,
+    "added_annotation_lines": 2,
+    "added_nonannotation_lines": 1,
+    "added_nonannotation_sample": [
+     "methodPick(a:int)returns(r:int)requiresfalse"
+    ],
+    "verify1": {
+     "ok": null,
+     "why": "skipped (--no-verify)"
+    },
+    "verify2": {
+     "ok": null,
+     "why": "skipped (--no-verify)"
+    },
+    "solve": false,
+    "fail_reasons": [
+     "code_line_missing",
+     "requires_changed"
+    ]
+   }
+  },
+  {
+   "case": "requires_false_after_ensures_same_line",
+   "expected": "FAIL(requires_changed)",
+   "got": "FAIL(spec_line_missing,requires_changed)",
+   "match": true,
+   "verified_with_dafny": false,
+   "row": {
+    "file": "synthetic_no_hints.dfy",
+    "candidate_path": "/Users/stanislavhuseletov/Documents/personal/expanova-labs/harness/pnrd2/independent/selftest/cases/requires_false_after_ensures_same_line/synthetic_no_hints.dfy",
+    "original_path": "/Users/stanislavhuseletov/Documents/personal/expanova-labs/harness/pnrd2/independent/selftest/orig/synthetic_no_hints.dfy",
+    "original_found": true,
+    "original_bytes": 528,
+    "original_sha256": "b12b94613a12f5afa3d450d1ac72fb38d47642a705521e2a2bcaa15662cf2636",
+    "candidate_bytes": 594,
+    "candidate_sha256": "28dd78796e93b5a4cdb8dee1421a95baf4995f23be18941d876706cd79a0df47",
+    "original_brace_balanced": true,
+    "ensures_check_downgraded_malformed_original": false,
+    "guard_ok": false,
+    "guard_reasons": [
+     "spec_line_missing",
+     "requires_changed"
+    ],
+    "spec_ok": false,
+    "missing_spec_lines": [
+     "ensuresr==a"
+    ],
+    "code_ok": false,
+    "code_multiset_ok": false,
+    "missing_code_lines": [
+     "ensuresr==a"
+    ],
+    "code_reordered_at": null,
+    "banned_ok": true,
+    "banned_hits": [],
+    "banned_raw_only": [],
+    "banned_in_original": [],
+    "requires_ok": false,
+    "requires_added": [
+     "false"
+    ],
+    "requires_removed": [],
+    "requires_count": {
+     "orig": 3,
+     "cand": 4
+    },
+    "ensures_added": [],
+    "ensures_removed": [],
+    "frame_clauses_added": [],
+    "orig_nonblank_lines": 27,
+    "orig_annotation_lines": 0,
+    "orig_code_lines_required": 27,
+    "cand_nonblank_lines": 29,
+    "added_annotation_lines": 2,
+    "added_nonannotation_lines": 1,
+    "added_nonannotation_sample": [
+     "ensuresr==arequiresfalse"
+    ],
+    "verify1": {
+     "ok": null,
+     "why": "skipped (--no-verify)"
+    },
+    "verify2": {
+     "ok": null,
+     "why": "skipped (--no-verify)"
+    },
+    "solve": false,
+    "fail_reasons": [
+     "spec_line_missing",
+     "requires_changed"
+    ]
+   }
+  },
+  {
+   "case": "ensures_or_true_same_line",
+   "expected": "FAIL(spec_line_missing)",
+   "got": "FAIL(spec_line_missing,ensures_clause_weakened)",
+   "match": true,
+   "verified_with_dafny": false,
+   "row": {
+    "file": "synthetic_no_hints.dfy",
+    "candidate_path": "/Users/stanislavhuseletov/Documents/personal/expanova-labs/harness/pnrd2/independent/selftest/cases/ensures_or_true_same_line/synthetic_no_hints.dfy",
+    "original_path": "/Users/stanislavhuseletov/Documents/personal/expanova-labs/harness/pnrd2/independent/selftest/orig/synthetic_no_hints.dfy",
+    "original_found": true,
+    "original_bytes": 528,
+    "original_sha256": "b12b94613a12f5afa3d450d1ac72fb38d47642a705521e2a2bcaa15662cf2636",
+    "candidate_bytes": 587,
+    "candidate_sha256": "1530e53ac6ffe17c7f5c1e84fe81878d7ee1fe089a3b251bcbadec741498b0da",
+    "original_brace_balanced": true,
+    "ensures_check_downgraded_malformed_original": false,
+    "guard_ok": false,
+    "guard_reasons": [
+     "spec_line_missing",
+     "ensures_clause_weakened"
+    ],
+    "spec_ok": false,
+    "missing_spec_lines": [
+     "ensuresr==a"
+    ],
+    "code_ok": false,
+    "code_multiset_ok": false,
+    "missing_code_lines": [
+     "ensuresr==a"
+    ],
+    "code_reordered_at": null,
+    "banned_ok": true,
+    "banned_hits": [],
+    "banned_raw_only": [],
+    "banned_in_original": [],
+    "requires_ok": true,
+    "requires_added": [],
+    "requires_removed": [],
+    "requires_count": {
+     "orig": 3,
+     "cand": 3
+    },
+    "ensures_added": [
+     "r==a||true"
+    ],
+    "ensures_removed": [
+     "r==a"
+    ],
+    "frame_clauses_added": [],
+    "orig_nonblank_lines": 27,
+    "orig_annotation_lines": 0,
+    "orig_code_lines_required": 27,
+    "cand_nonblank_lines": 29,
+    "added_annotation_lines": 2,
+    "added_nonannotation_lines": 1,
+    "added_nonannotation_sample": [
+     "ensuresr==a||true"
+    ],
+    "verify1": {
+     "ok": null,
+     "why": "skipped (--no-verify)"
+    },
+    "verify2": {
+     "ok": null,
+     "why": "skipped (--no-verify)"
+    },
+    "solve": false,
+    "fail_reasons": [
+     "spec_line_missing",
+     "ensures_clause_weakened"
+    ]
+   }
+  },
+  {
+   "case": "spec_line_moved_into_comment_elsewhere",
+   "expected": "FAIL(spec_line_missing)",
+   "got": "FAIL(spec_line_missing,ensures_clause_weakened)",
+   "match": true,
+   "verified_with_dafny": false,
+   "row": {
+    "file": "synthetic_no_hints.dfy",
+    "candidate_path": "/Users/stanislavhuseletov/Documents/personal/expanova-labs/harness/pnrd2/independent/selftest/cases/spec_line_moved_into_comment_elsewhere/synthetic_no_hints.dfy",
+    "original_path": "/Users/stanislavhuseletov/Documents/personal/expanova-labs/harness/pnrd2/independent/selftest/orig/synthetic_no_hints.dfy",
+    "original_found": true,
+    "original_bytes": 528,
+    "original_sha256": "b12b94613a12f5afa3d450d1ac72fb38d47642a705521e2a2bcaa15662cf2636",
+    "candidate_bytes": 547,
+    "candidate_sha256": "dcc7923bb6d235a5068343887d9c8fbecf39e77f083ef4e4970769eb41ed8ac0",
+    "original_brace_balanced": true,
+    "ensures_check_downgraded_malformed_original": false,
+    "guard_ok": false,
+    "guard_reasons": [
+     "spec_line_missing",
+     "ensures_clause_weakened"
+    ],
+    "spec_ok": false,
+    "missing_spec_lines": [
+     "ensuresc>=a"
+    ],
+    "code_ok": false,
+    "code_multiset_ok": false,
+    "missing_code_lines": [
+     "ensuresc>=a"
+    ],
+    "code_reordered_at": null,
+    "banned_ok": true,
+    "banned_hits": [],
+    "banned_raw_only": [],
+    "banned_in_original": [],
+    "requires_ok": true,
+    "requires_added": [],
+    "requires_removed": [],
+    "requires_count": {
+     "orig": 3,
+     "cand": 3
+    },
+    "ensures_added": [],
+    "ensures_removed": [
+     "c>=a"
+    ],
+    "frame_clauses_added": [],
+    "orig_nonblank_lines": 27,
+    "orig_annotation_lines": 0,
+    "orig_code_lines_required": 27,
+    "cand_nonblank_lines": 28,
+    "added_annotation_lines": 2,
+    "added_nonannotation_lines": 0,
+    "added_nonannotation_sample": [],
+    "verify1": {
+     "ok": null,
+     "why": "skipped (--no-verify)"
+    },
+    "verify2": {
+     "ok": null,
+     "why": "skipped (--no-verify)"
+    },
+    "solve": false,
+    "fail_reasons": [
+     "spec_line_missing",
+     "ensures_clause_weakened"
+    ]
+   }
+  },
+  {
+   "case": "code_line_superstring",
+   "expected": "FAIL(code_line_missing)",
+   "got": "FAIL(code_line_missing)",
+   "match": true,
+   "verified_with_dafny": false,
+   "row": {
+    "file": "synthetic_no_hints.dfy",
+    "candidate_path": "/Users/stanislavhuseletov/Documents/personal/expanova-labs/harness/pnrd2/independent/selftest/cases/code_line_superstring/synthetic_no_hints.dfy",
+    "original_path": "/Users/stanislavhuseletov/Documents/personal/expanova-labs/harness/pnrd2/independent/selftest/orig/synthetic_no_hints.dfy",
+    "original_found": true,
+    "original_bytes": 528,
+    "original_sha256": "b12b94613a12f5afa3d450d1ac72fb38d47642a705521e2a2bcaa15662cf2636",
+    "candidate_bytes": 580,
+    "candidate_sha256": "36be7c453131c3dd36db24229c47450a0d9b7274c118ab185daabb76a9e2f714",
+    "original_brace_balanced": true,
+    "ensures_check_downgraded_malformed_original": false,
+    "guard_ok": false,
+    "guard_reasons": [
+     "code_line_missing"
+    ],
+    "spec_ok": true,
+    "missing_spec_lines": [],
+    "code_ok": false,
+    "code_multiset_ok": false,
+    "missing_code_lines": [
+     "s:=s+2;"
+    ],
+    "code_reordered_at": null,
+    "banned_ok": true,
+    "banned_hits": [],
+    "banned_raw_only": [],
+    "banned_in_original": [],
+    "requires_ok": true,
+    "requires_added": [],
+    "requires_removed": [],
+    "requires_count": {
+     "orig": 3,
+     "cand": 3
+    },
+    "ensures_added": [],
+    "ensures_removed": [],
+    "frame_clauses_added": [],
+    "orig_nonblank_lines": 27,
+    "orig_annotation_lines": 0,
+    "orig_code_lines_required": 27,
+    "cand_nonblank_lines": 29,
+    "added_annotation_lines": 2,
+    "added_nonannotation_lines": 1,
+    "added_nonannotation_sample": [
+     "s:=s+20;"
+    ],
+    "verify1": {
+     "ok": null,
+     "why": "skipped (--no-verify)"
+    },
+    "verify2": {
+     "ok": null,
+     "why": "skipped (--no-verify)"
+    },
+    "solve": false,
+    "fail_reasons": [
+     "code_line_missing"
+    ]
+   }
+  },
+  {
+   "case": "trailing_comment_edited_on_spec_line",
+   "expected": "SOLVE",
+   "got": "SOLVE",
+   "match": true,
+   "verified_with_dafny": false,
+   "row": {
+    "file": "synthetic_no_hints.dfy",
+    "candidate_path": "/Users/stanislavhuseletov/Documents/personal/expanova-labs/harness/pnrd2/independent/selftest/cases/trailing_comment_edited_on_spec_line/synthetic_no_hints.dfy",
+    "original_path": "/Users/stanislavhuseletov/Documents/personal/expanova-labs/harness/pnrd2/independent/selftest/orig/synthetic_no_hints.dfy",
+    "original_found": true,
+    "original_bytes": 528,
+    "original_sha256": "b12b94613a12f5afa3d450d1ac72fb38d47642a705521e2a2bcaa15662cf2636",
+    "candidate_bytes": 564,
+    "candidate_sha256": "658106677e6059c66ec1e428be3f0637cc24fbe120e10611408f5046f4609fbd",
+    "original_brace_balanced": true,
+    "ensures_check_downgraded_malformed_original": false,
+    "guard_ok": true,
+    "guard_reasons": [],
+    "spec_ok": true,
+    "missing_spec_lines": [],
+    "code_ok": true,
+    "code_multiset_ok": true,
+    "missing_code_lines": [],
+    "code_reordered_at": null,
+    "banned_ok": true,
+    "banned_hits": [],
+    "banned_raw_only": [],
+    "banned_in_original": [],
+    "requires_ok": true,
+    "requires_added": [],
+    "requires_removed": [],
+    "requires_count": {
+     "orig": 3,
+     "cand": 3
+    },
+    "ensures_added": [],
+    "ensures_removed": [],
+    "frame_clauses_added": [],
+    "orig_nonblank_lines": 27,
+    "orig_annotation_lines": 0,
+    "orig_code_lines_required": 27,
+    "cand_nonblank_lines": 29,
+    "added_annotation_lines": 2,
+    "added_nonannotation_lines": 0,
+    "added_nonannotation_sample": [],
+    "verify1": {
+     "ok": null,
+     "why": "skipped (--no-verify)"
+    },
+    "verify2": {
+     "ok": null,
+     "why": "skipped (--no-verify)"
+    },
+    "solve": true,
+    "fail_reasons": []
+   }
+  },
+  {
+   "case": "duplicate_code_line_one_deleted",
+   "expected": "SOLVE",
+   "got": "SOLVE",
+   "match": true,
+   "verified_with_dafny": false,
+   "row": {
+    "file": "synthetic_no_hints.dfy",
+    "candidate_path": "/Users/stanislavhuseletov/Documents/personal/expanova-labs/harness/pnrd2/independent/selftest/cases/duplicate_code_line_one_deleted/synthetic_no_hints.dfy",
+    "original_path": "/Users/stanislavhuseletov/Documents/personal/expanova-labs/harness/pnrd2/independent/selftest/orig/synthetic_no_hints.dfy",
+    "original_found": true,
+    "original_bytes": 528,
+    "original_sha256": "b12b94613a12f5afa3d450d1ac72fb38d47642a705521e2a2bcaa15662cf2636",
+    "candidate_bytes": 579,
+    "candidate_sha256": "2730732accf40bfa853bec2b377bb65d431556975011d991d0dabd8abdcaf542",
+    "original_brace_balanced": true,
+    "ensures_check_downgraded_malformed_original": false,
+    "guard_ok": true,
+    "guard_reasons": [],
+    "spec_ok": true,
+    "missing_spec_lines": [],
+    "code_ok": true,
+    "code_multiset_ok": true,
+    "missing_code_lines": [],
+    "code_reordered_at": null,
+    "banned_ok": true,
+    "banned_hits": [],
+    "banned_raw_only": [],
+    "banned_in_original": [],
+    "requires_ok": true,
+    "requires_added": [],
+    "requires_removed": [],
+    "requires_count": {
+     "orig": 3,
+     "cand": 3
+    },
+    "ensures_added": [],
+    "ensures_removed": [],
+    "frame_clauses_added": [],
+    "orig_nonblank_lines": 27,
+    "orig_annotation_lines": 0,
+    "orig_code_lines_required": 27,
+    "cand_nonblank_lines": 29,
+    "added_annotation_lines": 2,
+    "added_nonannotation_lines": 0,
+    "added_nonannotation_sample": [],
+    "verify1": {
+     "ok": null,
+     "why": "skipped (--no-verify)"
+    },
+    "verify2": {
+     "ok": null,
+     "why": "skipped (--no-verify)"
+    },
+    "solve": true,
+    "fail_reasons": []
+   }
+  },
+  {
+   "case": "modifies_added_is_reported_not_failed",
+   "expected": "SOLVE",
+   "got": "SOLVE",
+   "match": true,
+   "verified_with_dafny": false,
+   "row": {
+    "file": "synthetic_no_hints.dfy",
+    "candidate_path": "/Users/stanislavhuseletov/Documents/personal/expanova-labs/harness/pnrd2/independent/selftest/cases/modifies_added_is_reported_not_failed/synthetic_no_hints.dfy",
+    "original_path": "/Users/stanislavhuseletov/Documents/personal/expanova-labs/harness/pnrd2/independent/selftest/orig/synthetic_no_hints.dfy",
+    "original_found": true,
+    "original_bytes": 528,
+    "original_sha256": "b12b94613a12f5afa3d450d1ac72fb38d47642a705521e2a2bcaa15662cf2636",
+    "candidate_bytes": 593,
+    "candidate_sha256": "738905d2f1e1274d6c48fb27fc06f5353fd0eb9ccd3c1ad7d4121ba5c6d0dfde",
+    "original_brace_balanced": true,
+    "ensures_check_downgraded_malformed_original": false,
+    "guard_ok": true,
+    "guard_reasons": [],
+    "spec_ok": true,
+    "missing_spec_lines": [],
+    "code_ok": true,
+    "code_multiset_ok": true,
+    "missing_code_lines": [],
+    "code_reordered_at": null,
+    "banned_ok": true,
+    "banned_hits": [],
+    "banned_raw_only": [],
+    "banned_in_original": [],
+    "requires_ok": true,
+    "requires_added": [],
+    "requires_removed": [],
+    "requires_count": {
+     "orig": 3,
+     "cand": 3
+    },
+    "ensures_added": [],
+    "ensures_removed": [],
+    "frame_clauses_added": [
+     "modifies "
+    ],
+    "orig_nonblank_lines": 27,
+    "orig_annotation_lines": 0,
+    "orig_code_lines_required": 27,
+    "cand_nonblank_lines": 30,
+    "added_annotation_lines": 2,
+    "added_nonannotation_lines": 1,
+    "added_nonannotation_sample": [
+     "modifies{}"
+    ],
+    "verify1": {
+     "ok": null,
+     "why": "skipped (--no-verify)"
+    },
+    "verify2": {
+     "ok": null,
+     "why": "skipped (--no-verify)"
+    },
+    "solve": true,
+    "fail_reasons": []
+   }
+  },
+  {
+   "case": "original_assert_dropped_is_exempt",
+   "expected": "SOLVE",
+   "got": "SOLVE",
+   "match": true,
+   "verified_with_dafny": false,
+   "row": {
+    "file": "synthetic_annot_no_hints.dfy",
+    "candidate_path": "/Users/stanislavhuseletov/Documents/personal/expanova-labs/harness/pnrd2/independent/selftest/cases/original_assert_dropped_is_exempt/synthetic_annot_no_hints.dfy",
+    "original_path": "/Users/stanislavhuseletov/Documents/personal/expanova-labs/harness/pnrd2/independent/selftest/orig/synthetic_annot_no_hints.dfy",
+    "original_found": true,
+    "original_bytes": 91,
+    "original_sha256": "7a362b96e1bdedba78940e2649e0522f28f1404e31c0d4ea9c874cadec0996fd",
+    "candidate_bytes": 75,
+    "candidate_sha256": "98db1fb86f1d227592291ab30ebe78549d234dfea60d8a1f0dce5e6579dc4375",
+    "original_brace_balanced": true,
+    "ensures_check_downgraded_malformed_original": false,
+    "guard_ok": true,
+    "guard_reasons": [],
+    "spec_ok": true,
+    "missing_spec_lines": [],
+    "code_ok": true,
+    "code_multiset_ok": true,
+    "missing_code_lines": [],
+    "code_reordered_at": null,
+    "banned_ok": true,
+    "banned_hits": [],
+    "banned_raw_only": [],
+    "banned_in_original": [],
+    "requires_ok": true,
+    "requires_added": [],
+    "requires_removed": [],
+    "requires_count": {
+     "orig": 0,
+     "cand": 0
+    },
+    "ensures_added": [],
+    "ensures_removed": [],
+    "frame_clauses_added": [],
+    "orig_nonblank_lines": 6,
+    "orig_annotation_lines": 1,
+    "orig_code_lines_required": 5,
+    "cand_nonblank_lines": 5,
+    "added_annotation_lines": 0,
+    "added_nonannotation_lines": 0,
+    "added_nonannotation_sample": [],
+    "verify1": {
+     "ok": null,
+     "why": "skipped (--no-verify)"
+    },
+    "verify2": {
+     "ok": null,
+     "why": "skipped (--no-verify)"
+    },
+    "solve": true,
+    "fail_reasons": []
+   }
+  }
+ ]
+}

@@ -102,3 +102,32 @@ includes error feedback). The claim under test is narrower: the *same harness sh
 - Every verified-but-blocked candidate is now saved under `results/<run>/guard_trips/` so the guard
   itself can be audited after the fact; a sample of verifier failures is saved under `failed/`.
 - Predictions and gate unchanged. Nothing above Addendum 1 was edited.
+
+## Addendum 4 — 2026-09-18 15:35 CEST (run 2 discarded; run 3 started from scratch in a new location)
+
+**Incident.** The working tree lived under `~/Documents`, which is iCloud-synced. With the disk at
+98–99 %, macOS evicted the tree to cloud-only *during* run 2 (dataset, harness, results). Reads of
+evicted files stall or return truncated text; the published-output audit caught guards computed
+against truncated originals. Run 2 (81 rows) is discarded and kept in `results/aborted/`. The repo
+now lives at `~/Projects/expanova-labs` (not synced). Reported numbers come only from run 3.
+
+**Guard v3, after an independent re-implementation from this document and a compliance review
+found bypasses in v2.** All strictly closing holes; predictions and gate unchanged:
+- all checks run on comment-stripped, string-masked text (code hidden in a comment does not count);
+- `requires` compared as **clauses**, anywhere in the text — `requires false` on a signature line is caught;
+- `ensures` compared as clauses — a `|| true` continuation line is caught;
+- original code lines must appear **in order** (ordered multiset, formatting-insensitive);
+- a forbidden marker counts only if the candidate has **more** of it than the original (119
+  originals already contain `expect`/`assume`/… and were guard-unpassable under v2);
+- regexes tolerate whitespace (`{:axiom }`);
+- **new rule `code_added`**: an added line that is executable (assignment, call to a non-lemma,
+  `return`, `if`/`while`/…) outside an added lemma/function/ghost block is a fail. Added invariants,
+  asserts, `calc`/`forall`/`by` proof blocks, ghost vars, helper lemmas and calls to them are allowed;
+- an inserted annotation that splits an original one-line block no longer trips `code_changed`;
+- the verifier check now requires at least one verified member — an empty program is not a proof;
+- the repair turn after a guard trip is told the guard reason instead of "did not verify";
+- one-shot (arm A) winners are now saved and re-verified like arm B winners.
+
+**Known remaining limits (disclosed, not fixed):** `modifies`/`reads` additions are not checked;
+23 originals have unbalanced braces from the dataset's own stripping; `--verification-time-limit`
+is per assertion batch, not per file; `a_only`/`b_only` in the JSON mean total solves per arm.
