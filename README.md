@@ -1,36 +1,23 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Expanova Labs
 
-## Getting Started
+Source for [labs.expanova.io](https://labs.expanova.io), the research arm of [Expanova](https://expanova.io).
 
-First, run the development server:
+The lab runs one kind of experiment: take a cheap open model, wrap it in a harness, and let a **sound oracle** (a proof checker, a verifier, a type checker) decide what counts as solved. A claim only goes on the site if a machine checked it.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+How the studies are run:
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- **Pre-registered.** Hypotheses and kill criteria are committed before the run, and the commit is the seal.
+- **Sound oracles only.** Lean 4, Dafny, Bend. No LLM judges deciding their own homework.
+- **Red-teamed.** Every "solve" goes through a guard that rejects spec-gaming ([pnrd2-guard](https://github.com/StanHus/pnrd2-guard)).
+- **Failures published.** Each study ends in SHIP, PARTIAL or KILL, and the misses stay on the page.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+| Page | |
+|---|---|
+| `/` | The lab and its one rule |
+| `/approach` | Sound oracles, pre-registration, ship/kill gates |
+| `/pnrd-1` | Lean 4 theorem proving |
+| `/pnrd-2` | Dafny-verified program completion, with the anti-gaming guard |
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Results on the site are read at build time from `public/data/*.json`, never typed by hand.
 
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Next.js on Vercel. Benchmarks credited on the site: miniF2F, DafnyBench.
